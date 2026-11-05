@@ -421,6 +421,28 @@ footer.rod{font-size:14px}
 #btnAdm:hover{filter:brightness(1.08)}
 @media(max-width:1300px){#btnAdm span{display:none}#btnAdm{width:42px;padding:0;justify-content:center}}
 @media(max-width:1300px) and (min-width:761px){.nav a{padding:8px 9px}}
+
+.adm-aic{width:44px;height:44px;border-radius:12px;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.adm-aic svg{width:24px;height:24px}
+.adm-icones{display:flex;flex-wrap:wrap;gap:10px}
+.adm-ic{cursor:pointer;margin:0!important}
+.adm-ic input{position:absolute;opacity:0;pointer-events:none}
+.adm-ic .ic2{width:50px;height:50px;border-radius:14px;border:2px solid var(--line);color:var(--ac);display:flex;align-items:center;justify-content:center;background:var(--surface)}
+.adm-ic .ic2 svg{width:26px;height:26px}
+.adm-ic input:checked+.ic2{background:var(--ac);color:#fff;border-color:var(--ac)}
+.adm-ic input:focus-visible+.ic2{outline:3px solid var(--gold);outline-offset:2px}
+.campanha-frame{border-radius:18px;overflow:hidden;box-shadow:var(--sh2);border:1px solid var(--line);background:#fff}
+.campanha-frame iframe{display:block;width:100%;height:min(80vh,900px);border:0}
+
+.camp-banner{display:flex;align-items:center;gap:18px;margin-top:26px;padding:20px 24px;border-radius:24px;text-decoration:none;color:#fff;background:linear-gradient(120deg,#8f0a20,#c8102e 45%,#c99a2e);box-shadow:var(--sh2);flex-wrap:wrap}
+.camp-banner:hover{filter:brightness(1.06)}
+.camp-ic{width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.camp-ic svg{width:30px;height:30px}
+.camp-tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:200px}
+.camp-tx small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#ffe08a}
+.camp-tx b{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700}
+.camp-tx span{font-size:15px;opacity:.95}
+.camp-bt{background:#fff;color:#8f0a20;font-weight:800;padding:11px 18px;border-radius:999px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -435,7 +457,7 @@ footer.rod{font-size:14px}
 
 <main id="app" tabindex="-1"></main>
 
-<footer class="rod">Central de Conhecimento M. Anjos · Avatim · Uso interno · Versão 1 — 23/10/2026 · <a href="#art-pendencias" style="color:inherit">Gestão: pendências</a> · <a href="#admin" style="color:inherit">Área da gestão</a></footer>
+<footer class="rod">Central de Conhecimento M. Anjos · Avatim · Uso interno · Versão 1 — 04/11/2026 · <a href="#art-pendencias" style="color:inherit">Gestão: pendências</a> · <a href="#admin" style="color:inherit">Área da gestão</a></footer>
 
 <script type="application/json" id="edicoes">{}</script>
 <script>
@@ -452,10 +474,11 @@ const ICON = {
 };
 const AREAS = [
   {id:'sistemas', curto:'Sistemas', nome:'Sistemas e Ferramentas', desc:'Como usar Exatto, PDV, App Retaguarda, MonAris e TrocaFácil.'},
-  {id:'comercial', curto:'Vendas e Clientes', nome:'Vendas e Clientes', desc:'Atendimento, WhatsApp, cadastro, captação e o método Vender é Convidar.'},
-  {id:'operacao', curto:'Rotina da Loja', nome:'Rotina da Loja', desc:'Abertura, fechamento, estoque, inventário, testers e insumos.'},
+  {id:'comercial', curto:'Vendas', nome:'Vendas e Clientes', desc:'Atendimento, WhatsApp, cadastro, captação e o método Vender é Convidar.'},
+  {id:'operacao', curto:'Rotina', nome:'Rotina da Loja', desc:'Abertura, fechamento, estoque, inventário, testers e insumos.'},
   {id:'gestao', curto:'Gestão', nome:'Gestão e Resultados', desc:'Indicadores, metas e liderança da equipe.'},
   {id:'politicas', curto:'Regras', nome:'Regras e Políticas', desc:'Troca, caixa, cancelamento, antifraude, boleto e normas internas.'},
+  {id:'campanhas', curto:'Campanhas', nome:'Campanhas do Mês', desc:'Lançamentos, kits e ações comerciais do mês, como o Natal de Ouro.', cor:'#c8102e', icone:'presente'},
   {id:'treinamentos', curto:'Treinamentos', nome:'Treinamentos', desc:'Integração de novos colaboradores e materiais de capacitação.'}
 ];
 
@@ -3199,6 +3222,24 @@ add({id:'humanizado', area:'comercial', grupo:'Atendimento', tipo:'Artigo', titl
 <p>O cliente chega informado: pesquisou, consultou IA e comparou preços. O que só a loja entrega é conexão humana real.</p>
 <ol class="passos"><li><div><b>Escute</b> antes de oferecer.</div></li><li><div><b>Adapte</b> a linguagem ao perfil do cliente.</div></li><li><div><b>Demonstre</b> interesse genuíno, não só na venda.</div></li><li><div><b>Personalize:</b> chame pelo nome, faça o cliente se sentir único.</div></li><li><div><b>Cuide do pós-venda:</b> uma mensagem de acompanhamento faz diferença.</div></li></ol>`});
 
+add({id:'natal-ouro', area:'campanhas', grupo:'Natal 2026', tipo:'Treinamento', title:'Lançamentos Natal de Ouro',
+ summary:'O que chegou na campanha de Natal: kits, deo colônia e linhas novas. Primeira fase à venda desde 26/10; Linha Terroir só depois de 30/11.',
+ tags:'natal natal de ouro campanha lançamento lançamentos kit kits presente açucena vert gigi alira reserva murumuru patauá relicário seleto herbo vivace jardim brasil sensore dia dia terroir amigo secreto',
+ fontes:['Página da campanha Lançamentos Natal de Ouro (moniquecoutinho-ai.github.io/lancamentonatalouro)'], rel:['mon-campanhas','cadastro-clientes','vc-segundo','whatsapp'],
+ body:`
+<div class="acesso"><div class="t"><span class="lbl">Material da campanha</span><strong style="font-size:18px">Lançamentos Natal de Ouro</strong><span class="url">moniquecoutinho-ai.github.io/lancamentonatalouro</span></div><a class="btn" href="https://moniquecoutinho-ai.github.io/lancamentonatalouro/" target="_blank" rel="noopener">Abrir página completa ↗</a></div>
+<div class="box alerta"><b class="t">Atenção: Linha Terroir</b>A Linha Terroir só pode ser vendida <b>depois de 30/11</b>.</div>
+<div class="box ok"><b class="t">Liberados para venda</b>A primeira fase da campanha está à venda desde <b>26/10</b>.</div>
+<h3>O que chegou</h3>
+<ul><li><b>Deo Colônia 100 ml Açucena Vert</b> (lançamento)</li><li><b>Kit presente Gigi</b> (novo)</li><li><b>Kit presente Alira</b> (novo)</li><li><b>Linha Reserva Murumuru &amp; Patauá</b> (lançamentos)</li><li><b>Kit Mini Relicário</b></li><li><b>Kit Mini Masculino Seleto Herbo</b></li><li><b>Kit sabonetes em barra Coleção Vivace Jardim Brasil</b></li><li><b>Kits Mini Linha Sensore</b></li><li><b>Kits Linha Dia Dia</b> (de cara nova)</li></ul>
+<h3>Para quem oferecer</h3>
+<ul><li>Mulheres que buscam perfumes discretos</li><li>Quem viaja (kits mini)</li><li>Homens presenteados por familiares e colegas</li><li>Amigo secreto</li></ul>
+<h3>Na hora de vender</h3>
+<ul><li>Ofereça o segundo produto: veja <a href="#art-vc-segundo">O segundo produto</a>.</li><li>Cliente com desconto, Gift Back ou promoção: <b>cadastre e lance no Origem do Fluxo</b>. Veja <a href="#art-cadastro-clientes">Cadastro de clientes</a>.</li><li>Lance o realizado da campanha no MonAris. Veja <a href="#art-mon-campanhas">Campanhas</a>.</li><li>Use o roteiro de data comemorativa no WhatsApp. Veja <a href="#art-whatsapp">Atendimento pelo WhatsApp</a>.</li></ul>
+<h3>Material completo</h3>
+<div class="campanha-frame"><iframe src="https://moniquecoutinho-ai.github.io/lancamentonatalouro/" title="Lançamentos Natal de Ouro" loading="lazy"></iframe></div>
+<p class="src">Não carregou? <a href="https://moniquecoutinho-ai.github.io/lancamentonatalouro/" target="_blank" rel="noopener">Abra a página completa em nova aba ↗</a>.</p>`});
+
 add({id:'whatsapp', area:'comercial', grupo:'WhatsApp', tipo:'Procedimento', title:'Atendimento pelo WhatsApp',
  summary:'Tudo sobre WhatsApp num só lugar: apresentação obrigatória, resposta em até 10 minutos, regras, 12 roteiros, rotina diária, segurança e registro no MonAris.',
  tags:'whatsapp zap wpp mensagem apresentação apresentar responder 10 minutos roteiro roteiros pós-venda 48 horas recompra lançamento aniversário reativação inativos refil data comemorativa lista quente morna fria rotina contatos ativos status atendimento remoto',
@@ -3714,8 +3755,9 @@ function lerJSON(t){ try{ return JSON.parse(t)||{}; }catch(e){ return {}; } }
 const ED_ARQ=lerJSON((document.getElementById('edicoes')||{}).textContent||'{}');
 let ED_RASC={}; try{ ED_RASC=lerJSON(localStorage.getItem(ED_KEY)||'{}'); }catch(e){}
 function mesclarEd(a,b){
-  const r={paginas:Object.assign({},a.paginas||{}),novidades:a.novidades||null,senha:a.senha||null};
+  const r={paginas:Object.assign({},a.paginas||{}),areas:Object.assign({},a.areas||{}),novidades:a.novidades||null,senha:a.senha||null};
   for(const [id,d] of Object.entries(b.paginas||{})) r.paginas[id]=Object.assign({},r.paginas[id]||{},d);
+  for(const [id,d] of Object.entries(b.areas||{})) r.areas[id]=Object.assign({},r.areas[id]||{},d);
   if(b.novidades) r.novidades=b.novidades; if(b.senha) r.senha=b.senha;
   return r;
 }
@@ -3727,9 +3769,21 @@ for(const [id,d] of Object.entries(ED.paginas)){
   const c=Object.assign({},d); const ex=c._excluido; delete c._excluido; Object.assign(a,c);
   if(ex) a._excluido=true;
 }
+/* Áreas: criadas, renomeadas ou ocultadas na Área da gestão */
+Object.assign(ICON,{"estrela": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z\"/></svg>", "presente": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"8\" width=\"18\" height=\"5\" rx=\"1\"/><path d=\"M5 13v8h14v-8M12 8v13M12 8c-2-4-6-4-6-1.5S10 8 12 8zM12 8c2-4 6-4 6-1.5S14 8 12 8z\"/></svg>", "coracao": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z\"/></svg>", "calendario": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/></svg>", "megafone": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 10v4h4l7 4V6L7 10H3z\"/><path d=\"M18 9a4 4 0 0 1 0 6\"/></svg>", "livro": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z\"/><path d=\"M4 21V5\"/></svg>", "pessoas": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M16 14c2.8 0 5 2.2 5 5\"/></svg>", "caixa": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 7l9-4 9 4v10l-9 4-9-4z\"/><path d=\"M3 7l9 4 9-4M12 11v10\"/></svg>", "frasco": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"9\" width=\"12\" height=\"12\" rx=\"3\"/><path d=\"M10 9V6h4v3M9 3h6\"/></svg>"});
+for(const [id,d] of Object.entries(ED.areas||{})){
+  let ar=AREAS.find(x=>x.id===id);
+  if(!ar){ if(d._excluida) continue; ar={id,nome:'',curto:'',desc:''}; AREAS.push(ar); }
+  Object.assign(ar,d);
+}
+for(let i=AREAS.length-1;i>=0;i--) if(AREAS[i]._excluida) AREAS.splice(i,1);
+const AREAS_TODAS=AREAS.slice();
+(function(){ let css=''; AREAS.forEach(a=>{ if(a.icone&&ICON[a.icone]) ICON[a.id]=ICON[a.icone]; if(!ICON[a.id]) ICON[a.id]=ICON.estrela; if(a.cor&&/^#[0-9a-f]{3,8}$/i.test(a.cor)) css+=`[data-a="${a.id}"]{--ac:${a.cor}}`; });
+  if(css){ const st=document.createElement('style'); st.id='coresAreas'; st.textContent=css; document.head.appendChild(st); } })();
+const areaVisivel=id=>{ const x=AREAS.find(y=>y.id===id); return !!x&&!x.oculta; };
 const TODOS=A.slice();
 /* Páginas ocultas ou excluídas não aparecem no portal nem na busca */
-for(let i=A.length-1;i>=0;i--){ if(A[i].oculto||A[i]._excluido) A.splice(i,1); }
+for(let i=A.length-1;i>=0;i--){ if(A[i].oculto||A[i]._excluido||!areaVisivel(A[i].area)) A.splice(i,1); }
 
 const raizW = t => t.length>4 ? t.replace(/(oes|aes|s|es)$/,'') : t;
 const palavras = t => new Set(t.replace(/\./g,'').split(/[^a-z0-9%]+/));
@@ -3782,7 +3836,7 @@ function card(a){
 function nav(cur){
   document.getElementById('nav').innerHTML =
     `<a href="#inicio" class="${cur==='inicio'?'on':''}">Início</a>` +
-    AREAS.map(x=>`<a href="#area-${x.id}" data-a="${x.id}" class="${cur===x.id?'on':''}">${x.curto}</a>`).join('');
+    AREAS.filter(x=>!x.oculta).map(x=>`<a href="#area-${x.id}" data-a="${x.id}" class="${cur===x.id?'on':''}">${esc(x.curto||x.nome)}</a>`).join('');
 }
 
 const TAREFAS = [
@@ -3813,8 +3867,9 @@ const TAREFAS = [
 ];
 
 
-const NOV_PADRAO=[{"data": "23/10/2026", "titulo": "Frete, transporte e segurança", "texto": "Todo frete vai no fechamento do caixa, pago ou não pelo cliente. Novo procedimento de Lalamove e Uber com formulário de retirada assinado e orientações de prevenção de roubos e perdas.", "link": "frete-transporte"}, {"data": "23/10/2026", "titulo": "Quem procurar + imagens do manual", "texto": "Central de Orientações (RH, Financeiro, Administrativo Comercial e Gestão), botões para abrir TrocaFácil e MonAris e as páginas do Manual de Operações ilustrando cada rotina.", "link": "orientacoes-areas"}, {"data": "23/10/2026", "titulo": "Dúvidas de RH", "texto": "Ponto pelo celular ou computador da loja, até 5 ajustes, atestado em 48h e ativação da Conexa Saúde.", "link": "pol-rh"}, {"data": "22/10/2026", "titulo": "WhatsApp: apresentação e 10 minutos", "texto": "Toda vendedora se apresenta pelo nome e responde em até 10 minutos. Tudo de WhatsApp agora numa página só.", "link": "whatsapp"}, {"data": "22/10/2026", "titulo": "Origem do Fluxo + cadastro", "texto": "Condição especial, cliente novo e cliente de Instagram, Facebook ou Google: lançar no Origem do Fluxo e cadastrar.", "link": "cadastro-clientes"}, {"data": "22/10/2026", "titulo": "Manual completo do MonAris", "texto": "Os 16 capítulos numa página só.", "link": "monaris"}, {"data": "22/10/2026", "titulo": "Regras atualizadas", "texto": "Troca sem foto no grupo e validade mínima de 3 meses. Testers, transferências, inventário e insumos pelo TrocaFácil. Desconto e campanhas só no MonAris.", "link": ""}];
-function novHTML(){ return (ED.novidades||NOV_PADRAO).map(n=>`<div class="novidade"><time>${esc(n.data||"")}</time><b>${esc(n.titulo||"")}</b><p>${esc(n.texto||"")}${n.link&&byId(n.link)?` <a href="#art-${n.link}">Abrir</a>`:""}</p></div>`).join(""); }
+const NOV_PADRAO=[{"data": "04/11/2026", "titulo": "Lançamentos Natal de Ouro", "texto": "Tudo o que chegou da campanha de Natal: kits, deo colônia e linhas novas. Primeira fase à venda desde 26/10; Linha Terroir só depois de 30/11.", "link": "natal-ouro", "url": ""}, {"data": "23/10/2026", "titulo": "Frete, transporte e segurança", "texto": "Todo frete vai no fechamento do caixa, pago ou não pelo cliente. Novo procedimento de Lalamove e Uber com formulário de retirada assinado e orientações de prevenção de roubos e perdas.", "link": "frete-transporte"}, {"data": "23/10/2026", "titulo": "Quem procurar + imagens do manual", "texto": "Central de Orientações (RH, Financeiro, Administrativo Comercial e Gestão), botões para abrir TrocaFácil e MonAris e as páginas do Manual de Operações ilustrando cada rotina.", "link": "orientacoes-areas"}, {"data": "23/10/2026", "titulo": "Dúvidas de RH", "texto": "Ponto pelo celular ou computador da loja, até 5 ajustes, atestado em 48h e ativação da Conexa Saúde.", "link": "pol-rh"}, {"data": "22/10/2026", "titulo": "WhatsApp: apresentação e 10 minutos", "texto": "Toda vendedora se apresenta pelo nome e responde em até 10 minutos. Tudo de WhatsApp agora numa página só.", "link": "whatsapp"}, {"data": "22/10/2026", "titulo": "Origem do Fluxo + cadastro", "texto": "Condição especial, cliente novo e cliente de Instagram, Facebook ou Google: lançar no Origem do Fluxo e cadastrar.", "link": "cadastro-clientes"}, {"data": "22/10/2026", "titulo": "Manual completo do MonAris", "texto": "Os 16 capítulos numa página só.", "link": "monaris"}, {"data": "22/10/2026", "titulo": "Regras atualizadas", "texto": "Troca sem foto no grupo e validade mínima de 3 meses. Testers, transferências, inventário e insumos pelo TrocaFácil. Desconto e campanhas só no MonAris.", "link": ""}];
+function novLista(){ const l=ED.novidades?ED.novidades.slice():NOV_PADRAO.slice(); if(ED.novidades){ NOV_PADRAO.filter(n=>n.link==="natal-ouro"&&!l.some(x=>x.titulo===n.titulo)).forEach(n=>l.unshift(n)); } return l; }
+function novHTML(){ return novLista().map(n=>`<div class="novidade"><time>${esc(n.data||"")}</time><b>${esc(n.titulo||"")}</b><p>${esc(n.texto||"")}${n.link&&byId(n.link)?` <a href="#art-${n.link}">Abrir</a>`:""}${/^https?:\/\//i.test(n.url||"")?` <a href="${esc(n.url)}" target="_blank" rel="noopener">Abrir página ↗</a>`:""}</p></div>`).join(""); }
 function home(){
   nav('inicio');
   app.removeAttribute('data-a');
@@ -3848,6 +3903,8 @@ function home(){
     <div class="sugestoes"><span>Tente:</span>${sugest.map(s=>`<button type="button" class="chip" data-q="${esc(s)}">${esc(s)}</button>`).join('')}</div>
   </div>
 
+  ${byId('natal-ouro')?`<a class="camp-banner" href="#art-natal-ouro"><span class="camp-ic">${ICON.presente}</span><span class="camp-tx"><small>Campanha do mês</small><b>Lançamentos Natal de Ouro</b><span>Primeira fase à venda desde 26/10 · Linha Terroir só depois de 30/11</span></span><span class="camp-bt">Ver lançamentos →</span></a>`:''}
+
   <div class="bloco"><div class="bloco-h"><h2>O que você precisa fazer agora?</h2></div>
     <div class="tarefas">${TAREFAS.map(([id,t,d])=>{const a=byId(id); if(!a) return ''; return `<a class="tarefa" data-a="${a.area}" href="#art-${id}"><span class="ic2">${ICON[a.area]}</span><b>${t}</b><small>${d}</small></a>`}).join('')}</div>
   </div>
@@ -3872,7 +3929,7 @@ function home(){
   </div>
 
   <div class="bloco"><div class="bloco-h"><h2>Explorar por área</h2></div>
-    <div class="areas2">${AREAS.map(x=>`<a class="area2" data-a="${x.id}" href="#area-${x.id}"><span class="ic2">${ICON[x.id]}</span><div><b>${x.nome}</b><span>${x.desc}</span><em>${A.filter(a=>a.area===x.id && !a.parte && !a.interno).length} conteúdos</em></div></a>`).join('')}</div>
+    <div class="areas2">${AREAS.filter(x=>!x.oculta).map(x=>`<a class="area2" data-a="${x.id}" href="#area-${x.id}"><span class="ic2">${ICON[x.id]}</span><div><b>${x.nome}</b><span>${x.desc}</span><em>${A.filter(a=>a.area===x.id && !a.parte && !a.interno).length} conteúdos</em></div></a>`).join('')}</div>
   </div>
 
   <div class="valores"><span class="eb2">Princípios de trabalho do Grupo M. Anjos</span><p>Ética · Equipe · Amor · Diversidade · Cliente · Resultados · Evolução · Encantamento · Motivação · Protagonismo</p></div>
@@ -3890,7 +3947,7 @@ function home(){
       <details class="faq"><summary>Onde marco o ponto? Posso ajustar?</summary><div class="ans"><p>Pelo celular da empresa ou pelo computador da loja. Até 5 ajustes; os demais, por e-mail à gestão. Atestado ao RH em até 48 horas.</p><a href="#art-pol-rh">Dúvidas de RH</a></div></details>
       <details class="faq"><summary>Como peço algo ao administrativo?</summary><div class="ans"><p>Por e-mail, com tipo de solicitação, seu nome e unidade no assunto.</p><a href="#art-pol-comunicacao">Comunicação: e-mail e Teams</a></div></details>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div class="bloco-h"><h2>Novidades</h2></div>
+    <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div class="bloco-h"><h2>Novidades do mês</h2></div>
       ${novHTML()}
     </div>
   </div>`;
@@ -3900,7 +3957,7 @@ function home(){
 }
 
 function areaPage(id){
-  const ar=area(id); if(!ar) return home();
+  const ar=area(id); if(!ar||ar.oculta) return home();
   nav(id); app.dataset.a=id;
   const itens=A.filter(a=>a.area===id && !a.parte && !a.interno);
   const grupos=[...new Set(itens.map(a=>a.grupo))];
@@ -3914,7 +3971,7 @@ let rolarPara=null;
 function artPage(id){
   let a=byId(id); if(!a) return home();
   if(a.parte){ rolarPara='sec-'+a.id; a=byId(a.parte); }
-  const ar=area(a.area); nav(a.area); app.dataset.a=a.area;
+  const ar=area(a.area)||AREAS[0]; nav(ar.id); app.dataset.a=ar.id;
   const rel=a.rel.map(byId).filter(Boolean);
   app.innerHTML=`<div class="col">
     <div class="topo-area"><a class="tag-a" href="#area-${ar.id}">${ICON[ar.id]} ${ar.curto}</a><h1>${esc(a.title)}</h1><p class="lede">${esc(a.summary)}</p>
@@ -3986,7 +4043,7 @@ function admLogado(){ try{ return sessionStorage.getItem('mAnjosAdm')==='1'; }ca
 function admEntrar(){ try{ sessionStorage.setItem('mAnjosAdm','1'); }catch(e){} window.__adm=true; }
 function admSair(){ try{ sessionStorage.removeItem('mAnjosAdm'); }catch(e){} window.__adm=false; }
 function salvarRascunho(){ try{ localStorage.setItem(ED_KEY,JSON.stringify(ED_RASC)); return true; }catch(e){ return false; } }
-function nRascunhos(){ return Object.keys(ED_RASC.paginas||{}).length+(ED_RASC.novidades?1:0)+(ED_RASC.senha?1:0); }
+function nRascunhos(){ return Object.keys(ED_RASC.paginas||{}).length+Object.keys(ED_RASC.areas||{}).length+(ED_RASC.novidades?1:0)+(ED_RASC.senha?1:0); }
 function toast(msg){ const t=document.createElement('div'); t.className='adm-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
 let admVista='lista', admEditId=null, admFiltro={q:'',area:''};
 const TIPOS=['Procedimento','Tutorial','Checklist','Política','Artigo','Treinamento','Sistema','Registro'];
@@ -4006,16 +4063,17 @@ function admPage(){
   let msg=''; try{ msg=sessionStorage.getItem('mAnjosAdmMsg')||''; const v=sessionStorage.getItem('mAnjosAdmVista'); if(v) admVista=v; sessionStorage.removeItem('mAnjosAdmMsg'); sessionStorage.removeItem('mAnjosAdmVista'); }catch(e){}
   if(msg) setTimeout(()=>toast(msg),50);
   const n=nRascunhos();
-  const abas=[['lista','Páginas'],['novidades','Novidades'],['publicar','Publicar'+(n?` (${n})`:'')],['senha','Senha']];
+  const abas=[['lista','Páginas'],['areas','Áreas'],['novidades','Novidades'],['publicar','Publicar'+(n?` (${n})`:'')],['senha','Senha']];
   app.innerHTML=`<div class="col adm" style="max-width:1000px">
     <div class="topo-area" data-a="politicas"><span class="tag-a">Área da gestão</span><h1>Editar a Central</h1><p class="lede">Crie, edite, oculte ou exclua conteúdos. O visual do site é aplicado automaticamente.</p>
       <div class="adm-abas">${abas.map(([k,t])=>`<button type="button" class="adm-aba ${admVista===k||(k==='lista'&&admVista==='editor')?'on':''}" data-v="${k}">${t}</button>`).join('')}<button type="button" class="adm-aba sair" id="admSair">Sair</button></div></div>
     ${n?`<div class="box warn"><b class="t">${n} alteração(ões) ainda não publicadas</b>Você já vê as mudanças neste navegador. Para a equipe ver, vá em <b>Publicar</b> e baixe o site atualizado.</div>`:''}
     <div id="admCorpo"></div></div>`;
-  app.querySelectorAll('.adm-aba[data-v]').forEach(b=>b.addEventListener('click',()=>{ admVista=b.dataset.v; admEditId=null; admPage(); }));
+  app.querySelectorAll('.adm-aba[data-v]').forEach(b=>b.addEventListener('click',()=>{ admVista=b.dataset.v; admEditId=null; admAreaEd=undefined; admPage(); }));
   document.getElementById('admSair').addEventListener('click',()=>{ admSair(); location.hash='inicio'; });
   const c=document.getElementById('admCorpo');
   if(admVista==='editor') admEditor(c);
+  else if(admVista==='areas') admAreas(c);
   else if(admVista==='novidades') admNovidades(c);
   else if(admVista==='publicar') admPublicar(c);
   else if(admVista==='senha') admSenha(c);
@@ -4031,8 +4089,8 @@ function statusDe(a){
 }
 function admLista(c){
   c.innerHTML=`<div class="adm-barra"><input id="admBusca" type="search" placeholder="Buscar página" value="${esc(admFiltro.q)}" aria-label="Buscar página">
-    <select id="admArea" aria-label="Filtrar por área"><option value="">Todas as áreas</option>${AREAS.map(x=>`<option value="${x.id}" ${admFiltro.area===x.id?'selected':''}>${x.nome}</option>`).join('')}</select>
-    <button type="button" class="adm-btn pri" id="admNova">+ Nova página</button></div><div id="admItens" class="adm-itens"></div>`;
+    <select id="admArea" aria-label="Filtrar por área"><option value="">Todas as áreas</option>${AREAS_TODAS.map(x=>`<option value="${x.id}" ${admFiltro.area===x.id?'selected':''}>${x.nome}</option>`).join('')}</select>
+    <button type="button" class="adm-btn pri" id="admNova">+ Nova página</button><button type="button" class="adm-btn pri" id="admNovaArea" style="background:var(--c-politicas);border-color:var(--c-politicas)">+ Nova área</button></div><div id="admItens" class="adm-itens"></div>`;
   const desenhar=()=>{
     const q=norm(admFiltro.q);
     const itens=TODOS.filter(a=>(!admFiltro.area||a.area===admFiltro.area)&&(!q||norm(a.title+' '+a.summary).includes(q)));
@@ -4044,6 +4102,7 @@ function admLista(c){
   document.getElementById('admBusca').addEventListener('input',e=>{ admFiltro.q=e.target.value; desenhar(); });
   document.getElementById('admArea').addEventListener('change',e=>{ admFiltro.area=e.target.value; desenhar(); });
   document.getElementById('admNova').addEventListener('click',()=>{ admEditId=null; admVista='editor'; admPage(); });
+  document.getElementById('admNovaArea').addEventListener('click',()=>{ admAreaEd=null; admVista='areas'; admPage(); });
   document.getElementById('admItens').addEventListener('click',e=>{
     const b=e.target.closest('button'); if(!b) return;
     ED_RASC.paginas=ED_RASC.paginas||{};
@@ -4084,7 +4143,7 @@ function admEditor(c){
     <label for="fTitulo">Título</label><input id="fTitulo" required value="${esc(d.title)}">
     <label for="fResumo">Resumo (aparece no cartão e no topo da página)</label><textarea id="fResumo" rows="2">${esc(d.summary)}</textarea>
     <div class="adm-grade">
-      <div><label for="fArea">Área</label><select id="fArea">${AREAS.map(x=>`<option value="${x.id}" ${d.area===x.id?'selected':''}>${x.nome}</option>`).join('')}</select></div>
+      <div><label for="fArea">Área</label><select id="fArea">${AREAS_TODAS.map(x=>`<option value="${x.id}" ${d.area===x.id?'selected':''}>${x.nome}</option>`).join('')}</select></div>
       <div><label for="fGrupo">Grupo dentro da área</label><input id="fGrupo" list="lGrupos" value="${esc(d.grupo)}"><datalist id="lGrupos">${grupos.map(g=>`<option value="${esc(g)}">`).join('')}</datalist></div>
       <div><label for="fTipo">Tipo</label><select id="fTipo">${TIPOS.map(t=>`<option ${d.tipo===t?'selected':''}>${t}</option>`).join('')}</select></div>
       <div><label for="fStatus">Situação</label><select id="fStatus">${Object.entries(STATUS_ADM).map(([k,t])=>`<option value="${k}" ${d.status===k?'selected':''}>${t}</option>`).join('')}</select></div>
@@ -4156,21 +4215,66 @@ function admEditor(c){
   });
 }
 
+function admAreas(c){
+  const ed=admAreaEd;
+  if(ed!==undefined){ admAreaForm(c,ed); return; }
+  const cont=id=>TODOS.filter(x=>x.area===id&&!x._excluido).length;
+  c.innerHTML=`<div class="adm-barra"><p class="src" style="flex:1;min-width:220px">Áreas são os blocos do menu e da página inicial. Cada área tem nome, cor e ícone próprios.</p><button type="button" class="adm-btn pri" id="aNova">+ Nova área</button></div>
+  <div class="adm-itens">${AREAS_TODAS.map(x=>{ const n=cont(x.id); const rasc=(ED_RASC.areas||{})[x.id];
+    return `<div class="adm-item" data-a="${x.id}"><div class="adm-info" style="flex-direction:row;align-items:center;gap:14px"><span class="ic2 adm-aic">${ICON[x.id]||''}</span><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="color:var(--ac)">${esc(x.nome)}</b><small>Menu: ${esc(x.curto||x.nome)} · ${n} página(s)</small><div>${x.oculta?'<span class="badge tipo">Oculta</span> ':''}${x._nova?'<span class="badge ok">Nova</span> ':''}${rasc?'<span class="badge pend">Não publicada</span>':''}</div></div></div>
+    <div class="adm-acoes">${!x.oculta?`<a class="adm-btn" href="#area-${x.id}">Ver</a>`:''}<button type="button" class="adm-btn" data-aed="${x.id}">Editar</button><button type="button" class="adm-btn" data-aoc="${x.id}">${x.oculta?'Mostrar':'Ocultar'}</button>${x._nova?`<button type="button" class="adm-btn perigo" data-adel="${x.id}" ${n?'disabled title="Mova ou exclua as páginas desta área antes"':''}>Excluir</button>`:''}</div></div>`; }).join('')}</div>
+  <p class="src">Para colocar páginas numa área, edite a página e escolha a área no campo "Área". Áreas originais podem ser renomeadas ou ocultadas; só áreas criadas por você podem ser excluídas, e só quando estiverem vazias.</p>`;
+  document.getElementById('aNova').addEventListener('click',()=>{ admAreaEd=null; admPage(); });
+  c.querySelector('.adm-itens').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b||b.disabled) return;
+    ED_RASC.areas=ED_RASC.areas||{};
+    if(b.dataset.aed){ admAreaEd=b.dataset.aed; admPage(); }
+    else if(b.dataset.aoc){ const x=AREAS_TODAS.find(y=>y.id===b.dataset.aoc); ED_RASC.areas[x.id]=Object.assign({},ED_RASC.areas[x.id]||{},{oculta:!x.oculta}); salvarRascunho(); admRecarregar(x.oculta?'Área visível no menu.':'Área ocultada.','areas'); }
+    else if(b.dataset.adel){ if(b.dataset.conf!=='1'){ b.dataset.conf='1'; b.textContent='Confirmar exclusão'; return; }
+      const id=b.dataset.adel; if((ED_ARQ.areas||{})[id]) ED_RASC.areas[id]={_excluida:true}; else delete ED_RASC.areas[id]; salvarRascunho(); admRecarregar('Área excluída.','areas'); }
+  });
+}
+let admAreaEd;
+function admAreaForm(c,id){
+  const x=id?AREAS_TODAS.find(y=>y.id===id):null;
+  const corAtual=x?(x.cor||getComputedStyle(document.documentElement).getPropertyValue('--c-'+x.id).trim()||'#0c9a68'):'#d4387a';
+  const icAtual=x?(x.icone||x.id):'estrela';
+  const ops=Object.keys(ICON).filter(k=>!AREAS_TODAS.some(a=>a.id===k&&a._nova));
+  c.innerHTML=`<form id="aForm" class="adm-card" data-a="${x?x.id:''}" style="--ac:${esc(corAtual)}"><h2>${x?'Editar área':'Nova área'}</h2>
+    <label for="aNome">Nome da área</label><input id="aNome" required value="${esc(x?x.nome:'')}" placeholder="Ex.: Campanhas e Datas Especiais">
+    <label for="aCurto">Nome curto no menu</label><input id="aCurto" maxlength="22" value="${esc(x?x.curto:'')}" placeholder="Ex.: Campanhas">
+    <label for="aDesc">Descrição (aparece no cartão da página inicial)</label><textarea id="aDesc" rows="2">${esc(x?x.desc:'')}</textarea>
+    <div class="adm-grade"><div><label for="aCor">Cor</label><input id="aCor" type="color" value="${esc(/^#/.test(corAtual)?corAtual:'#d4387a')}" style="height:48px;padding:4px"></div></div>
+    <label>Ícone</label><div class="adm-icones">${ops.map(k=>`<label class="adm-ic"><input type="radio" name="aIc" value="${k}" ${k===icAtual?'checked':''}><span class="ic2">${ICON[k]}</span></label>`).join('')}</div>
+    <div class="adm-rodape"><button type="submit" class="adm-btn pri">Salvar área</button><button type="button" class="adm-btn" id="aCanc">Cancelar</button></div></form>`;
+  const f=document.getElementById('aForm');
+  document.getElementById('aCor').addEventListener('input',e=>f.style.setProperty('--ac',e.target.value));
+  document.getElementById('aCanc').addEventListener('click',()=>{ admAreaEd=undefined; admPage(); });
+  f.addEventListener('submit',e=>{ e.preventDefault();
+    const nome=document.getElementById('aNome').value.trim(); if(!nome) return;
+    const dados={nome,curto:document.getElementById('aCurto').value.trim()||nome,desc:document.getElementById('aDesc').value.trim(),cor:document.getElementById('aCor').value,icone:(f.querySelector('input[name=aIc]:checked')||{}).value||'estrela',_excluida:false};
+    let nid=x?x.id:'a-'+slug(nome); if(!x){ while(AREAS_TODAS.some(a=>a.id===nid)) nid='a-'+slug(nome)+'-'+Math.random().toString(36).slice(2,5); dados._nova=true; }
+    ED_RASC.areas=ED_RASC.areas||{}; ED_RASC.areas[nid]=Object.assign({},ED_RASC.areas[nid]||{},dados);
+    if(!salvarRascunho()){ toast('Não foi possível salvar neste navegador.'); return; }
+    admAreaEd=undefined; admRecarregar(x?'Área atualizada.':'Área criada. Agora crie ou mova páginas para ela.','areas');
+  });
+}
+
 function admNovidades(c){
-  let lista=JSON.parse(JSON.stringify(ED.novidades||NOV_PADRAO));
+  let lista=JSON.parse(JSON.stringify(novLista()));
   const desenhar=()=>{
     c.innerHTML=`<div class="adm-card"><h2>Novidades da página inicial</h2><p class="src">Aparecem na ordem abaixo. A primeira fica no topo.</p>
     <div id="nLista" class="adm-nov">${lista.map((n,i)=>`<div class="adm-nov-it" data-i="${i}">
       <div class="adm-grade"><div><label>Data</label><input data-k="data" value="${esc(n.data)}"></div><div><label>Título</label><input data-k="titulo" value="${esc(n.titulo)}"></div></div>
       <label>Texto</label><textarea data-k="texto" rows="2">${esc(n.texto)}</textarea>
-      <label>Página para abrir (opcional)</label><select data-k="link"><option value="">— nenhuma —</option>${TODOS.filter(x=>!x._excluido&&!x.oculto).map(x=>`<option value="${x.id}" ${n.link===x.id?'selected':''}>${esc(x.title)}</option>`).join('')}</select>
+      <label>Link externo (opcional, ex.: página de campanha)</label><input data-k="url" placeholder="https://…" value="${esc(n.url||'')}">
+      <label>Ou página da Central para abrir (opcional)</label><select data-k="link"><option value="">— nenhuma —</option>${TODOS.filter(x=>!x._excluido&&!x.oculto).map(x=>`<option value="${x.id}" ${n.link===x.id?'selected':''}>${esc(x.title)}</option>`).join('')}</select>
       <div class="adm-acoes"><button type="button" class="adm-btn" data-m="-1">↑ Subir</button><button type="button" class="adm-btn" data-m="1">↓ Descer</button><button type="button" class="adm-btn perigo" data-x="1">Remover</button></div></div>`).join('')}</div>
     <div class="adm-rodape"><button type="button" class="adm-btn" id="nAdd">+ Nova novidade</button><button type="button" class="adm-btn pri" id="nSalvar">Salvar novidades</button></div></div>`;
   };
   const ler=()=>{ c.querySelectorAll('.adm-nov-it').forEach(el=>{ const i=+el.dataset.i; el.querySelectorAll('[data-k]').forEach(f=>lista[i][f.dataset.k]=f.value); }); };
   desenhar();
   c.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; ler();
-    if(b.id==='nAdd'){ const h=new Date(); lista.unshift({data:h.toLocaleDateString('pt-BR'),titulo:'Nova orientação',texto:'',link:''}); desenhar(); }
+    if(b.id==='nAdd'){ const h=new Date(); lista.unshift({data:h.toLocaleDateString('pt-BR'),titulo:'Nova orientação',texto:'',link:'',url:''}); desenhar(); }
     else if(b.id==='nSalvar'){ ED_RASC.novidades=lista; salvarRascunho(); admRecarregar('Novidades salvas.','novidades'); }
     else { const it=b.closest('.adm-nov-it'); if(!it) return; const i=+it.dataset.i;
       if(b.dataset.x) lista.splice(i,1); else { const j=i+(+b.dataset.m); if(j>=0&&j<lista.length) [lista[i],lista[j]]=[lista[j],lista[i]]; }
@@ -4184,6 +4288,8 @@ function htmlAtualizado(){
   doc.querySelectorAll('.lightbox,.adm-toast').forEach(x=>x.remove());
   const tudo=mesclarEd(ED_ARQ,ED_RASC);
   for(const [id,p] of Object.entries(tudo.paginas)){ if(p._excluido===false) delete p._excluido; if(!Object.keys(p).length) delete tudo.paginas[id]; }
+  for(const [id,p] of Object.entries(tudo.areas||{})){ if(p._excluida===false) delete p._excluida; }
+  doc.querySelectorAll('#coresAreas').forEach(x=>x.remove());
   doc.querySelector('#edicoes').textContent=JSON.stringify(tudo).replace(/</g,'\\u003c');
   return '<!DOCTYPE html>\n'+doc.outerHTML;
 }
