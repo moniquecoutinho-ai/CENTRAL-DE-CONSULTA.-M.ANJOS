@@ -443,6 +443,38 @@ footer.rod{font-size:14px}
 .camp-tx b{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700}
 .camp-tx span{font-size:15px;opacity:.95}
 .camp-bt{background:#fff;color:#8f0a20;font-weight:800;padding:11px 18px;border-radius:999px;white-space:nowrap}
+
+.adm-home{border:1.5px dashed var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;margin:6px 0}
+.adm-home legend{font-weight:800;padding:0 8px;color:var(--green)}
+.adm-sub{padding-left:30px}
+.adm-lista{display:flex;flex-direction:column;gap:8px}
+.adm-li{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--bg)}
+.adm-li span{display:flex;gap:6px}
+.adm-li-at{align-items:flex-end}
+.adm-rapida{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--gold-soft);border:1px dashed var(--gold)}
+.adm-rapida span{font-weight:700;font-size:14px;color:var(--gold);flex:1;min-width:160px}
+.pub-opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.pub-op{border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:var(--bg)}
+.pub-op h3{font-size:17px}
+.gh-form{display:flex;flex-direction:column;gap:8px;border:1.5px dashed var(--line);border-radius:16px;padding:16px}
+.destaques{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:860px){.destaques{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.destaques{grid-template-columns:1fr}}
+.dest{display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh);text-decoration:none;color:var(--fg);transition:transform .15s ease,box-shadow .15s ease}
+.dest:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.dest-img{display:block;aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,var(--ac),color-mix(in srgb,var(--ac) 55%,#fff));overflow:hidden}
+.dest-img img{width:100%;height:100%;object-fit:cover;display:block}
+.dest-ic{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#fff}
+.dest-ic svg{width:56px;height:56px}
+.dest-tx{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px}
+.dest-tx small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--ac)}
+.dest-tx b{font-size:19px;font-weight:800;line-height:1.25}
+.dest-tx span{font-size:14.5px;color:var(--muted)}
+.dest-tx em{font-style:normal;font-weight:800;color:var(--ac);font-size:14px}
+.camp-banner[data-a]:not([data-a="campanhas"]){background:linear-gradient(120deg,color-mix(in srgb,var(--ac) 70%,#000),var(--ac) 50%,color-mix(in srgb,var(--ac) 60%,#c99a2e))}
+.camp-banner .camp-bt{color:color-mix(in srgb,var(--ac) 80%,#000)}
+
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -3752,7 +3784,18 @@ const STOP = new Set('como faco faz fazer onde o a os as um uma de do da dos das
 /* ===== Edições feitas na Área da gestão (administração) ===== */
 const ED_KEY='mAnjosEdicoesRascunho';
 function lerJSON(t){ try{ return JSON.parse(t)||{}; }catch(e){ return {}; } }
-const ED_ARQ=lerJSON((document.getElementById('edicoes')||{}).textContent||'{}');
+function edLimpo(e){ const r=JSON.parse(JSON.stringify(e||{}));
+  for(const [id,p] of Object.entries(r.paginas||{})){ if(p._excluido===false) delete p._excluido; if(!Object.keys(p).length) delete r.paginas[id]; }
+  for(const [id,p] of Object.entries(r.areas||{})){ if(p._excluida===false) delete p._excluida; if(!Object.keys(p).length) delete r.areas[id]; }
+  ['paginas','areas'].forEach(k=>{ if(r[k]&&!Object.keys(r[k]).length) delete r[k]; }); ['novidades','senha'].forEach(k=>{ if(r[k]==null) delete r[k]; });
+  return r; }
+function edTexto(o){ return JSON.stringify(o,(k,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.keys(v).sort().reduce((a,x)=>(a[x]=v[x],a),{}):v); }
+const ED_PUB_KEY='mAnjosPublicado';
+const ED_ARQ_SITE=lerJSON((document.getElementById('edicoes')||{}).textContent||'{}');
+let ED_PUB=null; try{ ED_PUB=lerJSON(localStorage.getItem(ED_PUB_KEY)||'null'); }catch(e){}
+let PUB_PENDENTE=false;
+if(ED_PUB&&ED_PUB.ed){ if(edTexto(edLimpo(ED_ARQ_SITE))===edTexto(edLimpo(ED_PUB.ed))||Date.now()-(ED_PUB.t||0)>36e5){ try{ localStorage.removeItem(ED_PUB_KEY); }catch(e){} ED_PUB=null; } else PUB_PENDENTE=true; }
+const ED_ARQ=PUB_PENDENTE?ED_PUB.ed:ED_ARQ_SITE;
 let ED_RASC={}; try{ ED_RASC=lerJSON(localStorage.getItem(ED_KEY)||'{}'); }catch(e){}
 function mesclarEd(a,b){
   const r={paginas:Object.assign({},a.paginas||{}),areas:Object.assign({},a.areas||{}),novidades:a.novidades||null,senha:a.senha||null};
@@ -3761,7 +3804,36 @@ function mesclarEd(a,b){
   if(b.novidades) r.novidades=b.novidades; if(b.senha) r.senha=b.senha;
   return r;
 }
+if(Object.keys(ED_RASC).length&&edTexto(edLimpo(mesclarEd(ED_ARQ,ED_RASC)))===edTexto(edLimpo(ED_ARQ))){ ED_RASC={}; try{ localStorage.removeItem(ED_KEY); }catch(e){} }
 const ED=mesclarEd(ED_ARQ,ED_RASC);
+const TAREFAS_PADRAO = [
+  ['tf-troca','Fazer uma troca','TrocaFácil + Pagar Troca no Exatto'],
+  ['mon-painel-dia','Lançar as vendas do dia','Painel do Dia no MonAris'],
+  ['cadastro-clientes','Cadastrar cliente','Regras, Origem do Fluxo e meta de 80%'],
+  ['whatsapp','Atender no WhatsApp','Apresentação, 10 minutos e roteiros'],
+  ['vc-passos','Atender na loja','Os 9 passos do Vender é Convidar'],
+  ['rotina-comercial','Rotina comercial do dia','Meta, cadastro, contatos e campanhas'],
+  ['abertura-loja','Abrir a loja','Checklist de abertura'],
+  ['fechamento-loja','Operação de fechamento','Caixa, trocas, limpeza e segurança'],
+  ['testers','Pedir tester','Solicitação no TrocaFácil + fotos por e-mail'],
+  ['transferencias','Pedir transferência','Produto de outra loja'],
+  ['inventario-ciclico','Contar o inventário','Contagem diária no TrocaFácil'],
+  ['insumos','Pedir insumos','Solicitação no TrocaFácil'],
+  ['defeitos','Produto com defeito','Chamado e as 3 caixas'],
+  ['pdv-exatto','Problema no caixa','F10, cancelamento, certificado'],
+  ['pol-antifraude','Pix, cartão e golpes','O que fazer antes de liberar'],
+  ['vc-empresas','Venda para empresa','Quem faz o quê no B2B'],
+  ['pol-rh','Dúvidas de RH','Ponto, atestado, Conexa Saúde'],
+  ['nf-empresas','NF para empresa','Print da tela de vendas ao financeiro'],
+  ['mon-origem','Lançar no Origem do Fluxo','Cliente novo, redes sociais, desconto'],
+  ['pol-trocas','Regras de troca','20 dias, cupom, validade 3 meses'],
+  ['tf-fechamento','Fechar o caixa','Fechamento no TrocaFácil e frete'],
+  ['pol-caixa','Sangria e caixa','Quem pode retirar dinheiro'],
+  ['frete-transporte','Frete e transporte','Lalamove, Uber e formulário de retirada'],
+  ['seguranca-perdas','Segurança e perdas','Roubos, furtos e desvios']
+];
+TAREFAS_PADRAO.forEach(([id,t,d],i)=>{ const a=A.find(x=>x.id===id); if(a&&a.atalho===undefined){ a.atalho=true; a.atalhoTitulo=t; a.atalhoTexto=d; a.atalhoOrdem=i+1; } });
+(function(){ const n=A.find(x=>x.id==='natal-ouro'); if(n&&n.faixa===undefined){ n.faixa=true; n.faixaRotulo='Campanha do mês'; n.faixaTexto='Primeira fase à venda desde 26/10 · Linha Terroir só depois de 30/11'; n.faixaBotao='Ver lançamentos'; } })();
 const ORIG={}; A.forEach(a=>{ ORIG[a.id]=JSON.parse(JSON.stringify(a)); });
 for(const [id,d] of Object.entries(ED.paginas)){
   let a=A.find(x=>x.id===id);
@@ -3839,37 +3911,20 @@ function nav(cur){
     AREAS.filter(x=>!x.oculta).map(x=>`<a href="#area-${x.id}" data-a="${x.id}" class="${cur===x.id?'on':''}">${esc(x.curto||x.nome)}</a>`).join('');
 }
 
-const TAREFAS = [
-  ['tf-troca','Fazer uma troca','TrocaFácil + Pagar Troca no Exatto'],
-  ['mon-painel-dia','Lançar as vendas do dia','Painel do Dia no MonAris'],
-  ['cadastro-clientes','Cadastrar cliente','Regras, Origem do Fluxo e meta de 80%'],
-  ['whatsapp','Atender no WhatsApp','Apresentação, 10 minutos e roteiros'],
-  ['vc-passos','Atender na loja','Os 9 passos do Vender é Convidar'],
-  ['rotina-comercial','Rotina comercial do dia','Meta, cadastro, contatos e campanhas'],
-  ['abertura-loja','Abrir a loja','Checklist de abertura'],
-  ['fechamento-loja','Operação de fechamento','Caixa, trocas, limpeza e segurança'],
-  ['testers','Pedir tester','Solicitação no TrocaFácil + fotos por e-mail'],
-  ['transferencias','Pedir transferência','Produto de outra loja'],
-  ['inventario-ciclico','Contar o inventário','Contagem diária no TrocaFácil'],
-  ['insumos','Pedir insumos','Solicitação no TrocaFácil'],
-  ['defeitos','Produto com defeito','Chamado e as 3 caixas'],
-  ['pdv-exatto','Problema no caixa','F10, cancelamento, certificado'],
-  ['pol-antifraude','Pix, cartão e golpes','O que fazer antes de liberar'],
-  ['vc-empresas','Venda para empresa','Quem faz o quê no B2B'],
-  ['pol-rh','Dúvidas de RH','Ponto, atestado, Conexa Saúde'],
-  ['nf-empresas','NF para empresa','Print da tela de vendas ao financeiro'],
-  ['mon-origem','Lançar no Origem do Fluxo','Cliente novo, redes sociais, desconto'],
-  ['pol-trocas','Regras de troca','20 dias, cupom, validade 3 meses'],
-  ['tf-fechamento','Fechar o caixa','Fechamento no TrocaFácil e frete'],
-  ['pol-caixa','Sangria e caixa','Quem pode retirar dinheiro'],
-  ['frete-transporte','Frete e transporte','Lalamove, Uber e formulário de retirada'],
-  ['seguranca-perdas','Segurança e perdas','Roubos, furtos e desvios']
-];
+
 
 
 const NOV_PADRAO=[{"data": "04/11/2026", "titulo": "Lançamentos Natal de Ouro", "texto": "Tudo o que chegou da campanha de Natal: kits, deo colônia e linhas novas. Primeira fase à venda desde 26/10; Linha Terroir só depois de 30/11.", "link": "natal-ouro", "url": ""}, {"data": "23/10/2026", "titulo": "Frete, transporte e segurança", "texto": "Todo frete vai no fechamento do caixa, pago ou não pelo cliente. Novo procedimento de Lalamove e Uber com formulário de retirada assinado e orientações de prevenção de roubos e perdas.", "link": "frete-transporte"}, {"data": "23/10/2026", "titulo": "Quem procurar + imagens do manual", "texto": "Central de Orientações (RH, Financeiro, Administrativo Comercial e Gestão), botões para abrir TrocaFácil e MonAris e as páginas do Manual de Operações ilustrando cada rotina.", "link": "orientacoes-areas"}, {"data": "23/10/2026", "titulo": "Dúvidas de RH", "texto": "Ponto pelo celular ou computador da loja, até 5 ajustes, atestado em 48h e ativação da Conexa Saúde.", "link": "pol-rh"}, {"data": "22/10/2026", "titulo": "WhatsApp: apresentação e 10 minutos", "texto": "Toda vendedora se apresenta pelo nome e responde em até 10 minutos. Tudo de WhatsApp agora numa página só.", "link": "whatsapp"}, {"data": "22/10/2026", "titulo": "Origem do Fluxo + cadastro", "texto": "Condição especial, cliente novo e cliente de Instagram, Facebook ou Google: lançar no Origem do Fluxo e cadastrar.", "link": "cadastro-clientes"}, {"data": "22/10/2026", "titulo": "Manual completo do MonAris", "texto": "Os 16 capítulos numa página só.", "link": "monaris"}, {"data": "22/10/2026", "titulo": "Regras atualizadas", "texto": "Troca sem foto no grupo e validade mínima de 3 meses. Testers, transferências, inventário e insumos pelo TrocaFácil. Desconto e campanhas só no MonAris.", "link": ""}];
 function novLista(){ const l=ED.novidades?ED.novidades.slice():NOV_PADRAO.slice(); if(ED.novidades){ NOV_PADRAO.filter(n=>n.link==="natal-ouro"&&!l.some(x=>x.titulo===n.titulo)).forEach(n=>l.unshift(n)); } return l; }
 function novHTML(){ return novLista().map(n=>`<div class="novidade"><time>${esc(n.data||"")}</time><b>${esc(n.titulo||"")}</b><p>${esc(n.texto||"")}${n.link&&byId(n.link)?` <a href="#art-${n.link}">Abrir</a>`:""}${/^https?:\/\//i.test(n.url||"")?` <a href="${esc(n.url)}" target="_blank" rel="noopener">Abrir página ↗</a>`:""}</p></div>`).join(""); }
+
+const porOrdem=k=>(x,y)=>(+x[k]||999)-(+y[k]||999);
+function homeAtalhos(){ return A.filter(a=>a.atalho).sort(porOrdem('atalhoOrdem')); }
+function imagemDe(a){ if(typeof SLIDES!=='undefined'&&SLIDES[a.id]) return SLIDES[a.id].src; const m=(a._bodyBase||a.body||'').match(/<img[^>]+src="([^"]+)"/); return m?m[1]:''; }
+function homeFaixa(){ const f=A.filter(a=>a.faixa).sort(porOrdem('destaqueOrdem'))[0]; if(!f) return '';
+  return `<a class="camp-banner" data-a="${f.area}" href="#art-${f.id}"><span class="camp-ic">${ICON[f.area]||ICON.estrela}</span><span class="camp-tx"><small>${esc(f.faixaRotulo||'Em destaque')}</small><b>${esc(f.title)}</b><span>${esc(f.faixaTexto||f.summary||'')}</span></span><span class="camp-bt">${esc(f.faixaBotao||'Ver agora')} →</span></a>`; }
+function homeDestaques(){ const d=A.filter(a=>a.destaque).sort(porOrdem('destaqueOrdem')); if(!d.length) return '';
+  return `<div class="bloco"><div class="bloco-h"><h2>Destaques</h2></div><div class="destaques">${d.map(a=>{ const im=imagemDe(a); return `<a class="dest" data-a="${a.area}" href="#art-${a.id}"><span class="dest-img">${im?`<img src="${im}" alt="" loading="lazy">`:`<span class="dest-ic">${ICON[a.area]||ICON.estrela}</span>`}</span><span class="dest-tx"><small>${esc((area(a.area)||{}).curto||'')}</small><b>${esc(a.title)}</b><span>${esc(a.summary||'')}</span><em>Abrir →</em></span></a>`; }).join('')}</div></div>`; }
 function home(){
   nav('inicio');
   app.removeAttribute('data-a');
@@ -3903,10 +3958,11 @@ function home(){
     <div class="sugestoes"><span>Tente:</span>${sugest.map(s=>`<button type="button" class="chip" data-q="${esc(s)}">${esc(s)}</button>`).join('')}</div>
   </div>
 
-  ${byId('natal-ouro')?`<a class="camp-banner" href="#art-natal-ouro"><span class="camp-ic">${ICON.presente}</span><span class="camp-tx"><small>Campanha do mês</small><b>Lançamentos Natal de Ouro</b><span>Primeira fase à venda desde 26/10 · Linha Terroir só depois de 30/11</span></span><span class="camp-bt">Ver lançamentos →</span></a>`:''}
+  ${homeFaixa()}
+  ${homeDestaques()}
 
   <div class="bloco"><div class="bloco-h"><h2>O que você precisa fazer agora?</h2></div>
-    <div class="tarefas">${TAREFAS.map(([id,t,d])=>{const a=byId(id); if(!a) return ''; return `<a class="tarefa" data-a="${a.area}" href="#art-${id}"><span class="ic2">${ICON[a.area]}</span><b>${t}</b><small>${d}</small></a>`}).join('')}</div>
+    <div class="tarefas">${homeAtalhos().map(a=>`<a class="tarefa" data-a="${a.area}" href="#art-${a.id}"><span class="ic2">${ICON[a.area]}</span><b>${esc(a.atalhoTitulo||a.title)}</b><small>${esc(a.atalhoTexto||'')}</small></a>`).join('')}</div>
   </div>
 
   <div class="bloco"><div class="bloco-h"><h2>Sistemas</h2><p>"Abrir ↗" entra no sistema; "Como usar" abre o manual.</p></div>
@@ -3951,6 +4007,8 @@ function home(){
       ${novHTML()}
     </div>
   </div>`;
+  if(admLogado()) app.insertAdjacentHTML('afterbegin','<div class="adm-rapida" style="margin-bottom:16px"><span>Você está logada como gestão</span><button type="button" class="adm-btn pri" id="edHome">✏️ Editar página inicial</button><a class="adm-btn" href="#admin">Área da gestão</a></div>');
+  const eh=document.getElementById('edHome'); if(eh) eh.addEventListener('click',()=>{ admVista='home'; location.hash='admin'; });
   const q=document.getElementById('q');
   document.getElementById('fBusca').addEventListener('submit',e=>{e.preventDefault(); irBusca(q.value)});
   app.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>irBusca(b.dataset.q)));
@@ -3977,12 +4035,14 @@ function artPage(id){
     <div class="topo-area"><a class="tag-a" href="#area-${ar.id}">${ICON[ar.id]} ${ar.curto}</a><h1>${esc(a.title)}</h1><p class="lede">${esc(a.summary)}</p>
       <div class="meta"><span class="badge tipo">${a.tipo}</span>${STATUS[a.status]||''}<span>Atualizado em 22/10/2026</span></div></div>
     ${SLIDES[a.id]?`<figure class="slide"><button type="button" class="zoom" aria-label="Ampliar imagem"><img src="${SLIDES[a.id].src}" alt="${esc(SLIDES[a.id].leg)} — página do Manual de Operações" loading="lazy"></button><figcaption>Manual de Operações · ${esc(SLIDES[a.id].leg)} · página ${SLIDES[a.id].pg} <span>Toque para ampliar</span></figcaption></figure>`:''}
+    ${admLogado()?`<div class="adm-rapida"><span>Você está logada como gestão</span><button type="button" class="adm-btn pri" data-editar="${a.id}">✏️ Editar esta página</button><a class="adm-btn" href="#admin">Área da gestão</a></div>`:''}
     <article class="art">${a.body}</article>
     ${rel.length?`<div class="fonte"><b>Veja também</b><div class="rel">${rel.map(r=>`<a class="chip" href="#art-${r.id}">${esc(r.title)}</a>`).join('')}</div></div>`:''}
     <details class="fontes"><summary>Fonte oficial deste conteúdo</summary>${a.fontes.map(f=>`<span>${esc(f)}</span>`).join('')}</details>
     <a class="chip" href="#area-${ar.id}" style="align-self:flex-start">← Voltar para ${ar.nome}</a>
   </div>`;
   ativarVideos(app);
+  app.querySelectorAll('[data-editar]').forEach(b=>b.addEventListener('click',()=>{ admEditId=b.dataset.editar; admVista='editor'; location.hash='admin'; }));
   app.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>{
     const ov=document.createElement('div'); ov.className='lightbox'; ov.innerHTML='<button type="button" aria-label="Fechar">✕</button>';
     const im=b.querySelector('img').cloneNode(); ov.appendChild(im); document.body.appendChild(ov);
@@ -4063,17 +4123,19 @@ function admPage(){
   let msg=''; try{ msg=sessionStorage.getItem('mAnjosAdmMsg')||''; const v=sessionStorage.getItem('mAnjosAdmVista'); if(v) admVista=v; sessionStorage.removeItem('mAnjosAdmMsg'); sessionStorage.removeItem('mAnjosAdmVista'); }catch(e){}
   if(msg) setTimeout(()=>toast(msg),50);
   const n=nRascunhos();
-  const abas=[['lista','Páginas'],['areas','Áreas'],['novidades','Novidades'],['publicar','Publicar'+(n?` (${n})`:'')],['senha','Senha']];
+  const abas=[['lista','Páginas'],['home','Página inicial'],['areas','Áreas'],['novidades','Novidades'],['publicar','Publicar'+(n?` (${n})`:'')],['senha','Senha']];
   app.innerHTML=`<div class="col adm" style="max-width:1000px">
     <div class="topo-area" data-a="politicas"><span class="tag-a">Área da gestão</span><h1>Editar a Central</h1><p class="lede">Crie, edite, oculte ou exclua conteúdos. O visual do site é aplicado automaticamente.</p>
       <div class="adm-abas">${abas.map(([k,t])=>`<button type="button" class="adm-aba ${admVista===k||(k==='lista'&&admVista==='editor')?'on':''}" data-v="${k}">${t}</button>`).join('')}<button type="button" class="adm-aba sair" id="admSair">Sair</button></div></div>
-    ${n?`<div class="box warn"><b class="t">${n} alteração(ões) ainda não publicadas</b>Você já vê as mudanças neste navegador. Para a equipe ver, vá em <b>Publicar</b> e baixe o site atualizado.</div>`:''}
+    ${n?`<div class="box warn"><b class="t">${n} alteração(ões) ainda não publicadas</b>Só você está vendo. Para a equipe ver, clique em <b>Publicar</b>. <button type="button" class="adm-btn pri" style="margin-left:8px" id="irPub">Publicar agora</button></div>`:''}
     <div id="admCorpo"></div></div>`;
   app.querySelectorAll('.adm-aba[data-v]').forEach(b=>b.addEventListener('click',()=>{ admVista=b.dataset.v; admEditId=null; admAreaEd=undefined; admPage(); }));
   document.getElementById('admSair').addEventListener('click',()=>{ admSair(); location.hash='inicio'; });
+  const ip=document.getElementById('irPub'); if(ip) ip.addEventListener('click',()=>{ admVista='publicar'; admPage(); });
   const c=document.getElementById('admCorpo');
   if(admVista==='editor') admEditor(c);
   else if(admVista==='areas') admAreas(c);
+  else if(admVista==='home') admHome(c);
   else if(admVista==='novidades') admNovidades(c);
   else if(admVista==='publicar') admPublicar(c);
   else if(admVista==='senha') admSenha(c);
@@ -4135,8 +4197,8 @@ function reduzirImagem(file,cb){
 }
 function admEditor(c){
   const a=admEditId?TODOS.find(x=>x.id===admEditId):null;
-  const d=a?{title:a.title,summary:a.summary,area:a.area,grupo:a.grupo,tipo:a.tipo,status:a.status||'ok',tags:a.tags||'',body:(a._bodyBase!==undefined?a._bodyBase:a.body)||'',fontes:(a.fontes||[]).join('\n'),rel:a.rel||[],oculto:!!a.oculto}
-          :{title:'',summary:'',area:'operacao',grupo:'',tipo:'Procedimento',status:'ok',tags:'',body:'<h3>Título da seção</h3><p>Escreva aqui.</p>',fontes:'',rel:[],oculto:false};
+  const d=a?{title:a.title,summary:a.summary,area:a.area,grupo:a.grupo,tipo:a.tipo,status:a.status||'ok',tags:a.tags||'',body:(a._bodyBase!==undefined?a._bodyBase:a.body)||'',fontes:(a.fontes||[]).join('\n'),rel:a.rel||[],oculto:!!a.oculto,destaque:!!a.destaque,destaqueOrdem:a.destaqueOrdem||'',faixa:!!a.faixa,faixaRotulo:a.faixaRotulo||'',faixaTexto:a.faixaTexto||'',faixaBotao:a.faixaBotao||'',atalho:!!a.atalho,atalhoTitulo:a.atalhoTitulo||'',atalhoTexto:a.atalhoTexto||'',atalhoOrdem:a.atalhoOrdem||''}
+          :{title:'',summary:'',area:'operacao',grupo:'',tipo:'Procedimento',status:'ok',tags:'',body:'<h3>Título da seção</h3><p>Escreva aqui.</p>',fontes:'',rel:[],oculto:false,destaque:false,destaqueOrdem:'',faixa:false,faixaRotulo:'',faixaTexto:'',faixaBotao:'',atalho:false,atalhoTitulo:'',atalhoTexto:'',atalhoOrdem:''};
   const grupos=[...new Set(TODOS.map(x=>x.grupo).filter(Boolean))].sort();
   c.innerHTML=`<form id="admForm" class="adm-card adm-form" data-a="${d.area}">
     <h2>${a?'Editar página':'Nova página'}</h2>
@@ -4149,6 +4211,14 @@ function admEditor(c){
       <div><label for="fStatus">Situação</label><select id="fStatus">${Object.entries(STATUS_ADM).map(([k,t])=>`<option value="${k}" ${d.status===k?'selected':''}>${t}</option>`).join('')}</select></div>
     </div>
     <label class="adm-check"><input type="checkbox" id="fOculto" ${d.oculto?'checked':''}> Ocultar esta página da equipe</label>
+    <fieldset class="adm-home"><legend>Mostrar na página inicial</legend>
+      <label class="adm-check"><input type="checkbox" id="fDest" ${d.destaque?'checked':''}> <b>Destaques</b>: cartão grande no bloco "Destaques"</label>
+      <label class="adm-check"><input type="checkbox" id="fFaixa" ${d.faixa?'checked':''}> <b>Faixa principal</b>: banner colorido logo abaixo da busca (só uma página por vez)</label>
+      <div class="adm-grade adm-sub" id="subFaixa"><div><label for="fFRot">Etiqueta da faixa</label><input id="fFRot" value="${esc(d.faixaRotulo)}" placeholder="Ex.: Campanha do mês"></div><div><label for="fFBot">Texto do botão</label><input id="fFBot" value="${esc(d.faixaBotao)}" placeholder="Ex.: Ver lançamentos"></div><div style="grid-column:1/-1"><label for="fFTxt">Frase da faixa (se vazio, usa o resumo)</label><input id="fFTxt" value="${esc(d.faixaTexto)}"></div></div>
+      <label class="adm-check"><input type="checkbox" id="fAtal" ${d.atalho?'checked':''}> <b>Atalho</b> em "O que você precisa fazer agora?"</label>
+      <div class="adm-grade adm-sub" id="subAtal"><div><label for="fATit">Nome do atalho</label><input id="fATit" value="${esc(d.atalhoTitulo)}" placeholder="Ex.: Pedir tester"></div><div><label for="fATxt">Frase curta</label><input id="fATxt" value="${esc(d.atalhoTexto)}"></div></div>
+      <p class="src">A ordem dos destaques e atalhos você muda na aba <b>Página inicial</b>.</p>
+    </fieldset>
     <label>Conteúdo</label>
     <div class="adm-tool" id="admTool">
       <button type="button" data-c="h3">Título</button><button type="button" data-c="p">Texto</button><button type="button" data-c="bold"><b>N</b></button>
@@ -4158,7 +4228,7 @@ function admEditor(c){
       <label class="adm-up">Imagem<input type="file" accept="image/*" id="fImg" hidden></label>
       <button type="button" data-c="html">&lt;/&gt; HTML</button>
     </div>
-    <div class="adm-mini" id="admMini" hidden><input id="mUrl" placeholder="Cole o link (https://…)"><input id="mTxt" placeholder="Texto do botão ou título"><button type="button" class="adm-btn pri" id="mOk">Inserir</button><button type="button" class="adm-btn" id="mX">Cancelar</button></div>
+    <div class="adm-mini" id="admMini" hidden><input id="mUrl" placeholder="Cole o link (https://…)"><input id="mTxt" placeholder="Texto do botão ou título"><button type="button" class="adm-btn pri" id="mOk">Inserir</button><button type="button" class="adm-btn" id="mX">Cancelar</button><select id="mPag" aria-label="Ou escolha uma página da Central"><option value="">Ou link para uma página da Central…</option>${TODOS.filter(x=>!x._excluido).map(x=>`<option value="#art-${x.id}">${esc(x.title)}</option>`).join('')}</select><p class="adm-erro" id="mErro" hidden style="flex-basis:100%"></p></div>
     <div id="fCorpo" class="art adm-ed" contenteditable="true">${d.body}</div>
     <textarea id="fHTML" class="adm-html" rows="16" hidden></textarea>
     <label for="fTags">Palavras para a busca (separe por espaço)</label><input id="fTags" value="${esc(d.tags)}">
@@ -4169,8 +4239,21 @@ function admEditor(c){
   </form>`;
   const corpo=document.getElementById('fCorpo'), html=document.getElementById('fHTML'), mini=document.getElementById('admMini');
   document.getElementById('fArea').addEventListener('change',e=>document.getElementById('admForm').dataset.a=e.target.value);
+  const sub=()=>{ document.getElementById('subFaixa').hidden=!document.getElementById('fFaixa').checked; document.getElementById('subAtal').hidden=!document.getElementById('fAtal').checked; };
+  ['fFaixa','fAtal'].forEach(i=>document.getElementById(i).addEventListener('change',sub)); sub();
   ['keyup','mouseup','focus'].forEach(ev=>corpo.addEventListener(ev,guardarSel));
   corpo.addEventListener('click',e=>{ if(e.target.closest('a')) e.preventDefault(); });
+  corpo.addEventListener('paste',e=>{ const cd=e.clipboardData; if(!cd) return; e.preventDefault();
+    const h=cd.getData('text/html'), t=cd.getData('text/plain');
+    let out='';
+    if(h){ const d=new DOMParser().parseFromString(h,'text/html'); const OK={B:'b',STRONG:'b',I:'i',EM:'i',U:'u',A:'a',UL:'ul',OL:'ol',LI:'li',P:'p',H1:'h3',H2:'h3',H3:'h3',H4:'h3',BR:'br',TABLE:'table',TR:'tr',TD:'td',TH:'th',TBODY:'tbody'};
+      const walk=n=>{ if(n.nodeType===3) return esc(n.textContent); if(n.nodeType!==1) return ''; const inner=[...n.childNodes].map(walk).join(''); const tg=OK[n.tagName];
+        if(!tg) return ['DIV','SECTION','ARTICLE'].includes(n.tagName)?`<p>${inner}</p>`:inner; if(tg==='br') return '<br>';
+        if(tg==='a'){ const hr=n.getAttribute('href')||''; return /^https?:/i.test(hr)?`<a href="${esc(hr)}" target="_blank" rel="noopener">${inner}</a>`:inner; }
+        if(tg==='table') return `<div class="tbl"><table>${inner}</table></div>`; return `<${tg}>${inner}</${tg}>`; };
+      out=walk(d.body).replace(/<p>\s*<\/p>/g,''); }
+    else out=t.split(/\n{2,}/).map(x=>`<p>${esc(x).replace(/\n/g,'<br>')}</p>`).join('');
+    voltarSel(corpo); if(!document.execCommand('insertHTML',false,out)) corpo.insertAdjacentHTML('beforeend',out); guardarSel(); });
   let modoMini=null;
   const BOX={alerta:'Importante',warn:'Atenção',info:'Saiba mais',ok:'Dica'};
   document.getElementById('admTool').addEventListener('mousedown',e=>{ if(e.target.closest('button')) e.preventDefault(); });
@@ -4187,11 +4270,18 @@ function admEditor(c){
     else { modoMini=k; mini.hidden=false; document.getElementById('mUrl').value=''; document.getElementById('mTxt').value=''; document.getElementById('mTxt').placeholder=k==='link'?'Texto do link':'Título (ex.: Vídeo 0401 Abertura)'; document.getElementById('mUrl').focus(); }
   });
   document.getElementById('mX').addEventListener('click',()=>{ mini.hidden=true; });
+  document.getElementById('mPag').addEventListener('change',e=>{ if(!e.target.value) return; document.getElementById('mUrl').value=e.target.value; if(!document.getElementById('mTxt').value) document.getElementById('mTxt').value=e.target.selectedOptions[0].textContent; });
+  document.getElementById('mUrl').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('mOk').click(); } });
+  document.getElementById('mTxt').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('mOk').click(); } });
   document.getElementById('mOk').addEventListener('click',()=>{
-    const u=document.getElementById('mUrl').value.trim(), t=document.getElementById('mTxt').value.trim()||u;
-    if(!/^https?:\/\//i.test(u)){ document.getElementById('mUrl').focus(); return; }
-    const U=esc(u), T=esc(t);
-    if(modoMini==='link') inserirHTML(corpo,`<a href="${U}" target="_blank" rel="noopener">${T}</a> `);
+    let u=document.getElementById('mUrl').value.trim(); const er=document.getElementById('mErro');
+    if(u&&!/^(https?:)?\/\//i.test(u)&&!u.startsWith('#')) u='https://'+u.replace(/^\/+/,'');
+    if(!u||!/^(https?:\/\/[^\s.]+\.[^\s]+|#art-[\w-]+)$/i.test(u)){ er.hidden=false; er.textContent='Cole um link válido, como https://site.com.br/pagina'; document.getElementById('mUrl').focus(); return; }
+    er.hidden=true;
+    const t=document.getElementById('mTxt').value.trim()||u; const U=esc(u), T=esc(t); const ext=u.startsWith('#')?'':' target="_blank" rel="noopener"';
+    if(modoMini==='link'){ const sel=selSalva&&!selSalva.collapsed&&corpo.contains(selSalva.startContainer)?selSalva.toString():'';
+      if(sel){ voltarSel(corpo); document.execCommand('createLink',false,u); corpo.querySelectorAll('a[href]').forEach(x=>{ if(x.getAttribute('href')===u&&!u.startsWith('#')){ x.target='_blank'; x.rel='noopener'; } }); guardarSel(); }
+      else inserirBloco(corpo,`<p><a href="${U}"${ext}>${T}</a></p>`); }
     else if(modoMini==='video') inserirBloco(corpo,`<div class="mats"><div class="mat-g"><span class="tag">Vídeo</span><a class="mat" href="${U}" target="_blank" rel="noopener"><b>${T}</b><small>Vídeo</small></a></div></div>`);
     else inserirBloco(corpo,`<div class="mats"><div class="mat-g"><span class="tag">Material</span><a class="mat" href="${U}" target="_blank" rel="noopener"><b>${T}</b><small>Abrir ↗</small></a></div></div>`);
     mini.hidden=true;
@@ -4201,15 +4291,22 @@ function admEditor(c){
   const orig=document.getElementById('fOriginal');
   if(orig) orig.addEventListener('click',()=>{ const o=ORIG[a.id]; ED_RASC.paginas=ED_RASC.paginas||{};
     ED_RASC.paginas[a.id]={title:o.title,summary:o.summary,area:o.area,grupo:o.grupo,tipo:o.tipo,status:o.status,tags:o.tags,body:o.body,fontes:o.fontes,rel:o.rel,oculto:!!o.oculto,_excluido:false};
+    ["destaque", "destaqueOrdem", "faixa", "faixaRotulo", "faixaTexto", "faixaBotao", "atalho", "atalhoTitulo", "atalhoTexto", "atalhoOrdem"].forEach(k=>{ ED_RASC.paginas[a.id][k]=o[k]===undefined?(k.endsWith('Ordem')||/Rotulo|Texto|Botao|Titulo/.test(k)?'':false):o[k]; });
     salvarRascunho(); admRecarregar('Página voltou ao texto original.'); });
   document.getElementById('admForm').addEventListener('submit',e=>{ e.preventDefault();
     if(!html.hidden) corpo.innerHTML=html.value;
     const v=id=>document.getElementById(id).value;
     const dados={title:v('fTitulo').trim(),summary:v('fResumo').trim(),area:v('fArea'),grupo:v('fGrupo').trim()||'Geral',tipo:v('fTipo'),status:v('fStatus'),
       tags:v('fTags').trim(),body:corpo.innerHTML,fontes:v('fFontes').split('\n').map(x=>x.trim()).filter(Boolean),
-      rel:[...document.getElementById('fRel').selectedOptions].map(o=>o.value),oculto:document.getElementById('fOculto').checked};
+      rel:[...document.getElementById('fRel').selectedOptions].map(o=>o.value),oculto:document.getElementById('fOculto').checked,
+      destaque:document.getElementById('fDest').checked,faixa:document.getElementById('fFaixa').checked,faixaRotulo:v('fFRot').trim(),faixaTexto:v('fFTxt').trim(),faixaBotao:v('fFBot').trim(),
+      atalho:document.getElementById('fAtal').checked,atalhoTitulo:v('fATit').trim(),atalhoTexto:v('fATxt').trim()};
+    if(dados.destaque&&!(a&&a.destaque)) dados.destaqueOrdem=TODOS.filter(x=>x.destaque).length+1;
+    if(dados.atalho&&!(a&&a.atalho)) dados.atalhoOrdem=TODOS.filter(x=>x.atalho).length+1;
+    if(dados.atalho&&!dados.atalhoTitulo) dados.atalhoTitulo=dados.title;
     let id=a?a.id:slug(dados.title); if(!a){ while(TODOS.some(x=>x.id===id)) id=slug(dados.title)+'-'+Math.random().toString(36).slice(2,6); }
     ED_RASC.paginas=ED_RASC.paginas||{}; ED_RASC.paginas[id]=Object.assign({},dados,{_excluido:false});
+    if(dados.faixa) TODOS.filter(x=>x.faixa&&x.id!==id).forEach(x=>{ ED_RASC.paginas[x.id]=Object.assign({},ED_RASC.paginas[x.id]||{},{faixa:false}); });
     if(!salvarRascunho()){ toast('Não foi possível salvar neste navegador. Desative a janela anônima.'); return; }
     admRecarregar('Página salva. Confira e publique quando quiser.','lista');
   });
@@ -4286,30 +4383,110 @@ function htmlAtualizado(){
   const doc=document.documentElement.cloneNode(true);
   doc.querySelector('#app').innerHTML=''; doc.querySelector('#app').removeAttribute('data-a'); doc.querySelector('#nav').innerHTML='';
   doc.querySelectorAll('.lightbox,.adm-toast').forEach(x=>x.remove());
-  const tudo=mesclarEd(ED_ARQ,ED_RASC);
-  for(const [id,p] of Object.entries(tudo.paginas)){ if(p._excluido===false) delete p._excluido; if(!Object.keys(p).length) delete tudo.paginas[id]; }
-  for(const [id,p] of Object.entries(tudo.areas||{})){ if(p._excluida===false) delete p._excluida; }
+  const tudo=edLimpo(mesclarEd(ED_ARQ,ED_RASC));
   doc.querySelectorAll('#coresAreas').forEach(x=>x.remove());
   doc.querySelector('#edicoes').textContent=JSON.stringify(tudo).replace(/</g,'\\u003c');
   return '<!DOCTYPE html>\n'+doc.outerHTML;
 }
+function admHome(c){
+  const vis=TODOS.filter(x=>!x._excluido&&!x.oculto);
+  const fx=TODOS.find(x=>x.faixa&&!x._excluido)||null;
+  let dest=TODOS.filter(x=>x.destaque&&!x._excluido).sort(porOrdem('destaqueOrdem')).map(x=>x.id);
+  let atal=TODOS.filter(x=>x.atalho&&!x._excluido).sort(porOrdem('atalhoOrdem')).map(x=>({id:x.id,t:x.atalhoTitulo||x.title,d:x.atalhoTexto||''}));
+  const opc=(sel,excl)=>vis.filter(x=>!(excl||[]).includes(x.id)).map(x=>`<option value="${x.id}" ${sel===x.id?'selected':''}>${esc(x.title)}</option>`).join('');
+  const t=id=>{ const x=TODOS.find(y=>y.id===id); return x?esc(x.title):id; };
+  const desenhar=()=>{
+    c.innerHTML=`<div class="adm-card"><h2>Faixa principal</h2><p class="src">Banner colorido logo abaixo da busca. Escolha uma página ou deixe sem faixa.</p>
+      <label for="hFx">Página da faixa</label><select id="hFx"><option value="">— sem faixa —</option>${opc(fx&&fx.id)}</select>
+      <div class="adm-grade"><div><label for="hFR">Etiqueta</label><input id="hFR" value="${esc(fx&&fx.faixaRotulo||'')}" placeholder="Ex.: Campanha do mês"></div><div><label for="hFB">Texto do botão</label><input id="hFB" value="${esc(fx&&fx.faixaBotao||'')}" placeholder="Ex.: Ver agora"></div></div>
+      <label for="hFT">Frase (se vazio, usa o resumo da página)</label><input id="hFT" value="${esc(fx&&fx.faixaTexto||'')}"></div>
+    <div class="adm-card"><h2>Destaques</h2><p class="src">Cartões grandes logo depois da faixa. A primeira página fica à esquerda.</p>
+      <div class="adm-lista">${dest.map((id,i)=>`<div class="adm-li"><b>${i+1}. ${t(id)}</b><span><button type="button" class="adm-btn" data-d="up" data-i="${i}">↑</button><button type="button" class="adm-btn" data-d="dn" data-i="${i}">↓</button><button type="button" class="adm-btn perigo" data-d="x" data-i="${i}">Tirar</button></span></div>`).join('')||'<p class="src">Nenhum destaque ainda.</p>'}</div>
+      <div class="adm-barra"><select id="hDAdd"><option value="">+ Adicionar página aos destaques…</option>${opc('',dest)}</select></div></div>
+    <div class="adm-card"><h2>Atalhos "O que você precisa fazer agora?"</h2><p class="src">Edite o nome e a frase de cada botão e mude a ordem.</p>
+      <div class="adm-lista">${atal.map((x,i)=>`<div class="adm-li adm-li-at"><div class="adm-grade" style="flex:1"><div><label>Nome · ${t(x.id)}</label><input data-at="${i}" data-k="t" value="${esc(x.t)}"></div><div><label>Frase curta</label><input data-at="${i}" data-k="d" value="${esc(x.d)}"></div></div><span><button type="button" class="adm-btn" data-a2="up" data-i="${i}">↑</button><button type="button" class="adm-btn" data-a2="dn" data-i="${i}">↓</button><button type="button" class="adm-btn perigo" data-a2="x" data-i="${i}">Tirar</button></span></div>`).join('')}</div>
+      <div class="adm-barra"><select id="hAAdd"><option value="">+ Adicionar atalho para uma página…</option>${opc('',atal.map(x=>x.id))}</select></div></div>
+    <div class="adm-rodape"><button type="button" class="adm-btn pri" id="hSalvar">Salvar página inicial</button><a class="adm-btn" href="#inicio">Ver página inicial</a></div>`;
+  };
+  const ler=()=>{ c.querySelectorAll('[data-at]').forEach(f=>{ atal[+f.dataset.at][f.dataset.k]=f.value; }); };
+  desenhar();
+  c.onchange=e=>{ ler();
+    if(e.target.id==='hDAdd'&&e.target.value){ dest.push(e.target.value); desenhar(); }
+    if(e.target.id==='hAAdd'&&e.target.value){ const x=TODOS.find(y=>y.id===e.target.value); atal.push({id:x.id,t:x.atalhoTitulo||x.title,d:x.atalhoTexto||x.summary.slice(0,60)}); desenhar(); } };
+  c.onclick=e=>{ const b=e.target.closest('button'); if(!b) return; ler();
+    const mv=(arr,i,dir)=>{ const j=i+dir; if(j>=0&&j<arr.length) [arr[i],arr[j]]=[arr[j],arr[i]]; };
+    if(b.dataset.d){ const i=+b.dataset.i; if(b.dataset.d==='x') dest.splice(i,1); else mv(dest,i,b.dataset.d==='up'?-1:1); desenhar(); }
+    else if(b.dataset.a2){ const i=+b.dataset.i; if(b.dataset.a2==='x') atal.splice(i,1); else mv(atal,i,b.dataset.a2==='up'?-1:1); desenhar(); }
+    else if(b.id==='hSalvar'){
+      const fxId=document.getElementById('hFx').value; const P=ED_RASC.paginas=ED_RASC.paginas||{}; const up=(id,o)=>{ P[id]=Object.assign({},P[id]||{},o); };
+      TODOS.forEach(x=>{ if(x.faixa&&x.id!==fxId) up(x.id,{faixa:false}); if(x.destaque&&!dest.includes(x.id)) up(x.id,{destaque:false}); if(x.atalho&&!atal.some(a=>a.id===x.id)) up(x.id,{atalho:false}); });
+      if(fxId) up(fxId,{faixa:true,faixaRotulo:document.getElementById('hFR').value.trim(),faixaBotao:document.getElementById('hFB').value.trim(),faixaTexto:document.getElementById('hFT').value.trim()});
+      dest.forEach((id,i)=>up(id,{destaque:true,destaqueOrdem:i+1}));
+      atal.forEach((x,i)=>up(x.id,{atalho:true,atalhoOrdem:i+1,atalhoTitulo:x.t.trim()||TODOS.find(y=>y.id===x.id).title,atalhoTexto:x.d.trim()}));
+      salvarRascunho(); admRecarregar('Página inicial salva.','home'); }
+  };
+}
+
+/* ---------- Publicar direto no GitHub ---------- */
+const GH_KEY='mAnjosGitHub';
+function ghCfg(){ let c=null; try{ c=JSON.parse(localStorage.getItem(GH_KEY)||'null'); }catch(e){}
+  const h=location.hostname.match(/^([^.]+)\.github\.io$/i); const seg=decodeURIComponent(location.pathname.split('/').filter(Boolean)[0]||'');
+  return Object.assign({owner:h?h[1]:'',repo:h?(seg&&!/\.html?$/i.test(seg)?seg:h[1]+'.github.io'):'',path:'index.html',token:''},c||{}); }
+function b64utf8(str){ const by=new TextEncoder().encode(str); let bin=''; for(let i=0;i<by.length;i+=0x8000) bin+=String.fromCharCode.apply(null,by.subarray(i,i+0x8000)); return btoa(bin); }
+async function ghPublicar(cfg,html){
+  const api=`https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}`;
+  const H={Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
+  const r0=await fetch(api,{headers:H});
+  if(r0.status===401) throw new Error('Chave de acesso (token) inválida ou vencida. Gere uma nova no GitHub.');
+  if(!r0.ok) throw new Error('Não encontrei o repositório "'+cfg.owner+'/'+cfg.repo+'" ou a chave não tem acesso a ele.');
+  const branch=(await r0.json()).default_branch||'main';
+  const r1=await fetch(`${api}/contents/${encodeURIComponent(cfg.path)}?ref=${encodeURIComponent(branch)}`,{headers:Object.assign({},H,{Accept:'application/vnd.github.object'})});
+  let sha; if(r1.ok) sha=(await r1.json()).sha; else if(r1.status!==404) throw new Error('Não consegui ler o arquivo atual ('+r1.status+').');
+  const r2=await fetch(`${api}/contents/${encodeURIComponent(cfg.path)}`,{method:'PUT',headers:Object.assign({},H,{'Content-Type':'application/json'}),
+    body:JSON.stringify({message:'Atualização pela Área da gestão — '+new Date().toLocaleString('pt-BR'),content:b64utf8(html),sha,branch})});
+  if(r2.status===403||r2.status===404) throw new Error('A chave não tem permissão de escrita. No GitHub, dê "Contents: Read and write" para este repositório.');
+  if(!r2.ok){ let j={}; try{ j=await r2.json(); }catch(e){} throw new Error(j.message||('Erro '+r2.status+' ao publicar.')); }
+}
+
 function admPublicar(c){
-  const n=nRascunhos();
+  const n=nRascunhos(); const g=ghCfg(); const temGH=!!(g.token&&g.owner&&g.repo);
   c.innerHTML=`<div class="adm-card"><h2>Publicar para a equipe</h2>
-    <p>${n?`Você tem <b>${n} alteração(ões)</b> que só aparecem neste navegador.`:'Não há alterações pendentes. Você pode baixar o site mesmo assim.'}</p>
-    <ol class="passos"><li><div>Clique em <b>Baixar site atualizado</b>. O arquivo <b>central-de-conhecimento.html</b> vai para a pasta de downloads.</div></li>
-    <li><div>Suba esse arquivo no lugar do antigo, onde o site fica hospedado (GitHub ou SharePoint), com o <b>mesmo nome</b>. O link da equipe continua o mesmo.</div></li>
-    <li><div>Abra o site publicado e confira. Depois clique em <b>Limpar rascunho deste navegador</b>.</div></li></ol>
-    <div class="adm-rodape"><button type="button" class="adm-btn pri" id="pBaixar">Baixar site atualizado</button><button type="button" class="adm-btn" id="pLimpar" ${n?'':'disabled'}>Limpar rascunho deste navegador</button></div>
-    <p class="adm-erro" id="pErro" hidden></p>
-    <div class="box info" style="margin-top:14px"><b class="t">Dica</b>Guarde sempre uma cópia do arquivo anterior antes de trocar. Se algo der errado, é só subir a cópia de novo.</div></div>`;
+    ${PUB_PENDENTE?'<div class="box ok"><b class="t">Publicação enviada</b>O GitHub leva de 1 a 10 minutos para mostrar a versão nova a todos. Enquanto isso, você já vê as mudanças aqui.</div>':''}
+    <p>${n?`Você tem <b>${n} alteração(ões)</b> que só você está vendo (ficam neste navegador).`:'Não há alterações pendentes.'}</p>
+    <div class="pub-opcoes">
+      <div class="pub-op"><h3>1 · Publicar direto no site <span class="badge ok">recomendado</span></h3>
+        <p>Um clique e o site da equipe é atualizado no GitHub. Precisa configurar uma vez.</p>
+        <button type="button" class="adm-btn pri" id="pGH" ${temGH?'':'disabled'}>Publicar agora no site</button>
+        ${temGH?`<p class="src">Destino: ${esc(g.owner)}/${esc(g.repo)} · ${esc(g.path)} · <a href="#" id="pGHcfg">alterar</a></p>`:'<p class="src">Ainda não configurado. Preencha abaixo.</p>'}
+        <p class="adm-erro" id="pGHerr" hidden></p></div>
+      <div class="pub-op"><h3>2 · Baixar o arquivo</h3><p>Baixe e suba no lugar do antigo (mesmo nome).</p><button type="button" class="adm-btn" id="pBaixar">Baixar site atualizado</button><p class="adm-erro" id="pErro" hidden></p></div>
+    </div>
+    <form id="ghForm" class="gh-form" ${temGH?'hidden':''}><h3>Configurar publicação no GitHub (uma vez)</h3>
+      <ol class="passos"><li><div>No GitHub, entre em <b>Settings › Developer settings › Personal access tokens › Fine-grained tokens</b> e clique em <b>Generate new token</b>.</div></li>
+      <li><div>Em <b>Repository access</b>, escolha <b>Only select repositories</b> e marque o repositório do site.</div></li>
+      <li><div>Em <b>Permissions › Repository permissions › Contents</b>, escolha <b>Read and write</b>. Gere e copie a chave.</div></li>
+      <li><div>Cole a chave aqui embaixo e salve. Ela fica guardada <b>só neste navegador</b>.</div></li></ol>
+      <div class="adm-grade"><div><label for="gOwner">Usuário do GitHub</label><input id="gOwner" value="${esc(g.owner)}" required></div><div><label for="gRepo">Repositório</label><input id="gRepo" value="${esc(g.repo)}" required></div><div><label for="gPath">Arquivo</label><input id="gPath" value="${esc(g.path)}" required></div></div>
+      <label for="gTok">Chave de acesso (token)</label><input id="gTok" type="password" value="${esc(g.token)}" placeholder="github_pat_…" required autocomplete="off">
+      <div class="adm-rodape"><button class="adm-btn pri" type="submit">Salvar configuração</button>${temGH?'<button type="button" class="adm-btn perigo" id="gApagar">Apagar chave deste navegador</button>':''}</div></form>
+    <div class="adm-rodape" style="border-top:1px solid var(--line);padding-top:14px"><button type="button" class="adm-btn" id="pLimpar" ${n?'':'disabled'}>Descartar alterações não publicadas</button></div>
+    <div class="box info" style="margin-top:6px"><b class="t">Dica</b>Depois que a versão nova aparecer no site, o rascunho deste navegador é limpo sozinho.</div></div>`;
+  const cfgL=document.getElementById('pGHcfg'); if(cfgL) cfgL.addEventListener('click',e=>{ e.preventDefault(); document.getElementById('ghForm').hidden=false; });
+  document.getElementById('ghForm').addEventListener('submit',e=>{ e.preventDefault();
+    const cfg={owner:document.getElementById('gOwner').value.trim(),repo:document.getElementById('gRepo').value.trim(),path:document.getElementById('gPath').value.trim()||'index.html',token:document.getElementById('gTok').value.trim()};
+    try{ localStorage.setItem(GH_KEY,JSON.stringify(cfg)); }catch(err){ toast('Não foi possível salvar neste navegador.'); return; } admRecarregar('Configuração salva. Agora é só publicar.','publicar'); });
+  const ap=document.getElementById('gApagar'); if(ap) ap.addEventListener('click',()=>{ try{ localStorage.removeItem(GH_KEY); }catch(e){} admRecarregar('Chave apagada deste navegador.','publicar'); });
+  document.getElementById('pGH').addEventListener('click',async e=>{ const b=e.currentTarget, er=document.getElementById('pGHerr'); er.hidden=true; b.disabled=true; b.textContent='Publicando…';
+    try{ const tudo=edLimpo(mesclarEd(ED_ARQ,ED_RASC)); await ghPublicar(ghCfg(),htmlAtualizado());
+      try{ localStorage.setItem(ED_PUB_KEY,JSON.stringify({t:Date.now(),ed:tudo})); localStorage.removeItem(ED_KEY); }catch(x){}
+      admRecarregar('Publicado! O site da equipe atualiza em alguns minutos.','publicar'); }
+    catch(err){ er.hidden=false; er.textContent=err.message||'Não foi possível publicar. Verifique a internet e a chave.'; b.disabled=false; b.textContent='Publicar agora no site'; } });
   document.getElementById('pBaixar').addEventListener('click',()=>{
-    try{ const blob=new Blob([htmlAtualizado()],{type:'text/html'}); const u=URL.createObjectURL(blob); const l=document.createElement('a'); l.href=u; l.download='central-de-conhecimento.html'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000); toast('Download iniciado.'); }
-    catch(e){ const p=document.getElementById('pErro'); p.hidden=false; p.textContent='O download foi bloqueado por este navegador. Abra o site direto no Chrome ou Edge e tente de novo.'; }
-  });
+    try{ const blob=new Blob([htmlAtualizado()],{type:'text/html'}); const u=URL.createObjectURL(blob); const l=document.createElement('a'); l.href=u; l.download='index.html'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000); toast('Download iniciado (index.html).'); }
+    catch(e){ const p=document.getElementById('pErro'); p.hidden=false; p.textContent='O download foi bloqueado por este navegador. Abra o site no Chrome ou Edge e tente de novo.'; } });
   document.getElementById('pLimpar').addEventListener('click',e=>{ const b=e.currentTarget;
-    if(b.dataset.conf!=='1'){ b.dataset.conf='1'; b.textContent='Confirmar: apagar rascunho'; return; }
-    ED_RASC={}; try{ localStorage.removeItem(ED_KEY); }catch(err){} admRecarregar('Rascunho apagado.','publicar'); });
+    if(b.dataset.conf!=='1'){ b.dataset.conf='1'; b.textContent='Confirmar: descartar tudo que não foi publicado'; return; }
+    ED_RASC={}; try{ localStorage.removeItem(ED_KEY); }catch(err){} admRecarregar('Alterações descartadas.','publicar'); });
 }
 function admSenha(c){
   c.innerHTML=`<form id="sForm" class="adm-card"><h2>Trocar a senha</h2>
