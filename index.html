@@ -478,6 +478,111 @@ footer.rod{font-size:14px}
 
 .adm-ed .campanha-frame iframe{pointer-events:none;height:320px}
 .adm-tool .t-pag{border-color:var(--c-sistemas);color:var(--c-sistemas)}
+
+/* ===== Projeto 01: Quem somos, integração, fluxos, ficha ===== */
+[data-a="quem-somos"]{--ac:#0f766e}
+.badge.obs{background:color-mix(in srgb,var(--muted) 18%,var(--surface));color:var(--muted);text-decoration:line-through}
+.manifesto{border-radius:20px;padding:24px 26px;background:linear-gradient(125deg,var(--hero1),var(--hero2) 60%,var(--hero3));color:#fff;display:flex;flex-direction:column;gap:8px}
+.manifesto.prop{background:linear-gradient(120deg,#7a3fe0,#e0306f)}
+.manifesto .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--sol)}
+.manifesto.prop .lbl{color:#ffe3a3}
+.manifesto p{font-family:var(--serif);font-size:clamp(18px,2.3vw,23px);line-height:1.45;color:#fff}
+.manifesto b{color:#fff}
+.pilares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pilares div{border-radius:14px;padding:18px;background:var(--ac-soft);border:1.5px solid var(--ac-line);text-align:center;font-size:17px;color:var(--ac)}
+.btn-ac{display:inline-flex;padding:12px 20px;border-radius:999px;background:var(--ac);color:#fff!important;text-decoration:none!important;font-weight:700}
+.valgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.val{position:relative;border-radius:16px;padding:18px 18px 16px 70px;background:var(--surface);border:1.5px solid var(--ac-line);display:flex;flex-direction:column;gap:3px}
+.val .n{position:absolute;left:16px;top:16px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--ac);color:#fff;font-weight:800;font-size:15px}
+.val b{font-size:19px;color:var(--ac)}
+.val em{font-style:normal;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.val p{font-size:15.5px;margin-top:4px}
+.buscamos th.sim{background:color-mix(in srgb,var(--green) 16%,var(--surface));color:var(--green)}
+.buscamos th.nao{background:var(--red-soft);color:var(--red)}
+.buscamos td{width:50%}
+/* ficha do procedimento */
+.ficha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:14px;overflow:hidden;background:var(--surface);border:1.5px solid var(--ac-line)}
+.ficha>div{background:var(--surface);box-shadow:0 0 0 .75px var(--ac-line);padding:10px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.ficha>div.reg{grid-column:1/-1;background:var(--ac-soft)}
+.ficha small{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted)}
+.ficha b{font-size:14.5px;overflow-wrap:anywhere}
+/* fluxos */
+.fluxo{display:flex;flex-direction:column;gap:0;position:relative}
+.fluxo>*{position:relative;margin-left:22px;padding-left:30px;padding-bottom:16px;border-left:3px solid var(--ac-line)}
+.fluxo>*:last-child{border-left-color:transparent;padding-bottom:0}
+.fx-no{display:block}
+.fx-no>div{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;font-size:16px}
+.fx-no>div b{display:block;font-size:17px;margin-bottom:2px}
+.fx-n{position:absolute;left:-20px;top:4px;width:37px;height:37px;border-radius:50%;background:var(--ac);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;box-shadow:0 0 0 4px var(--bg,#fff)}
+.fx-dec::before{content:"?";position:absolute;left:-17px;top:6px;width:30px;height:30px;transform:rotate(45deg);border-radius:6px;background:var(--sol);box-shadow:0 0 0 4px var(--bg,#fff)}
+.fx-dec::after{content:"?";position:absolute;left:-6px;top:9px;font-weight:900;color:#3b2a00;font-size:16px}
+.fx-dec{display:flex;flex-direction:column;gap:8px}
+.fx-q{font-size:17px;background:color-mix(in srgb,var(--sol) 22%,var(--surface));border:1.5px solid color-mix(in srgb,var(--sol) 60%,var(--line));border-radius:12px;padding:10px 14px}
+.fx-ramos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.fx-r{border-radius:12px;padding:10px 14px;background:var(--surface);border:1.5px dashed var(--line);font-size:15px}
+.fx-r span{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.fx-r span{color:var(--ac)}
+.fx-fim{margin-left:22px;border:0!important;padding:14px 18px!important;border-radius:14px;background:var(--green-soft);color:var(--fg);font-size:16px;font-weight:600}
+.fluxos-home{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fxh{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;text-decoration:none;color:var(--fg);background:var(--surface);border:1.5px solid var(--ac-line);box-shadow:var(--sh1,none);transition:transform .15s}
+.fxh:hover{transform:translateY(-2px);border-color:var(--ac)}
+.fxh>span:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.fxh small{font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--ac)}
+.fxh b{font-size:16.5px;line-height:1.25}
+.fxh em{font-style:normal;font-weight:800;color:var(--ac);font-size:20px}
+.fxh-ic{width:44px;height:44px;flex-shrink:0;border-radius:12px;display:grid;place-items:center;background:var(--sol);color:#3b2a00}
+.fxh-ic svg{width:24px;height:24px}
+/* cultura + trilha na home */
+.cultura2{margin-top:44px;display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.cultura2 .valores{margin-top:0;text-decoration:none}
+.cultura2 .valores em,.trilha-home em{font-style:normal;font-weight:800;margin-top:6px}
+.trilha-home{border-radius:24px;padding:26px 28px;background:linear-gradient(130deg,#0f766e,#14866a);color:#fff;text-decoration:none;display:flex;flex-direction:column;gap:6px;box-shadow:var(--sh2)}
+.trilha-home .eb2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--sol)}
+.trilha-home b{font-family:var(--serif);font-size:26px}
+.tbar{display:block;height:9px;border-radius:9px;background:rgba(127,127,127,.25);overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--sol);border-radius:9px;transition:width .3s}
+/* trilha */
+.trilha-prog{display:flex;flex-direction:column;gap:8px;padding:14px 18px;border-radius:14px;background:var(--ac-soft);border:1.5px solid var(--ac-line)}
+.trilha-prog b{font-size:17px}
+.trilha{display:flex;flex-direction:column;gap:12px}
+.mod{display:flex;gap:16px;padding:16px 18px;border-radius:16px;background:var(--surface);border:1.5px solid var(--line);transition:border-color .2s,background .2s}
+.mod-n{width:42px;height:42px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:var(--ac-soft);color:var(--ac);font-weight:800;font-size:18px;border:2px solid var(--ac-line)}
+.mod.feito{border-color:var(--green);background:color-mix(in srgb,var(--green) 6%,var(--surface))}
+.mod.feito .mod-n{background:var(--green);color:#fff;border-color:var(--green)}
+.mod-c{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
+.mod-c>b{font-size:19px}
+.mod-c p{font-size:15.5px}
+.mod-c small{font-size:13.5px;color:var(--muted)}
+.mod-c .rel{display:flex;flex-wrap:wrap;gap:6px}
+.mod-c .chip em{font-style:normal;opacity:.7}
+.mod-ok{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-weight:700;font-size:15px;padding:8px 14px;border-radius:999px;background:var(--ac-soft);cursor:pointer}
+.mod-ok input{width:20px;height:20px;accent-color:var(--green)}
+.trilha-fim{padding:20px;border-radius:16px;background:var(--green-soft);border:1.5px solid var(--green);display:flex;flex-direction:column;gap:10px}
+.trilha-fim .t{font-size:20px;color:var(--green)}
+.trilha-campos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trilha-campos input,.modal textarea{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);width:100%}
+.acoes{display:flex;flex-wrap:wrap;gap:8px}
+/* ajuda */
+.ajuda-barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-radius:14px;border:1.5px dashed var(--line);background:var(--surface)}
+.ajuda-barra span{font-weight:600;color:var(--muted)}
+.modal-fundo{position:fixed;inset:0;z-index:200;background:rgba(10,20,15,.55);display:grid;place-items:center;padding:16px}
+.modal{position:relative;width:min(520px,100%);background:var(--surface);color:var(--fg);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:92vh;overflow:auto}
+.modal h2{font-size:22px}
+.modal-x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:0;background:var(--line);color:var(--fg);cursor:pointer;font-size:16px}
+.modal-ctx{font-size:14.5px;padding:8px 12px;border-radius:10px;background:var(--ac-soft,rgba(0,0,0,.04))}
+.arquivo{margin-top:24px;border-radius:14px;border:1.5px dashed var(--line);padding:12px 16px}
+.arquivo summary{cursor:pointer;font-weight:700;color:var(--muted)}
+.arquivo .cards{margin-top:10px;opacity:.75}
+.adm-ficha summary{cursor:pointer;padding:4px 0}
+.adm-ficha .adm-grade{margin-top:10px}
+.adm-link{border:0;background:none;color:var(--c-sistemas);font-weight:700;cursor:pointer;padding:4px 0;font-size:13px}
+.adm-tool .t-mod{background:color-mix(in srgb,var(--sol) 25%,var(--surface))}
+@media(max-width:900px){.fluxos-home{grid-template-columns:1fr 1fr}.cultura2{grid-template-columns:1fr}.ficha{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.fluxos-home,.valgrid,.pilares,.trilha-campos{grid-template-columns:1fr}.ficha>div.reg{grid-column:1/-1}.mod{padding:14px}.mod-n{width:36px;height:36px;font-size:16px}}
+
+
+@media(min-width:1400px){.topo-in{max-width:1340px}}
+@media(min-width:761px) and (max-width:1399px){.topo-in{flex-wrap:wrap;row-gap:0;padding-top:8px}.topo-in .marca{flex:1}.nav{order:3;flex-basis:100%;justify-content:center;padding-bottom:8px}}
 </style>
 </head>
 <body>
@@ -492,7 +597,7 @@ footer.rod{font-size:14px}
 
 <main id="app" tabindex="-1"></main>
 
-<footer class="rod">Central de Conhecimento M. Anjos · Avatim · Uso interno · Versão 1 — 04/11/2026 · <a href="#art-pendencias" style="color:inherit">Gestão: pendências</a> · <a href="#admin" style="color:inherit">Área da gestão</a></footer>
+<footer class="rod">Central de Conhecimento M. Anjos · Avatim · Uso interno · Versão 2 — 16/11/2026 · <a href="#art-pendencias" style="color:inherit">Gestão: pendências</a> · <a href="#admin" style="color:inherit">Área da gestão</a></footer>
 
 <script type="application/json" id="edicoes">{}</script>
 <script>
@@ -508,13 +613,14 @@ const ICON = {
   treinamentos:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-4 10 4-10 4z"/><path d="M6 10v5c3 2 9 2 12 0v-5"/></svg>'
 };
 const AREAS = [
+  {id:'quem-somos', curto:'Quem somos', nome:'Quem somos', desc:'História, propósito, os 10 valores e o que esperamos de cada pessoa do time.', cor:'#0f766e', icone:'coracao'},
   {id:'sistemas', curto:'Sistemas', nome:'Sistemas e Ferramentas', desc:'Como usar Exatto, PDV, App Retaguarda, MonAris e TrocaFácil.'},
   {id:'comercial', curto:'Vendas', nome:'Vendas e Clientes', desc:'Atendimento, WhatsApp, cadastro, captação e o método Vender é Convidar.'},
-  {id:'operacao', curto:'Rotina', nome:'Rotina da Loja', desc:'Abertura, fechamento, estoque, inventário, testers e insumos.'},
+  {id:'operacao', curto:'Rotina', nome:'Rotina da Loja', desc:'Fluxos rápidos, abertura, fechamento, estoque, inventário, testers e insumos.'},
   {id:'gestao', curto:'Gestão', nome:'Gestão e Resultados', desc:'Indicadores, metas e liderança da equipe.'},
   {id:'politicas', curto:'Regras', nome:'Regras e Políticas', desc:'Troca, caixa, cancelamento, antifraude, boleto e normas internas.'},
   {id:'campanhas', curto:'Campanhas', nome:'Campanhas do Mês', desc:'Lançamentos, kits e ações comerciais do mês, como o Natal de Ouro.', cor:'#c8102e', icone:'presente'},
-  {id:'treinamentos', curto:'Treinamentos', nome:'Treinamentos', desc:'Integração de novos colaboradores e materiais de capacitação.'}
+  {id:'treinamentos', curto:'Integração', nome:'Integração e Treinamentos', desc:'Trilha de integração para quem está chegando e materiais de capacitação.'}
 ];
 
 /* Fontes oficiais (nome exibido) */
@@ -2601,6 +2707,116 @@ add({id:'tf-solicitacoes', area:'sistemas', grupo:'Tutoriais TrocaFácil', tipo:
 <div class="box info"><b class="t">Canal oficial</b>Testers e transferências são solicitados somente pelo TrocaFácil. No tester, as fotos vão por e-mail; a solicitação, pelo TrocaFácil.</div>`});
 
 /* ---------------- OPERAÇÃO ---------------- */
+/* ---------------- PROJETO 01: FLUXOS RÁPIDOS ---------------- */
+(function(){
+const FX={vigencia:'16/11/2026', revisao:'16/05/2027', versao:'1', dono:'A definir', aprovador:'Gestão'};
+const fx=(o)=>add(Object.assign({area:'operacao', grupo:'Fluxos rápidos', tipo:'Fluxo', status:'div', fontes:['Projeto 01 — Central de Cultura, Integração e Operação (M. Anjos, 16/11/2026), seção 7']}, FX, o));
+
+fx({id:'fluxo-abertura', codigo:'FLX-01', title:'Fluxo: abrir a loja', pergunta:'Vou abrir a loja',
+ summary:'Da chegada ao início das vendas: segurança, ambiente, sistemas, fundo de caixa e foco do dia.',
+ executor:'Colaborador responsável pela abertura (conforme escala)', registro:'Microsoft To Do · lista Abertura de Loja',
+ tags:'fluxo abertura abrir loja chegada fundo de caixa troco divergência sistema fora impedimento contingência',
+ rel:['abertura-loja','rotina-todo','pol-caixa'],
+ body:`
+<div class="fluxo">
+<div class="fx-no"><span class="fx-n">1</span><div><b>Chegue conforme a escala</b>30 minutos antes da abertura. Verifique o ambiente externo e as condições de acesso e segurança antes de abrir.</div></div>
+<div class="fx-no"><span class="fx-n">2</span><div><b>Ambiente</b>Limpeza, iluminação, ar-condicionado, <a href="#art-fragrancia">aroma</a>, exposição, materiais e organização.</div></div>
+<div class="fx-no"><span class="fx-n">3</span><div><b>Equipamentos e sistemas</b>Computador, PDV, maquininhas e comunicação.</div></div>
+<div class="fx-dec"><b class="fx-q">Algum sistema ou equipamento não funciona?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Comunique a liderança e a área responsável pelo sistema. <a href="#art-pdv-exatto">Problemas no PDV</a>.</div><div class="fx-r nao"><span>Não</span>Siga para o passo 4.</div></div></div>
+<div class="fx-no"><span class="fx-n">4</span><div><b>Fundo de caixa</b>Confira e registre o valor no sistema, conforme o <a href="#art-pol-caixa">procedimento de caixa</a>.</div></div>
+<div class="fx-dec"><b class="fx-q">O fundo de caixa está diferente?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Registre e comunique a liderança <b>antes de iniciar as vendas</b>.</div><div class="fx-r nao"><span>Não</span>Siga para o passo 5.</div></div></div>
+<div class="fx-no"><span class="fx-n">5</span><div><b>Foco do dia</b>Recados, campanhas vigentes, meta e prioridades. Alinhe com a equipe.</div></div>
+<div class="fx-fim">✓ Registre a abertura na lista <b>Abertura de Loja</b> do Microsoft To Do.</div>
+</div>
+<p>Checklist completo: <a href="#art-abertura-loja">Abertura da loja</a>.</p>`});
+
+fx({id:'fluxo-atendimento', codigo:'FLX-02', title:'Fluxo: atender e vender', pergunta:'Cliente entrou na loja',
+ summary:'Acolher, descobrir, apresentar, confirmar, finalizar no sistema e convidar para o relacionamento.',
+ executor:'Consultora de vendas', registro:'PDV (venda) · MonAris (cadastro e Origem do Fluxo)',
+ tags:'fluxo atendimento venda vender cliente desconto pix empresa cnpj cadastro origem do fluxo promessa',
+ rel:['vc-passos','cadastro-clientes','pol-antifraude','alcadas'],
+ body:`
+<div class="fluxo">
+<div class="fx-no"><span class="fx-n">1</span><div><b>Receba e acolha</b>Descubra a necessidade, a ocasião, a preferência e a faixa de investimento, sem constranger.</div></div>
+<div class="fx-no"><span class="fx-n">2</span><div><b>Apresente opções</b>Explique as características com informações confirmadas. Deixe experimentar e mostre combinações.</div></div>
+<div class="fx-dec"><b class="fx-q">O cliente pediu desconto ou condição especial?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Não prometa. Só com aprovação da <b>gestão</b>. Veja <a href="#art-alcadas">Quem aprova o quê</a>.</div><div class="fx-r nao"><span>Não</span>Siga para o passo 3.</div></div></div>
+<div class="fx-no"><span class="fx-n">3</span><div><b>Confirme antes de fechar</b>Produto, quantidade, preço vigente, disponibilidade e condições autorizadas.</div></div>
+<div class="fx-dec"><b class="fx-q">Como o cliente vai pagar?</b><div class="fx-ramos"><div class="fx-r"><span>Pix ou comprovante</span>Não libere. Encaminhe ao financeiro e aguarde o aval. <a href="#art-pol-antifraude">Antifraude</a>.</div><div class="fx-r"><span>Empresa (CNPJ)</span>Siga <a href="#art-nf-empresas">NF para empresas</a>.</div><div class="fx-r nao"><span>Outros meios</span>Finalize no PDV e no meio de pagamento homologado.</div></div></div>
+<div class="fx-no"><span class="fx-n">4</span><div><b>Entregue e oriente</b>Explique o uso do produto quando fizer sentido.</div></div>
+<div class="fx-dec"><b class="fx-q">Cliente novo, veio por Instagram, Facebook ou Google, ou teve desconto ou promoção?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Cadastro obrigatório e lançamento no <a href="#art-cadastro-clientes">Origem do Fluxo</a>.</div><div class="fx-r nao"><span>Não</span>Convide para o cadastro, com consentimento.</div></div></div>
+<div class="fx-fim">✓ Teve dúvida, reclamação ou exceção? Não improvise: consulte a Central e escale. Veja <a href="#art-fluxo-reclamacao">Fluxo: reclamação</a>.</div>
+</div>
+<p>Método completo: <a href="#art-vc-passos">O passo a passo do atendimento</a>.</p>`});
+
+fx({id:'fluxo-reclamacao', codigo:'FLX-03', title:'Fluxo: reclamação ou insatisfação', pergunta:'Cliente reclamou',
+ summary:'Ouvir, entender, classificar, resolver dentro da alçada ou escalar, registrar e confirmar com o cliente.',
+ executor:'Quem atendeu o cliente, com apoio da liderança', registro:'E-mail à área responsável + sistema do caso (TrocaFácil, PDV)',
+ tags:'fluxo reclamação insatisfação cliente bravo reclamar troca defeito cancelamento atraso reembolso ocorrência escalar',
+ rel:['pol-trocas','defeitos','pol-cancelamento','orientacoes-areas','alcadas'],
+ body:`
+<div class="fluxo">
+<div class="fx-no"><span class="fx-n">1</span><div><b>Ouça sem interromper</b>Acolha sem discutir e sem procurar culpados.</div></div>
+<div class="fx-no"><span class="fx-n">2</span><div><b>Junte as informações</b>Pedido, data, loja, produto, comprovante e relato. Só os dados necessários.</div></div>
+<div class="fx-dec"><b class="fx-q">O que o cliente precisa?</b><div class="fx-ramos">
+<div class="fx-r"><span>Trocar</span><a href="#art-pol-trocas">Política de Trocas</a>: 20 dias, cupom, validade mínima de 3 meses e cadastro.</div>
+<div class="fx-r"><span>Produto com defeito</span><a href="#art-defeitos">Produtos com defeito</a>: caixa de defeitos e e-mail ao administrativo.</div>
+<div class="fx-r"><span>Cancelar</span>Só com autorização formal da gestão. <a href="#art-pol-cancelamento">Cancelamento</a>.</div>
+<div class="fx-r"><span>Outra situação</span>Veja <a href="#art-orientacoes-areas">quem resolve o quê</a>.</div></div></div>
+<div class="fx-dec"><b class="fx-q">Está dentro da alçada da loja?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Resolva seguindo a política.</div><div class="fx-r nao"><span>Não</span>Encaminhe a quem aprova (<a href="#art-alcadas">alçadas</a>) e diga ao cliente o próximo passo, <b>sem prometer prazo não confirmado</b>.</div></div></div>
+<div class="fx-no"><span class="fx-n">3</span><div><b>Registre</b>Ocorrência, evidências, responsável, status e retorno combinado. Por e-mail, com tipo de solicitação, seu nome e a unidade no assunto.</div></div>
+<div class="fx-fim">✓ Confirme a conclusão com o cliente.</div>
+</div>`});
+
+fx({id:'fluxo-recebimento', codigo:'FLX-04', title:'Fluxo: recebimento e divergência de mercadoria', pergunta:'Chegou mercadoria',
+ summary:'Conferir volumes e documento, separar divergências e avarias, registrar com evidência e comunicar o administrativo.',
+ executor:'Equipe da loja / responsável de estoque', aprovador:'Administrativo Comercial', registro:'E-mail ao Administrativo Comercial · TrocaFácil (transferências)',
+ tags:'fluxo recebimento receber mercadoria conferência divergência falta sobra avaria nota fiscal sku lote volume caixa',
+ rel:['divergencias','defeitos','transferencias'],
+ body:`
+<div class="fluxo">
+<div class="fx-no"><span class="fx-n">1</span><div><b>Confira volumes e documento</b>Quantidade de volumes, integridade das embalagens e nota fiscal.</div></div>
+<div class="fx-no"><span class="fx-n">2</span><div><b>Compare item a item</b>Produtos e quantidades físicas contra a nota ou o registro do sistema.</div></div>
+<div class="fx-dec"><b class="fx-q">Encontrou falta, sobra, avaria ou item não identificado?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Separe os itens. <b>Não ajuste estoque</b> sem autorização. Siga o passo 3.</div><div class="fx-r nao"><span>Não</span>Guarde a mercadoria conforme a <a href="#art-organizacao-estoque">organização do estoque</a>.</div></div></div>
+<div class="fx-no"><span class="fx-n">3</span><div><b>Registre com evidência</b>Fotos, nota fiscal, código (SKU), quantidade e lote, quando houver.</div></div>
+<div class="fx-no"><span class="fx-n">4</span><div><b>Comunique e aguarde</b>Envie ao Administrativo Comercial e aguarde a orientação de ajuste ou devolução. Produto com defeito vai para a <a href="#art-defeitos">caixa de defeitos</a>.</div></div>
+<div class="fx-fim">✓ Guarde as evidências e confira se o sistema ficou correto depois da solução.</div>
+</div>`});
+
+fx({id:'fluxo-transferencia', codigo:'FLX-05', title:'Fluxo: transferência entre lojas', pergunta:'Preciso de produto de outra loja',
+ summary:'Pedido no TrocaFácil, aprovação do administrador, conferência, nota fiscal, retirada com formulário e conferência no destino.',
+ executor:'Lojas de origem e destino', aprovador:'Administrador', registro:'TrocaFácil · menu Transferências',
+ tags:'fluxo transferência transferir outra loja trocafácil aprovação nota fiscal motorista lalamove uber formulário retirada divergência',
+ rel:['transferencias','tf-solicitacoes','frete-transporte'],
+ body:`
+<div class="fluxo">
+<div class="fx-no"><span class="fx-n">1</span><div><b>Peça no TrocaFácil</b>Menu Transferências, com produto, código, quantidade e motivo. <a href="#art-tf-solicitacoes">Passo a passo</a>.</div></div>
+<div class="fx-dec"><b class="fx-q">O administrador aprovou?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Ele indica de qual loja o produto sai. Siga o passo 2.</div><div class="fx-r nao"><span>Ainda não</span>Aguarde. <b>Nada é movimentado antes da aprovação</b>, nem "só por hoje".</div></div></div>
+<div class="fx-no"><span class="fx-n">2</span><div><b>Loja de origem separa e confere</b>Identifique e confira os itens antes do envio. Nota fiscal obrigatória.</div></div>
+<div class="fx-no"><span class="fx-n">3</span><div><b>Transporte</b>Quem chama o motorista é o Administrativo. Preencha o Formulário de Retirada e Coleta com a assinatura do motorista. <a href="#art-frete-transporte">Frete e transporte</a>.</div></div>
+<div class="fx-no"><span class="fx-n">4</span><div><b>Loja de destino confere</b>Quantidade, código e estado dos produtos. Acompanhe o status no TrocaFácil.</div></div>
+<div class="fx-dec"><b class="fx-q">Chegou diferente do pedido?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Acione o gestor imediatamente.</div><div class="fx-r nao"><span>Não</span>Transferência concluída.</div></div></div>
+<div class="fx-fim">✓ A pendência só fecha quando o saldo estiver certo nas duas lojas.</div>
+</div>`});
+
+fx({id:'fluxo-fechamento', codigo:'FLX-06', title:'Fluxo: fechar a loja', pergunta:'Vou fechar a loja',
+ summary:'Conferir vendas e recebimentos, informar o frete, fechar no TrocaFácil, organizar e ativar a segurança.',
+ executor:'Equipe do fechamento', registro:'TrocaFácil · Fechamento (automatizado, sem planilha)',
+ tags:'fluxo fechamento fechar loja caixa frete divergência sangria trocafácil alarme segurança conferência',
+ rel:['fechamento-loja','tf-fechamento','pol-caixa'],
+ body:`
+<div class="fluxo">
+<div class="fx-no"><span class="fx-n">1</span><div><b>Comece 10 minutos antes</b>Ar-condicionado desligado 30 minutos antes do horário oficial.</div></div>
+<div class="fx-no"><span class="fx-n">2</span><div><b>Confira vendas e recebimentos</b>Vendas no Exatto, comprovantes, cartão, trocas, cancelamentos e cobranças manuais.</div></div>
+<div class="fx-dec"><b class="fx-q">Teve frete hoje?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Informe <b>todo</b> frete no fechamento, pago ou não pelo cliente.</div><div class="fx-r nao"><span>Não</span>Siga para a próxima pergunta.</div></div></div>
+<div class="fx-dec"><b class="fx-q">Os valores bateram?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>Siga para o passo 3.</div><div class="fx-r nao"><span>Não</span>Registre a diferença e comunique na hora. <b>Nada de compensação ou ajuste informal.</b></div></div></div>
+<div class="fx-no"><span class="fx-n">3</span><div><b>Feche no TrocaFácil</b>Confira se as trocas do dia estão registradas e faça o <a href="#art-tf-fechamento">fechamento</a>.</div></div>
+<div class="fx-no"><span class="fx-n">4</span><div><b>Organize e proteja</b>Fundo de caixa no cofre, loja limpa, equipamentos desligados, todas as áreas inspecionadas. Tranque e ative o alarme.</div></div>
+<div class="fx-fim">✓ Sangria só com Fátima ou César presentes. Veja <a href="#art-pol-caixa">Controle de caixa</a>.</div>
+</div>
+<p>Checklist completo: <a href="#art-fechamento-loja">Operação de fechamento</a>.</p>`});
+})();
+
+
 add({id:'abertura-loja', area:'operacao', grupo:'Rotinas do dia', tipo:'Checklist', title:'1 · Abertura da loja',
  summary:'Chegar 30 minutos antes e conferir sistemas, caixa, materiais, loja, testers e o foco do dia com a equipe.',
  tags:'abertura abrir loja manhã rotina diária chave alarme fundo de caixa troco login máquina maquininha cartão vitrine testers kits meta do dia',
@@ -3692,21 +3908,25 @@ add({id:'glossario', area:'gestao', grupo:'Indicadores', tipo:'Artigo', title:'G
 <p>Onde consultar no MonAris: <a href="#art-mon-dashboard">Dashboard</a>, <a href="#art-mon-metas">Metas e KPIs</a>, <a href="#art-mon-performance">Minha Performance</a> e <a href="#art-mon-relatorios">Relatórios Estratégicos</a>.</p>`});
 
 /* ---------------- TREINAMENTOS ---------------- */
-add({id:'integracao', area:'treinamentos', grupo:'Integração', tipo:'Treinamento', title:'Integração de novos colaboradores',
- summary:'Roteiro de leitura dos materiais oficiais para quem está chegando.',
- tags:'integração novo colaborador onboarding treinamento leitura primeiro dia',
- fontes:['Documentos oficiais listados'], rel:[],
+add({id:'integracao', vigencia:'16/11/2026', area:'treinamentos', grupo:'Integração', tipo:'Treinamento', title:'Trilha de integração',
+ summary:'Os 9 módulos para quem está chegando na M. Anjos: marque cada um ao concluir e envie a confirmação à sua liderança.',
+ tags:'integração trilha novo colaborador onboarding boas-vindas primeiro dia primeiros dias treinamento leitura confirmação termo de ciência',
+ fontes:['Projeto 01 — Central de Cultura, Integração e Operação (M. Anjos, 16/11/2026), seção 10','Documentos oficiais listados em cada módulo'], rel:['historia','valores','boas-praticas'],
  body:`
-<p>Leia nesta ordem. Os itens com termo de ciência devem ser assinados.</p>
-<ol class="passos">
- <li><div><a href="#art-diretrizes">Diretrizes Operacionais</a> <span class="badge tipo">Termo de ciência</span></div></li>
- <li><div><a href="#art-trocafacil">TrocaFácil</a> e <a href="#art-exatto">Exatto Avatim</a></div></li>
- <li><div><a href="#art-abertura-loja">Abertura</a> e <a href="#art-fechamento-loja">fechamento</a> da loja, <a href="#art-rotina-semanal">rotina semanal</a></div></li>
- <li><div><a href="#art-pol-trocas">Política de Trocas</a>, <a href="#art-pol-cancelamento">Cancelamento</a> e <a href="#art-pol-caixa">Caixa</a></div></li>
- <li><div><a href="#art-pol-antifraude">Antifraude</a></div></li>
- <li><div><a href="#art-atendimento">Padrão de atendimento</a> e <a href="#art-cadastro-clientes">Cadastro de clientes</a></div></li>
- <li><div><a href="#art-boas-praticas">Manual de Boas Práticas 2026</a> <span class="badge tipo">Termo de compromisso</span></div></li>
-</ol>`});
+<p>Seja bem-vinda à M. Anjos! Faça os módulos na ordem. Ao terminar cada um, marque <b>Concluí este módulo</b>. No fim, envie a confirmação para a sua liderança, que valida a trilha com você.</p>
+<div class="trilha">
+<div class="mod" data-mod="1"><span class="mod-n">1</span><div class="mod-c"><b>Boas-vindas</b><p>História M. Anjos, sócios, propósito e como o grupo trabalha.</p><div class="rel"><a class="chip" href="#art-historia">História e propósito</a><a class="chip" href="#art-orientacoes-areas">Quem resolve o quê</a></div><small>Evidência: você explica o propósito e os canais de comunicação.</small></div></div>
+<div class="mod" data-mod="2"><span class="mod-n">2</span><div class="mod-c"><b>Cultura e valores</b><p>Os 10 valores, atitudes esperadas e atitudes não aceitas.</p><div class="rel"><a class="chip" href="#art-valores">Nossos 10 valores</a><a class="chip" href="#art-buscamos">O que buscamos</a></div><small>Evidência: conversa sobre situações reais com a liderança.</small></div></div>
+<div class="mod" data-mod="3"><span class="mod-n">3</span><div class="mod-c"><b>Conduta e comunicação</b><p>Respeito, ética, diversidade, confidencialidade, canais e a quem escalar.</p><div class="rel"><a class="chip" href="#art-diretrizes">Diretrizes Operacionais <em>· termo de ciência</em></a><a class="chip" href="#art-pol-comunicacao">E-mail e Teams</a><a class="chip" href="#art-comunicacao-falha">Comunicação falha</a><a class="chip" href="#art-alcadas">Quem aprova o quê</a></div><small>Evidência: quiz de situações com a liderança.</small></div></div>
+<div class="mod" data-mod="4"><span class="mod-n">4</span><div class="mod-c"><b>Experiência do cliente</b><p>Jornada, acolhimento, descoberta, recomendação e pós-venda.</p><div class="rel"><a class="chip" href="#art-atendimento">Padrão de atendimento</a><a class="chip" href="#art-vc-passos">Passo a passo do atendimento</a><a class="chip" href="#art-whatsapp">WhatsApp</a><a class="chip" href="#art-pol-trocas">Trocas</a><a class="chip" href="#art-pol-cancelamento">Cancelamento</a><a class="chip" href="#art-fluxo-reclamacao">Reclamação</a></div><small>Evidência: simulação de atendimento.</small></div></div>
+<div class="mod" data-mod="5"><span class="mod-n">5</span><div class="mod-c"><b>Rotina da loja</b><p>Abertura, organização, reposição, caixa, fechamento e segurança.</p><div class="rel"><a class="chip" href="#art-abertura-loja">Abertura</a><a class="chip" href="#art-fechamento-loja">Fechamento</a><a class="chip" href="#art-reposicao">Reposição</a><a class="chip" href="#art-pol-caixa">Caixa e sangria</a><a class="chip" href="#art-pol-antifraude">Antifraude</a><a class="chip" href="#art-seguranca-perdas">Segurança</a></div><small>Evidência: checklist acompanhado pela liderança.</small></div></div>
+<div class="mod" data-mod="6"><span class="mod-n">6</span><div class="mod-c"><b>Comercial e CRM</b><p>Metas, campanhas, cadastro, clientes inativos e aniversariantes.</p><div class="rel"><a class="chip" href="#art-rotina-comercial">Rotina comercial</a><a class="chip" href="#art-cadastro-clientes">Cadastro de clientes</a><a class="chip" href="#art-crm-rotinas">Rotinas de CRM</a><a class="chip" href="#art-monaris">MonAris</a></div><small>Evidência: exercício prático no sistema.</small></div></div>
+<div class="mod" data-mod="7"><span class="mod-n">7</span><div class="mod-c"><b>Produtos e experiência olfativa</b><p>Apresentação, demonstração e cuidados com o que se afirma sobre os produtos.</p><div class="rel"><a class="chip" href="#art-testers">Testers</a><a class="chip" href="#art-fragrancia">Fragrância na loja</a><a class="chip" href="#art-vc-segundo">O segundo produto</a></div><small>Evidência: demonstração orientada.</small></div></div>
+<div class="mod" data-mod="8"><span class="mod-n">8</span><div class="mod-c"><b>Sistemas</b><p>Acessos e tarefas essenciais nos sistemas autorizados.</p><div class="rel"><a class="chip" href="#art-pdv-exatto">PDV</a><a class="chip" href="#art-exatto">Exatto</a><a class="chip" href="#art-retaguarda">App Retaguarda</a><a class="chip" href="#art-trocafacil">TrocaFácil</a><a class="chip" href="#art-monaris">MonAris</a></div><small>Evidência: execução supervisionada.</small></div></div>
+<div class="mod" data-mod="9"><span class="mod-n">9</span><div class="mod-c"><b>Avaliação e acompanhamento</b><p>Feedback inicial, dúvidas e plano de desenvolvimento.</p><div class="rel"><a class="chip" href="#art-boas-praticas">Manual de Boas Práticas <em>· termo de compromisso</em></a><a class="chip" href="#art-pol-rh">Dúvidas de RH</a><a class="chip" href="#art-estudo">Estudo e evolução</a></div><small>Evidência: validação da liderança.</small></div></div>
+</div>
+<div class="box info"><b class="t">Termos</b>As <b>Diretrizes Operacionais</b> (termo de ciência) e o <b>Manual de Boas Práticas</b> (termo de compromisso) devem ser assinados com a sua liderança.</div>`});
+
 
 add({id:'boas-praticas', area:'treinamentos', grupo:'Alinhamento 2026', tipo:'Treinamento', title:'Manual de Boas Práticas e Apostila 2026',
  summary:'Conteúdo dos dois dias de alinhamento operacional e comercial, distribuído pelo portal.',
@@ -3790,7 +4010,7 @@ function lerJSON(t){ try{ return JSON.parse(t)||{}; }catch(e){ return {}; } }
 function edLimpo(e){ const r=JSON.parse(JSON.stringify(e||{}));
   for(const [id,p] of Object.entries(r.paginas||{})){ if(p._excluido===false) delete p._excluido; if(!Object.keys(p).length) delete r.paginas[id]; }
   for(const [id,p] of Object.entries(r.areas||{})){ if(p._excluida===false) delete p._excluida; if(!Object.keys(p).length) delete r.areas[id]; }
-  ['paginas','areas'].forEach(k=>{ if(r[k]&&!Object.keys(r[k]).length) delete r[k]; }); ['novidades','senha'].forEach(k=>{ if(r[k]==null) delete r[k]; });
+  ['paginas','areas'].forEach(k=>{ if(r[k]&&!Object.keys(r[k]).length) delete r[k]; }); ['novidades','senha','contato'].forEach(k=>{ if(r[k]==null) delete r[k]; });
   return r; }
 function edTexto(o){ return JSON.stringify(o,(k,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.keys(v).sort().reduce((a,x)=>(a[x]=v[x],a),{}):v); }
 const ED_PUB_KEY='mAnjosPublicado';
@@ -3801,14 +4021,176 @@ if(ED_PUB&&ED_PUB.ed){ if(edTexto(edLimpo(ED_ARQ_SITE))===edTexto(edLimpo(ED_PUB
 const ED_ARQ=PUB_PENDENTE?ED_PUB.ed:ED_ARQ_SITE;
 let ED_RASC={}; try{ ED_RASC=lerJSON(localStorage.getItem(ED_KEY)||'{}'); }catch(e){}
 function mesclarEd(a,b){
-  const r={paginas:Object.assign({},a.paginas||{}),areas:Object.assign({},a.areas||{}),novidades:a.novidades||null,senha:a.senha||null};
+  const r={paginas:Object.assign({},a.paginas||{}),areas:Object.assign({},a.areas||{}),novidades:a.novidades||null,senha:a.senha||null,contato:a.contato||null};
   for(const [id,d] of Object.entries(b.paginas||{})) r.paginas[id]=Object.assign({},r.paginas[id]||{},d);
   for(const [id,d] of Object.entries(b.areas||{})) r.areas[id]=Object.assign({},r.areas[id]||{},d);
-  if(b.novidades) r.novidades=b.novidades; if(b.senha) r.senha=b.senha;
+  if(b.novidades) r.novidades=b.novidades; if(b.senha) r.senha=b.senha; if(b.contato) r.contato=b.contato;
   return r;
 }
 if(Object.keys(ED_RASC).length&&edTexto(edLimpo(mesclarEd(ED_ARQ,ED_RASC)))===edTexto(edLimpo(ED_ARQ))){ ED_RASC={}; try{ localStorage.removeItem(ED_KEY); }catch(e){} }
 const ED=mesclarEd(ED_ARQ,ED_RASC);
+/* ---------------- PROJETO 01: QUEM SOMOS ---------------- */
+F.p01='Projeto 01 — Central de Cultura, Integração e Operação (M. Anjos, 16/11/2026)';
+add({id:'historia', vigencia:'16/11/2026', area:'quem-somos', grupo:'Nossa história', tipo:'Artigo', title:'História e propósito M. Anjos',
+ summary:'Como o Grupo nasceu, com Fátima e Cesar, e o propósito que orienta todas as decisões.',
+ tags:'história quem somos sócios fátima cesar césar propósito origem grupo m anjos empresa institucional boas-vindas',
+ fontes:[F.p01+', seção 2 (arte institucional)'], rel:['valores','buscamos','integracao'],
+ body:`
+<div class="manifesto"><span class="lbl">Nossa história</span>
+<p>O Grupo M. Anjos nasceu a partir da união e da visão empreendedora dos sócios <b>Fátima e Cesar</b>, profissionais com sólida trajetória no mundo corporativo. Após anos de experiência em gestão, processos e desenvolvimento de pessoas, surgiu o desejo de construir algo próprio: um varejo diferente, <b>mais humano, organizado e com propósito</b>.</p></div>
+<p>A partir dessa vivência, o Grupo foi estruturado com foco em <b>excelência operacional, comunicação clara e relacionamento próximo</b>, trazendo para o varejo práticas profissionais que garantam eficiência, padronização e crescimento sustentável.</p>
+<div class="manifesto prop"><span class="lbl">Nosso propósito</span>
+<p>Criar experiências que vão além da venda, valorizando cada detalhe do processo, da comunicação ao atendimento, sempre com responsabilidade, transparência e visão de longo prazo.</p></div>
+<h3>Nossos pilares</h3>
+<p>O Grupo M. Anjos acredita que um varejo forte se constrói com:</p>
+<div class="pilares"><div><b>Processos bem definidos</b></div><div><b>Pessoas engajadas</b></div><div><b>Comunicação fluida</b></div></div>
+<p>São esses pilares que orientam todas as decisões e ações.</p>
+<p><a class="btn-ac" href="#art-valores">Conheça nossos 10 valores →</a></p>`});
+
+add({id:'valores', vigencia:'16/11/2026', area:'quem-somos', grupo:'Nossa história', tipo:'Artigo', title:'Nossos 10 valores',
+ summary:'Ética, Equipe, Amor, Diversidade, Cliente, Resultados, Evolução, Encantamento, Motivação e Protagonismo — e como cada um aparece no dia a dia.',
+ tags:'valores cultura ética equipe amor diversidade inclusão cliente resultado evolução encantamento motivação bem-estar protagonismo protagonista comportamento',
+ fontes:[F.p01+', seção 3 (arte institucional "Valores M. Anjos")'], rel:['historia','buscamos'],
+ body:`
+<div class="valgrid">
+<div class="val"><span class="n">01</span><b>Ética</b><em>Nossa ÉTICA é inegociável</em><p>Agir com honestidade, registrar informações verdadeiras, respeitar políticas e confidencialidade.</p></div>
+<div class="val"><span class="n">02</span><b>Equipe</b><em>Valorizamos o Espírito de EQUIPE</em><p>Compartilhar informações, apoiar colegas e resolver problemas sem buscar culpados.</p></div>
+<div class="val"><span class="n">03</span><b>Amor</b><em>AMAMOS o que FAZEMOS</em><p>Cuidar da experiência, dos produtos, do ambiente e das relações.</p></div>
+<div class="val"><span class="n">04</span><b>Diversidade</b><em>Promovemos a DIVERSIDADE e a INCLUSÃO</em><p>Tratar todas as pessoas com respeito e sem discriminação.</p></div>
+<div class="val"><span class="n">05</span><b>Cliente</b><em>Trabalhamos para o CLIENTE</em><p>Ouvir, orientar e oferecer soluções coerentes, sem promessas que não possam ser cumpridas.</p></div>
+<div class="val"><span class="n">06</span><b>Resultados</b><em>Somos COMPROMETIDOS com o Resultado</em><p>Acompanhar indicadores e agir sobre desvios com responsabilidade.</p></div>
+<div class="val"><span class="n">07</span><b>Evolução</b><em>Incentivamos a EVOLUÇÃO Pessoal e Profissional</em><p>Aprender, pedir feedback e desenvolver habilidades.</p></div>
+<div class="val"><span class="n">08</span><b>Encantamento</b><em>Atendemos com ENCANTAMENTO</em><p>Criar atendimento atencioso e experiências consistentes.</p></div>
+<div class="val"><span class="n">09</span><b>Motivação</b><em>Somos MOTIVADOS pelo Bem-Estar</em><p>Manter um ambiente respeitoso, organizado e seguro.</p></div>
+<div class="val"><span class="n">10</span><b>Protagonismo</b><em>Agimos como PROTAGONISTAS</em><p>Assumir responsabilidade, antecipar riscos e comunicar impedimentos.</p></div>
+</div>
+<p class="src">Os nomes e as frases dos valores vêm da arte institucional. O texto "na prática" de cada cartão traduz o valor em comportamento observável.</p>`});
+
+add({id:'buscamos', vigencia:'16/11/2026', area:'quem-somos', grupo:'Nossa história', tipo:'Artigo', title:'O que buscamos e o que não queremos',
+ summary:'As atitudes que esperamos de cada pessoa do time e as que não combinam com a M. Anjos.',
+ tags:'o que buscamos não queremos atitude conduta comportamento esperado cultura integração postura',
+ fontes:[F.p01+', seção 4'], rel:['valores','historia','alcadas'], status:'div',
+ body:`
+<div class="tbl buscamos"><table><tr><th class="sim">✓ O que buscamos</th><th class="nao">✕ O que não queremos</th></tr>
+<tr><td>Atitudes éticas, responsáveis e transparentes.</td><td>Omissão, informação manipulada ou quebra de confiança.</td></tr>
+<tr><td>Comunicação clara, respeitosa e no canal correto.</td><td>Recados incompletos, ruídos, exposição ou conflitos improdutivos.</td></tr>
+<tr><td>Pessoas colaborativas, que compartilham conhecimento.</td><td>Competição interna prejudicial, retenção de informação e culpabilização.</td></tr>
+<tr><td>Atendimento acolhedor, consultivo e comprometido.</td><td>Indiferença, pressão inadequada ou promessas sem confirmação.</td></tr>
+<tr><td>Organização, padrão e cumprimento de processos.</td><td>Improviso recorrente, atalhos não autorizados e falta de registro.</td></tr>
+<tr><td>Foco em resultado com qualidade e sustentabilidade.</td><td>Buscar meta a qualquer custo, desrespeitando cliente, equipe ou controles.</td></tr>
+<tr><td>Protagonismo com respeito aos limites de autonomia.</td><td>Decisões fora da alçada, sem consulta ou aprovação necessária.</td></tr>
+<tr><td>Aprendizado contínuo e abertura a melhorias.</td><td>Resistência automática a feedback e repetição de erros sem ação.</td></tr></table></div>
+<div class="box info"><b class="t">Limites de autonomia</b>Na dúvida sobre quem pode aprovar uma exceção, consulte <a href="#art-alcadas">Quem aprova o quê</a> antes de decidir.</div>`});
+
+/* ---------------- PROJETO 01: QUEM APROVA / USO DA CENTRAL ---------------- */
+add({id:'alcadas', vigencia:'16/11/2026', area:'politicas', grupo:'Quem procurar', tipo:'Política', title:'Quem aprova o quê (alçadas)',
+ summary:'Desconto, cancelamento, sangria, Pix, transferência, frete, defeito e ajustes: quem decide cada exceção.',
+ tags:'alçada alçadas quem aprova aprovação autorização exceção limite autonomia escalar escalonamento desconto cancelamento sangria pix transferência frete defeito ajuste',
+ fontes:['Regras já publicadas nas páginas indicadas da Central', F.p01+', seção 9'], rel:['orientacoes-areas','buscamos'],
+ body:`
+<p>Antes de abrir uma exceção, confira quem tem a alçada. <b>Sem a aprovação indicada, a resposta ao cliente é: "vou confirmar e já te retorno".</b></p>
+<div class="tbl"><table><tr><th>Situação</th><th>Quem aprova ou decide</th><th>Regra</th></tr>
+<tr><td>Desconto ou condição comercial especial</td><td><b>Gestão</b> (não o administrativo)</td><td>Nunca prometa desconto sem aprovação. Cliente com desconto: cadastro + <a href="#art-cadastro-clientes">Origem do Fluxo</a>.</td></tr>
+<tr><td>Cancelamento de venda</td><td><b>Gestão</b>, com autorização formal</td><td><a href="#art-pol-cancelamento">Política de Cancelamento</a></td></tr>
+<tr><td>Sangria ou retirada de dinheiro</td><td>Só com <b>Fátima ou César presentes</b> na loja</td><td><a href="#art-pol-caixa">Controle de caixa e sangria</a></td></tr>
+<tr><td>Liberar produto pago por Pix ou comprovante</td><td><b>Financeiro</b> dá o aval</td><td><a href="#art-pol-antifraude">Antifraude</a></td></tr>
+<tr><td>Transferência entre lojas</td><td><b>Administrador</b> aprova e indica a loja de origem</td><td><a href="#art-transferencias">Transferência de estoque</a></td></tr>
+<tr><td>Frete e chamada de motorista</td><td><b>Administrativo</b>, com aprovação de quem tem a alçada</td><td><a href="#art-frete-transporte">Frete e transporte</a></td></tr>
+<tr><td>Troca por defeito de fabricação</td><td><b>Equipe responsável</b>, avaliado caso a caso</td><td><a href="#art-defeitos">Produtos com defeito</a></td></tr>
+<tr><td>Ajuste de estoque ou divergência</td><td><b>Administrativo Comercial</b></td><td><a href="#art-divergencias">Divergências de estoque</a></td></tr>
+<tr><td>Nota fiscal para empresa</td><td><b>Financeiro</b></td><td><a href="#art-nf-empresas">NF para empresas</a></td></tr>
+<tr><td>Ajuste de ponto além de 5</td><td><b>Gestão</b>, por e-mail</td><td><a href="#art-pol-rh">Dúvidas de RH</a></td></tr></table></div>
+<div class="box warn"><b class="t">Em construção</b>Os limites por valor (até quanto cada pessoa pode aprovar) ainda serão definidos pelos sócios. Até lá, toda exceção fora desta tabela vai para a gestão.</div>
+<p>Não sabe para qual área encaminhar? Veja a <a href="#art-orientacoes-areas">Central de Orientações</a>.</p>`});
+
+add({id:'uso-central', vigencia:'16/11/2026', area:'politicas', grupo:'Normas internas', tipo:'Política', title:'Como usar a Central (regras)',
+ summary:'O que a Central é e o que não é, como ler a ficha de cada procedimento e o que nunca colocar aqui.',
+ tags:'regras uso central governança versão revisão aprovado em validação obsoleto rascunho dono do processo sistema oficial senha dados pessoais ia',
+ fontes:[F.p01+', seções 6, 12 e 13'], rel:['alcadas','orientacoes-areas'],
+ body:`
+<h3>A Central é a versão oficial das orientações</h3>
+<p>Ela organiza em um só lugar o que antes ficava espalhado em WhatsApp, e-mails e na memória das pessoas. <b>Se a orientação está aqui como aprovada, é ela que vale.</b></p>
+<h3>Como ler a situação de uma página</h3>
+<div class="tbl"><table><tr><th>Situação</th><th>O que significa</th></tr>
+<tr><td><span class="badge ok">Aprovado</span> ou sem selo</td><td>Versão vigente. Siga.</td></tr>
+<tr><td><span class="badge div">Em validação</span></td><td>Conteúdo novo, ainda sendo conferido pelo dono do processo. Use como guia e, na dúvida, confirme com a liderança.</td></tr>
+<tr><td><span class="badge pend">Pendente</span></td><td>Falta uma informação oficial. Confirme com a liderança antes de agir.</td></tr>
+<tr><td><span class="badge obs">Obsoleto</span></td><td>Versão antiga, guardada só para consulta. <b>Não use.</b></td></tr></table></div>
+<h3>Ficha do procedimento</h3>
+<p>Os procedimentos trazem uma ficha com código, versão, vigência, próxima revisão, quem executa, quem aprova, o dono do processo e o <b>sistema oficial onde o registro acontece</b>. A revisão é semestral, ou antes, se mudar sistema, regra ou campanha.</p>
+<h3>O que a Central não faz</h3>
+<ul><li>Não substitui os sistemas oficiais (PDV, Exatto, TrocaFácil, MonAris), registros fiscais, controles financeiros ou documentos legais. O registro final é sempre no sistema indicado.</li>
+<li>Não guarda senhas, dados pessoais de clientes ou colaboradores, dados bancários completos nem documentos sensíveis.</li></ul>
+<div class="box alerta"><b class="t">Nunca</b>Cole dados de clientes, colaboradores, senhas ou documentos sensíveis em ferramentas de IA que não foram aprovadas pela empresa.</div>
+<h3>Não encontrou?</h3>
+<p>Use o botão <b>Não encontrei</b> no fim das páginas e da busca. Sua dúvida vira conteúdo novo. Para propor uma melhoria em um procedimento, use <b>Sugerir melhoria</b>.</p>`});
+
+/* ---------------- PROJETO 01: CRM ---------------- */
+add({id:'crm-rotinas', vigencia:'16/11/2026', area:'comercial', grupo:'Relacionamento', tipo:'Procedimento', title:'Rotinas de CRM: inativos, aniversariantes e empresas',
+ summary:'Aniversariantes, clientes inativos, empresas e desafios comerciais: como trabalhar cada lista e onde registrar.',
+ tags:'crm inativos inativas aniversariantes empresas desafio 100 contatos 10 empresas campanha meta abordagem lista relacionamento',
+ fontes:[F.p01+', seção 8'], rel:['rotina-comercial','whatsapp','vc-empresas','cadastro-clientes'],
+ body:`
+<div class="tbl"><table><tr><th>Lista</th><th>Como trabalhar</th><th>Onde registrar</th></tr>
+<tr><td><b>Aniversariantes</b></td><td>Trabalhe todos os aniversariantes disponíveis no cadastro, respeitando o consentimento e as regras de contato.</td><td>MonAris · Clientes Contatados</td></tr>
+<tr><td><b>Clientes inativos</b></td><td>Contato ativo pelo WhatsApp, personalizado com nome e histórico.</td><td>MonAris · Clientes Contatados</td></tr>
+<tr><td><b>Empresas</b></td><td>Prospecção e relacionamento conforme o <a href="#art-vc-empresas">fluxo de venda para empresas</a>.</td><td>Conforme o fluxo B2B</td></tr></table></div>
+<h3>Desafios comerciais</h3>
+<p>Já foram trabalhados desafios com <b>100 contatos de clientes inativos por loja</b> e <b>10 empresas por loja</b>.</p>
+<div class="box warn"><b class="t">Só vale quando estiver vigente</b>Um desafio só vale no período divulgado pela gestão. Confira em <a href="#area-campanhas">Campanhas do Mês</a> o que está valendo agora. Campanha antiga não é regra.</div>
+<h3>Campanhas</h3>
+<p>Toda campanha publicada traz: mecânica, período, lojas participantes, quem pode participar, exceções, como registrar no PDV e quem tira as dúvidas.</p>
+<h3>Metas</h3>
+<p>Acompanhe a meta por loja e período, o realizado, o percentual e o ritmo necessário. Ranking só depois de conferidos os critérios.</p>
+<h3>Abordagem</h3>
+<div class="box ok"><b class="t">Do jeito M. Anjos</b>Comunicação direta, humana e consultiva. Nada de texto robótico, nem promessa que não foi autorizada.</div>`});
+
+/* ---------------- PROJETO 01: INTERNO ---------------- */
+add({id:'projeto-01', area:'gestao', grupo:'Projeto 01', tipo:'Registro', interno:true, title:'Projeto 01: plano de evolução da Central',
+ summary:'Gaps, fases de implantação, indicadores e decisões da reunião. Visível só para a gestão.',
+ tags:'projeto 01 plano implantação gaps indicadores decisões governança raci piloto',
+ fontes:[F.p01], rel:['uso-central','alcadas'],
+ body:`
+<div class="box info"><b class="t">Só gestão</b>Esta página não aparece para a equipe nem na busca.</div>
+<h3>O que já está na Central</h3>
+<ul><li>Áreas <b>Quem somos</b> (história, propósito, 10 valores, o que buscamos) e <b>Trilha de integração</b> com 9 módulos e confirmação de leitura.</li>
+<li><b>Fluxos rápidos</b>: abertura, atendimento, reclamação, recebimento, transferência e fechamento (em validação).</li>
+<li><b>Quem aprova o quê</b> com as alçadas já confirmadas.</li>
+<li><b>Ficha do procedimento</b>: código, versão, vigência, revisão, responsáveis, sistema oficial e histórico de alterações. Situações: rascunho, em validação, aprovado e obsoleto (arquivado).</li>
+<li>Botões <b>Não encontrei</b> e <b>Sugerir melhoria</b> (enviam por WhatsApp ou e-mail; configure o destino em Área da gestão → Contato).</li>
+<li>Modelos prontos no editor: POP, Fluxo e Ficha de campanha.</li></ul>
+<h3>Gaps a fechar</h3>
+<div class="tbl"><table><tr><th>Gap</th><th>O que a Central oferece</th><th>Dono a indicar</th></tr>
+<tr><td>Orientações dispersas em WhatsApp, e-mails e memória.</td><td>POP único, versão vigente, busca e histórico.</td><td>Gestão / dono do processo</td></tr>
+<tr><td>Execução diferente entre lojas.</td><td>Checklist comum e auditoria amostral com critérios iguais.</td><td>Operação / líderes</td></tr>
+<tr><td>Dúvida sobre quem aprova exceções.</td><td>Matriz de alçadas por tipo e valor, validada pelos sócios.</td><td>Sócios / Financeiro / RH</td></tr>
+<tr><td>Transferências e saldos divergentes.</td><td>Fluxo com dupla conferência, evidências e responsável.</td><td>Estoque / ADM</td></tr>
+<tr><td>Falha de comunicação sobre campanha ou preço.</td><td>Ficha padrão da campanha com vigência, regras e FAQ.</td><td>Comercial / Marketing</td></tr>
+<tr><td>Registros incompletos de ocorrências.</td><td>Formulário padronizado com status, evidência, responsável e prazo.</td><td>Líder da área</td></tr>
+<tr><td>Conhecimento concentrado em pessoas-chave.</td><td>Trilha de integração, vídeos curtos, substitutos e documentação.</td><td>Gestores de área</td></tr>
+<tr><td>Indicadores sem rotina de análise.</td><td>Painel, reunião de acompanhamento e plano de ação.</td><td>Comercial / Gestão</td></tr></table></div>
+<h3>Fases de implantação</h3>
+<ol class="passos">
+<li><div><b>Inventário:</b> páginas, links, arquivos, duplicidades e conteúdos vencidos com status manter, revisar, arquivar ou criar.</div></li>
+<li><div><b>Governança:</b> dono, aprovador, público, acesso e periodicidade de revisão por área (matriz RACI).</div></li>
+<li><div><b>Arquitetura:</b> menus, categorias, busca, tags e página de cada POP.</div></li>
+<li><div><b>Conteúdo-piloto:</b> 5 a 8 procedimentos (abertura, fechamento, atendimento, caixa, recebimento, transferência, CRM e campanha), testados com loja e ADM.</div></li>
+<li><div><b>Integração:</b> trilha de boas-vindas, valores, avaliação e confirmação de leitura.</div></li>
+<li><div><b>Expansão:</b> Financeiro, ADM, RH, Comercial e Estoque validam seus conteúdos.</div></li>
+<li><div><b>Medição:</b> acessos, dúvidas recorrentes, erros, aderência aos checklists e atualização. Revisão mensal.</div></li></ol>
+<h3>Indicadores de sucesso</h3>
+<ul><li>Procedimentos prioritários publicados e aprovados (%).</li><li>Colaboradores que concluíram a integração (%).</li><li>Checklists concluídos e qualidade das evidências.</li><li>Redução de dúvidas repetidas e retrabalho.</li><li>Tempo médio para localizar uma orientação.</li><li>Divergências recorrentes de caixa, estoque, transferência e cadastro.</li><li>Procedimentos revisados no prazo (%).</li></ul>
+<h3>Decisões da reunião</h3>
+<ol class="passos">
+<li><div>Aprovar a evolução da Central existente, sem portal paralelo.</div></li>
+<li><div>Indicar patrocinador executivo e responsável pela implantação e conteúdo.</div></li>
+<li><div>Definir donos e aprovadores por área: Loja, Comercial, Financeiro, ADM, RH, Estoque/TI.</div></li>
+<li><div>Validar valores, linguagem de integração e "o que buscamos / não queremos".</div></li>
+<li><div>Escolher os procedimentos-piloto e as lojas de teste.</div></li>
+<li><div>Definir permissões, frequência de revisão e forma de registrar o aceite.</div></li></ol>
+<div class="box warn"><b class="t">Falta receber</b>A arte "Cultura M. Anjos" em alta resolução (o texto do print está ilegível) e o material de famílias olfativas para o módulo 7 da integração.</div>`});
+
+
 const TAREFAS_PADRAO = [
   ['tf-troca','Fazer uma troca','TrocaFácil + Pagar Troca no Exatto'],
   ['mon-painel-dia','Lançar as vendas do dia','Painel do Dia no MonAris'],
@@ -3852,13 +4234,16 @@ for(const [id,d] of Object.entries(ED.areas||{})){
   Object.assign(ar,d);
 }
 for(let i=AREAS.length-1;i>=0;i--) if(AREAS[i]._excluida) AREAS.splice(i,1);
+ICON.coracao='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>';
+ICON.fluxo='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><path d="M6.5 9v3.5a2 2 0 0 0 2 2H17.5V15"/></svg>';
 const AREAS_TODAS=AREAS.slice();
 (function(){ let css=''; AREAS.forEach(a=>{ if(a.icone&&ICON[a.icone]) ICON[a.id]=ICON[a.icone]; if(!ICON[a.id]) ICON[a.id]=ICON.estrela; if(a.cor&&/^#[0-9a-f]{3,8}$/i.test(a.cor)) css+=`[data-a="${a.id}"]{--ac:${a.cor}}`; });
   if(css){ const st=document.createElement('style'); st.id='coresAreas'; st.textContent=css; document.head.appendChild(st); } })();
 const areaVisivel=id=>{ const x=AREAS.find(y=>y.id===id); return !!x&&!x.oculta; };
 const TODOS=A.slice();
 /* Páginas ocultas ou excluídas não aparecem no portal nem na busca */
-for(let i=A.length-1;i>=0;i--){ if(A[i].oculto||A[i]._excluido||!areaVisivel(A[i].area)) A.splice(i,1); }
+for(let i=A.length-1;i>=0;i--){ if(A[i].oculto||A[i]._excluido||!areaVisivel(A[i].area)||(A[i].status==='rasc'&&!admLogado())) A.splice(i,1); }
+const vigente=a=>a.status!=='obs';
 
 const raizW = t => t.length>4 ? t.replace(/(oes|aes|s|es)$/,'') : t;
 const palavras = t => new Set(t.replace(/\./g,'').split(/[^a-z0-9%]+/));
@@ -3869,7 +4254,7 @@ function buscar(q){
   const termos = norm(q).split(/[^a-z0-9%$]+/).filter(t=>t && !STOP.has(t)).map(t=>SINON[t]||t);
   if(!termos.length) return [];
   const raiz = t => t.length>4 ? t.replace(/(oes|aes|s|es)$/,'') : t;
-  return A.filter(a=>!a.interno).map(a=>{
+  return A.filter(a=>!a.interno&&vigente(a)).map(a=>{
     let s=0, hit=0;
     termos.forEach(t=>{
       const r=raiz(t); let h=false;
@@ -3902,7 +4287,7 @@ const esc = s => s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':
 })();
 const area = id => AREAS.find(x=>x.id===id);
 const byId = id => A.find(x=>x.id===id);
-const STATUS = {ok:'', pend:'<span class="badge pend">Pendente</span>', div:'<span class="badge div">Em validação</span>'};
+const STATUS = {ok:'', pend:'<span class="badge pend">Pendente</span>', div:'<span class="badge div">Em validação</span>', rasc:'<span class="badge tipo">Rascunho</span>', obs:'<span class="badge obs">Obsoleto</span>'};
 
 function card(a){
   return `<a class="card" data-a="${a.area}" href="#art-${a.id}"><b><span class="pt"></span>${esc(a.title)}</b><span class="bd">${STATUS[a.status]} <span class="badge tipo">${a.tipo}</span></span><p>${esc(a.summary)}</p></a>`;
@@ -3917,17 +4302,23 @@ function nav(cur){
 
 
 
-const NOV_PADRAO=[{"data": "04/11/2026", "titulo": "Lançamentos Natal de Ouro", "texto": "Tudo o que chegou da campanha de Natal: kits, deo colônia e linhas novas. Primeira fase à venda desde 26/10; Linha Terroir só depois de 30/11.", "link": "natal-ouro", "url": ""}, {"data": "23/10/2026", "titulo": "Frete, transporte e segurança", "texto": "Todo frete vai no fechamento do caixa, pago ou não pelo cliente. Novo procedimento de Lalamove e Uber com formulário de retirada assinado e orientações de prevenção de roubos e perdas.", "link": "frete-transporte"}, {"data": "23/10/2026", "titulo": "Quem procurar + imagens do manual", "texto": "Central de Orientações (RH, Financeiro, Administrativo Comercial e Gestão), botões para abrir TrocaFácil e MonAris e as páginas do Manual de Operações ilustrando cada rotina.", "link": "orientacoes-areas"}, {"data": "23/10/2026", "titulo": "Dúvidas de RH", "texto": "Ponto pelo celular ou computador da loja, até 5 ajustes, atestado em 48h e ativação da Conexa Saúde.", "link": "pol-rh"}, {"data": "22/10/2026", "titulo": "WhatsApp: apresentação e 10 minutos", "texto": "Toda vendedora se apresenta pelo nome e responde em até 10 minutos. Tudo de WhatsApp agora numa página só.", "link": "whatsapp"}, {"data": "22/10/2026", "titulo": "Origem do Fluxo + cadastro", "texto": "Condição especial, cliente novo e cliente de Instagram, Facebook ou Google: lançar no Origem do Fluxo e cadastrar.", "link": "cadastro-clientes"}, {"data": "22/10/2026", "titulo": "Manual completo do MonAris", "texto": "Os 16 capítulos numa página só.", "link": "monaris"}, {"data": "22/10/2026", "titulo": "Regras atualizadas", "texto": "Troca sem foto no grupo e validade mínima de 3 meses. Testers, transferências, inventário e insumos pelo TrocaFácil. Desconto e campanhas só no MonAris.", "link": ""}];
-function novLista(){ const l=ED.novidades?ED.novidades.slice():NOV_PADRAO.slice(); if(ED.novidades){ NOV_PADRAO.filter(n=>n.link==="natal-ouro"&&!l.some(x=>x.titulo===n.titulo)).forEach(n=>l.unshift(n)); } return l; }
+const NOV_PADRAO=[{"data": "16/11/2026", "titulo": "Nova Central: Quem somos, Integração e Fluxos rápidos", "texto": "Nossa história e os 10 valores, a Trilha de integração com 9 módulos, fluxos de decisão para o dia a dia e a tabela Quem aprova o quê.", "link": "integracao", "url": ""}, {"data": "04/11/2026", "titulo": "Lançamentos Natal de Ouro", "texto": "Tudo o que chegou da campanha de Natal: kits, deo colônia e linhas novas. Primeira fase à venda desde 26/10; Linha Terroir só depois de 30/11.", "link": "natal-ouro", "url": ""}, {"data": "23/10/2026", "titulo": "Frete, transporte e segurança", "texto": "Todo frete vai no fechamento do caixa, pago ou não pelo cliente. Novo procedimento de Lalamove e Uber com formulário de retirada assinado e orientações de prevenção de roubos e perdas.", "link": "frete-transporte"}, {"data": "23/10/2026", "titulo": "Quem procurar + imagens do manual", "texto": "Central de Orientações (RH, Financeiro, Administrativo Comercial e Gestão), botões para abrir TrocaFácil e MonAris e as páginas do Manual de Operações ilustrando cada rotina.", "link": "orientacoes-areas"}, {"data": "23/10/2026", "titulo": "Dúvidas de RH", "texto": "Ponto pelo celular ou computador da loja, até 5 ajustes, atestado em 48h e ativação da Conexa Saúde.", "link": "pol-rh"}, {"data": "22/10/2026", "titulo": "WhatsApp: apresentação e 10 minutos", "texto": "Toda vendedora se apresenta pelo nome e responde em até 10 minutos. Tudo de WhatsApp agora numa página só.", "link": "whatsapp"}, {"data": "22/10/2026", "titulo": "Origem do Fluxo + cadastro", "texto": "Condição especial, cliente novo e cliente de Instagram, Facebook ou Google: lançar no Origem do Fluxo e cadastrar.", "link": "cadastro-clientes"}, {"data": "22/10/2026", "titulo": "Manual completo do MonAris", "texto": "Os 16 capítulos numa página só.", "link": "monaris"}, {"data": "22/10/2026", "titulo": "Regras atualizadas", "texto": "Troca sem foto no grupo e validade mínima de 3 meses. Testers, transferências, inventário e insumos pelo TrocaFácil. Desconto e campanhas só no MonAris.", "link": ""}];
+function novLista(){ const l=ED.novidades?ED.novidades.slice():NOV_PADRAO.slice(); if(ED.novidades){ NOV_PADRAO.filter(n=>(n.link==="natal-ouro"||n.link==="integracao")&&!l.some(x=>x.titulo===n.titulo)).forEach(n=>l.unshift(n)); } return l; }
 function novHTML(){ return novLista().map(n=>`<div class="novidade"><time>${esc(n.data||"")}</time><b>${esc(n.titulo||"")}</b><p>${esc(n.texto||"")}${n.link&&byId(n.link)?` <a href="#art-${n.link}">Abrir</a>`:""}${/^https?:\/\//i.test(n.url||"")?` <a href="${esc(n.url)}" target="_blank" rel="noopener">Abrir página ↗</a>`:""}</p></div>`).join(""); }
 
 const porOrdem=k=>(x,y)=>(+x[k]||999)-(+y[k]||999);
-function homeAtalhos(){ return A.filter(a=>a.atalho).sort(porOrdem('atalhoOrdem')); }
+function homeAtalhos(){ return A.filter(a=>a.atalho&&vigente(a)).sort(porOrdem('atalhoOrdem')); }
 function imagemDe(a){ if(typeof SLIDES!=='undefined'&&SLIDES[a.id]) return SLIDES[a.id].src; const m=(a._bodyBase||a.body||'').match(/<img[^>]+src="([^"]+)"/); return m?m[1]:''; }
-function homeFaixa(){ const f=A.filter(a=>a.faixa).sort(porOrdem('destaqueOrdem'))[0]; if(!f) return '';
+function homeFaixa(){ const f=A.filter(a=>a.faixa&&vigente(a)).sort(porOrdem('destaqueOrdem'))[0]; if(!f) return '';
   return `<a class="camp-banner" data-a="${f.area}" href="#art-${f.id}"><span class="camp-ic">${ICON[f.area]||ICON.estrela}</span><span class="camp-tx"><small>${esc(f.faixaRotulo||'Em destaque')}</small><b>${esc(f.title)}</b><span>${esc(f.faixaTexto||f.summary||'')}</span></span><span class="camp-bt">${esc(f.faixaBotao||'Ver agora')} →</span></a>`; }
-function homeDestaques(){ const d=A.filter(a=>a.destaque).sort(porOrdem('destaqueOrdem')); if(!d.length) return '';
+function homeDestaques(){ const d=A.filter(a=>a.destaque&&vigente(a)).sort(porOrdem('destaqueOrdem')); if(!d.length) return '';
   return `<div class="bloco"><div class="bloco-h"><h2>Destaques</h2></div><div class="destaques">${d.map(a=>{ const im=imagemDe(a); return `<a class="dest" data-a="${a.area}" href="#art-${a.id}"><span class="dest-img">${im?`<img src="${im}" alt="" loading="lazy">`:`<span class="dest-ic">${ICON[a.area]||ICON.estrela}</span>`}</span><span class="dest-tx"><small>${esc((area(a.area)||{}).curto||'')}</small><b>${esc(a.title)}</b><span>${esc(a.summary||'')}</span><em>Abrir →</em></span></a>`; }).join('')}</div></div>`; }
+function homeFluxos(){ const f=A.filter(a=>a.grupo==='Fluxos rápidos'&&a.area==='operacao'&&!a.interno&&vigente(a)); if(!f.length) return '';
+  return `<div class="bloco" data-a="operacao"><div class="bloco-h"><h2>E se acontecer…?</h2><p>Fluxos rápidos: o caminho certo, passo a passo, com as decisões.</p></div><div class="fluxos-home">${f.map((a,i)=>`<a class="fxh" href="#art-${a.id}"><span class="fxh-ic">${ICON.fluxo}</span><span><small>${esc(a.codigo||'Fluxo '+(i+1))}</small><b>${esc(a.pergunta||a.title.replace(/^Fluxo:\s*/,''))}</b></span><em>→</em></a>`).join('')}</div></div>`; }
+function trilhaEstado(){ try{ return JSON.parse(localStorage.getItem('mAnjosTrilha')||'{}')||{}; }catch(e){ return {}; } }
+function homeCultura(){ const t=trilhaEstado(), n=(t.mods||[]).length;
+  return `<div class="cultura2"><a class="valores" href="#art-valores"><span class="eb2">Os 10 valores do Grupo M. Anjos</span><p>Ética · Equipe · Amor · Diversidade · Cliente · Resultados · Evolução · Encantamento · Motivação · Protagonismo</p><em>Conheça nossa história e nossos valores →</em></a>
+  ${byId('integracao')?`<a class="trilha-home" href="#art-integracao"><span class="eb2">Começou agora?</span><b>Trilha de integração</b><span>${n?`Você concluiu ${n} de 9 módulos`:'9 módulos para conhecer a M. Anjos e a rotina da loja'}</span><span class="tbar"><i style="width:${Math.round(n/9*100)}%"></i></span><em>${n>=9?'Trilha concluída ✓':n?'Continuar →':'Começar →'}</em></a>`:''}</div>`; }
 function home(){
   nav('inicio');
   app.removeAttribute('data-a');
@@ -3968,6 +4359,8 @@ function home(){
     <div class="tarefas">${homeAtalhos().map(a=>`<a class="tarefa" data-a="${a.area}" href="#art-${a.id}"><span class="ic2">${ICON[a.area]}</span><b>${esc(a.atalhoTitulo||a.title)}</b><small>${esc(a.atalhoTexto||'')}</small></a>`).join('')}</div>
   </div>
 
+  ${homeFluxos()}
+
   <div class="bloco"><div class="bloco-h"><h2>Sistemas</h2><p>"Abrir ↗" entra no sistema; "Como usar" abre o manual.</p></div>
     <div class="sistemas2" data-a="sistemas">
       <div class="sis2"><b>Exatto</b><span class="d">Consulta de faturamento, baixa de produtos e Pagar Troca.</span><div class="acoes"><a class="mini pri" href="https://portalfranquias.avatim.com.br/" target="_blank" rel="noopener">Abrir ↗</a><a class="mini" href="#art-exatto">Como usar</a></div></div>
@@ -3988,10 +4381,10 @@ function home(){
   </div>
 
   <div class="bloco"><div class="bloco-h"><h2>Explorar por área</h2></div>
-    <div class="areas2">${AREAS.filter(x=>!x.oculta).map(x=>`<a class="area2" data-a="${x.id}" href="#area-${x.id}"><span class="ic2">${ICON[x.id]}</span><div><b>${x.nome}</b><span>${x.desc}</span><em>${A.filter(a=>a.area===x.id && !a.parte && !a.interno).length} conteúdos</em></div></a>`).join('')}</div>
+    <div class="areas2">${AREAS.filter(x=>!x.oculta).map(x=>`<a class="area2" data-a="${x.id}" href="#area-${x.id}"><span class="ic2">${ICON[x.id]}</span><div><b>${x.nome}</b><span>${x.desc}</span><em>${A.filter(a=>a.area===x.id && !a.parte && !a.interno && vigente(a)).length} conteúdos</em></div></a>`).join('')}</div>
   </div>
 
-  <div class="valores"><span class="eb2">Princípios de trabalho do Grupo M. Anjos</span><p>Ética · Equipe · Amor · Diversidade · Cliente · Resultados · Evolução · Encantamento · Motivação · Protagonismo</p></div>
+  ${homeCultura()}
 
   <div class="bloco duas">
     <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div class="bloco-h"><h2>Dúvidas frequentes</h2></div>
@@ -4005,6 +4398,8 @@ function home(){
       <details class="faq"><summary>Salvei a venda no MonAris, mas não aparece na outra máquina. Lanço de novo?</summary><div class="ans"><p>Não. Confira se apareceu "Confirmado no servidor" e se vendedor, data e loja são os mesmos.</p><a href="#art-mon-acesso">MonAris: acesso</a></div></details>
       <details class="faq"><summary>Onde marco o ponto? Posso ajustar?</summary><div class="ans"><p>Pelo celular da empresa ou pelo computador da loja. Até 5 ajustes; os demais, por e-mail à gestão. Atestado ao RH em até 48 horas.</p><a href="#art-pol-rh">Dúvidas de RH</a></div></details>
       <details class="faq"><summary>Como peço algo ao administrativo?</summary><div class="ans"><p>Por e-mail, com tipo de solicitação, seu nome e unidade no assunto.</p><a href="#art-pol-comunicacao">Comunicação: e-mail e Teams</a></div></details>
+      <details class="faq"><summary>Quem pode aprovar uma exceção?</summary><div class="ans"><p>Depende do caso: desconto e cancelamento com a gestão, sangria só com Fátima ou César, Pix com o aval do financeiro.</p><a href="#art-alcadas">Quem aprova o quê</a></div></details>
+      ${ajudaBarra('')}
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div class="bloco-h"><h2>Novidades do mês</h2></div>
       ${novHTML()}
@@ -4015,17 +4410,77 @@ function home(){
   const q=document.getElementById('q');
   document.getElementById('fBusca').addEventListener('submit',e=>{e.preventDefault(); irBusca(q.value)});
   app.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>irBusca(b.dataset.q)));
+  ativarAjuda(app);
 }
 
 function areaPage(id){
   const ar=area(id); if(!ar||ar.oculta) return home();
   nav(id); app.dataset.a=id;
-  const itens=A.filter(a=>a.area===id && !a.parte && !a.interno);
+  const todos=A.filter(a=>a.area===id && !a.parte && !a.interno);
+  const itens=todos.filter(vigente), arq=todos.filter(a=>!vigente(a));
   const grupos=[...new Set(itens.map(a=>a.grupo))];
   app.innerHTML=`<div class="col">
     <div class="topo-area"><a class="tag-a" href="#inicio">${ICON[id]} ${ar.curto}</a><h1>${ar.nome}</h1><p class="lede">${ar.desc}</p></div>
     ${grupos.map(g=>`<div class="grupo-h">${g}</div><div class="cards">${itens.filter(a=>a.grupo===g).map(card).join('')}</div>`).join('')}
+    ${arq.length?`<details class="arquivo"><summary>Arquivo: versões antigas (${arq.length})</summary><p class="src">Conteúdo obsoleto, guardado só para consulta. Não use como referência.</p><div class="cards">${arq.map(card).join('')}</div></details>`:''}
   </div>`;
+}
+
+function dataBR(t){ const m=String(t||'').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m?new Date(+m[3],m[2]-1,+m[1]):null; }
+function hojeBR(){ const d=new Date(); return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear(); }
+const FICHA=[['codigo','Código'],['versao','Versão'],['vigencia','Vigente desde'],['revisao','Próxima revisão'],['executor','Quem executa'],['aprovador','Quem aprova'],['dono','Dono do processo'],['registro','Onde registrar (sistema oficial)']];
+function fichaHTML(a){ if(!['codigo','executor','aprovador','dono','registro','revisao'].some(k=>a[k])) return '';
+  const rv=dataBR(a.revisao), venc=rv&&rv<new Date();
+  return `<div class="ficha">${FICHA.filter(([k])=>a[k]).map(([k,t])=>`<div class="${k==='registro'?'reg':''}"><small>${t}</small><b>${esc(a[k])}${k==='revisao'&&venc?' <span class="badge pend">Revisão vencida</span>':''}</b></div>`).join('')}</div>`; }
+function ativarTrilha(raiz){
+  const tr=raiz.querySelector('.trilha'); if(!tr) return;
+  const mods=[...tr.querySelectorAll('.mod[data-mod]')]; if(!mods.length) return;
+  const st=trilhaEstado(); st.mods=st.mods||[];
+  const salvar=()=>{ try{ localStorage.setItem('mAnjosTrilha',JSON.stringify(st)); }catch(e){} };
+  const prog=document.createElement('div'); prog.className='trilha-prog'; tr.before(prog);
+  const fim=document.createElement('div'); fim.className='trilha-fim'; tr.after(fim);
+  const desenhar=()=>{ const n=mods.filter(m=>st.mods.includes(m.dataset.mod)).length;
+    prog.innerHTML=`<b>${n} de ${mods.length} módulos concluídos</b><span class="tbar"><i style="width:${Math.round(n/mods.length*100)}%"></i></span>`;
+    mods.forEach(m=>m.classList.toggle('feito',st.mods.includes(m.dataset.mod)));
+    fim.hidden=n<mods.length; };
+  mods.forEach(m=>{ if(m.querySelector('.mod-ok')) return; const l=document.createElement('label'); l.className='mod-ok';
+    l.innerHTML=`<input type="checkbox" ${st.mods.includes(m.dataset.mod)?'checked':''}> Concluí este módulo`;
+    (m.querySelector('.mod-c')||m).appendChild(l);
+    l.querySelector('input').addEventListener('change',e=>{ const k=m.dataset.mod; st.mods=st.mods.filter(x=>x!==k); if(e.target.checked) st.mods.push(k); salvar(); desenhar(); }); });
+  fim.innerHTML=`<b class="t">Trilha concluída! 🎉</b><p>Envie a confirmação para a sua liderança validar com você.</p>
+    <div class="trilha-campos"><input id="trNome" placeholder="Seu nome" value="${esc(st.nome||'')}"><input id="trLoja" placeholder="Sua loja" value="${esc(st.loja||'')}"></div>
+    <div class="acoes"><button type="button" class="adm-btn pri" id="trWpp">Enviar pelo WhatsApp</button>${CONTATO.email?'<button type="button" class="adm-btn" id="trMail">Enviar por e-mail</button>':''}</div>`;
+  const texto=()=>{ st.nome=document.getElementById('trNome').value.trim(); st.loja=document.getElementById('trLoja').value.trim(); salvar();
+    return `Central M. Anjos — Confirmação de integração\nNome: ${st.nome}\nLoja: ${st.loja}\nData: ${hojeBR()}\nConcluí os ${mods.length} módulos da Trilha de integração:\n`+mods.map(m=>'✓ '+(m.querySelector('b')||{}).textContent).join('\n'); };
+  fim.querySelector('#trWpp').addEventListener('click',()=>window.open(linkWpp(texto()),'_blank'));
+  const tm=fim.querySelector('#trMail'); if(tm) tm.addEventListener('click',()=>{ location.href=`mailto:${CONTATO.email}?subject=${encodeURIComponent('Confirmação de integração')}&body=${encodeURIComponent(texto())}`; });
+  desenhar();
+}
+/* Não encontrei / Sugerir melhoria */
+const CONTATO=Object.assign({whats:'',email:''},ED.contato||{});
+function linkWpp(t){ const n=String(CONTATO.whats||'').replace(/\D/g,''); return `https://wa.me/${n}?text=${encodeURIComponent(t)}`; }
+function ajudaBarra(ctx){ return `<div class="ajuda-barra"><span>Não encontrou o que precisava ou tem uma ideia para melhorar esta página?</span><div class="acoes"><button type="button" class="adm-btn" data-ajuda="duvida" data-ctx="${esc(ctx||'')}">🔎 Não encontrei</button><button type="button" class="adm-btn" data-ajuda="sugestao" data-ctx="${esc(ctx||'')}">💡 Sugerir melhoria</button></div></div>`; }
+function ativarAjuda(raiz){ raiz.querySelectorAll('[data-ajuda]').forEach(b=>b.addEventListener('click',()=>abrirAjuda(b.dataset.ajuda,b.dataset.ctx))); }
+function abrirAjuda(tipo,ctx){
+  const T={duvida:['Não encontrei','Qual era a sua dúvida? Ela vira conteúdo novo na Central.','Dúvida não encontrada na Central'],sugestao:['Sugerir melhoria','O que pode ficar mais claro, está desatualizado ou falta nesta orientação?','Sugestão de melhoria']}[tipo]||[];
+  let mem={}; try{ mem=JSON.parse(localStorage.getItem('mAnjosQuem')||'{}')||{}; }catch(e){}
+  const ov=document.createElement('div'); ov.className='modal-fundo';
+  ov.innerHTML=`<form class="modal" role="dialog" aria-modal="true" aria-label="${T[0]}"><button type="button" class="modal-x" aria-label="Fechar">✕</button><h2>${T[0]}</h2><p class="src">${T[1]}</p>
+    ${ctx?`<p class="modal-ctx">Sobre: <b>${esc(ctx)}</b></p>`:''}
+    <div class="trilha-campos"><input id="ajNome" placeholder="Seu nome" value="${esc(mem.nome||'')}"><input id="ajLoja" placeholder="Sua loja" value="${esc(mem.loja||'')}"></div>
+    <textarea id="ajMsg" rows="4" placeholder="Escreva aqui" required></textarea>
+    <div class="acoes"><button type="submit" class="adm-btn pri">Enviar pelo WhatsApp</button>${CONTATO.email?'<button type="button" class="adm-btn" id="ajMail">Enviar por e-mail</button>':''}<button type="button" class="adm-btn" id="ajCopia">Copiar texto</button></div>
+    <p class="src">${CONTATO.whats?'Vai para o WhatsApp da gestão.':'Abre o WhatsApp para você escolher para quem enviar (sua liderança).'}</p></form>`;
+  document.body.appendChild(ov);
+  const fechar=()=>{ ov.remove(); document.removeEventListener('keydown',ek); }; const ek=e=>{ if(e.key==='Escape') fechar(); };
+  document.addEventListener('keydown',ek); ov.addEventListener('click',e=>{ if(e.target===ov) fechar(); }); ov.querySelector('.modal-x').addEventListener('click',fechar);
+  const texto=()=>{ const n=ov.querySelector('#ajNome').value.trim(), l=ov.querySelector('#ajLoja').value.trim(); try{ localStorage.setItem('mAnjosQuem',JSON.stringify({nome:n,loja:l})); }catch(e){}
+    return `Central M. Anjos — ${T[2]}\n${ctx?'Sobre: '+ctx+'\n':''}Nome: ${n}\nLoja: ${l}\n\n${ov.querySelector('#ajMsg').value.trim()}`; };
+  const ok=()=>{ if(!ov.querySelector('#ajMsg').value.trim()){ ov.querySelector('#ajMsg').focus(); return false; } return true; };
+  ov.querySelector('form').addEventListener('submit',e=>{ e.preventDefault(); if(!ok()) return; window.open(linkWpp(texto()),'_blank'); fechar(); toast('Obrigada! Sua mensagem foi preparada no WhatsApp.'); });
+  const m=ov.querySelector('#ajMail'); if(m) m.addEventListener('click',()=>{ if(!ok()) return; location.href=`mailto:${CONTATO.email}?subject=${encodeURIComponent(T[2]+(ctx?' — '+ctx:''))}&body=${encodeURIComponent(texto())}`; fechar(); });
+  ov.querySelector('#ajCopia').addEventListener('click',()=>{ if(!ok()) return; const t=texto(); (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Texto copiado.'),()=>{ ov.querySelector('#ajMsg').value=t; ov.querySelector('#ajMsg').select(); toast('Selecione e copie o texto.'); }); });
+  setTimeout(()=>ov.querySelector('#ajMsg').focus(),30);
 }
 
 let rolarPara=null;
@@ -4036,15 +4491,19 @@ function artPage(id){
   const rel=a.rel.map(byId).filter(Boolean);
   app.innerHTML=`<div class="col">
     <div class="topo-area"><a class="tag-a" href="#area-${ar.id}">${ICON[ar.id]} ${ar.curto}</a><h1>${esc(a.title)}</h1><p class="lede">${esc(a.summary)}</p>
-      <div class="meta"><span class="badge tipo">${a.tipo}</span>${STATUS[a.status]||''}<span>Atualizado em 22/10/2026</span></div></div>
+      <div class="meta"><span class="badge tipo">${a.tipo}</span>${STATUS[a.status]||''}${a.codigo?`<span class="badge tipo">${esc(a.codigo)}</span>`:''}<span>${a.versao?`Versão ${esc(a.versao)}${a.vigencia?' · vigente desde '+esc(a.vigencia):''}`:'Atualizado em '+esc(a.vigencia||'22/10/2026')}</span></div></div>
+    ${a.status==='obs'?'<div class="box alerta"><b class="t">Conteúdo obsoleto</b>Esta versão foi arquivada e não vale mais. Procure a versão vigente na área ou pela busca.</div>':''}
+    ${fichaHTML(a)}
     ${SLIDES[a.id]?`<figure class="slide"><button type="button" class="zoom" aria-label="Ampliar imagem"><img src="${SLIDES[a.id].src}" alt="${esc(SLIDES[a.id].leg)} — página do Manual de Operações" loading="lazy"></button><figcaption>Manual de Operações · ${esc(SLIDES[a.id].leg)} · página ${SLIDES[a.id].pg} <span>Toque para ampliar</span></figcaption></figure>`:''}
     ${admLogado()?`<div class="adm-rapida"><span>Você está logada como gestão</span><button type="button" class="adm-btn pri" data-editar="${a.id}">✏️ Editar esta página</button><a class="adm-btn" href="#admin">Área da gestão</a></div>`:''}
     <article class="art">${a.body}</article>
     ${rel.length?`<div class="fonte"><b>Veja também</b><div class="rel">${rel.map(r=>`<a class="chip" href="#art-${r.id}">${esc(r.title)}</a>`).join('')}</div></div>`:''}
+    ${(a.historico||[]).length?`<details class="fontes"><summary>Histórico de alterações</summary>${a.historico.slice().reverse().map(h=>`<span><b>${esc(h.data||'')}${h.versao?' · versão '+esc(h.versao):''}</b> — ${esc(h.nota||'')}</span>`).join('')}</details>`:''}
     <details class="fontes"><summary>Fonte oficial deste conteúdo</summary>${a.fontes.map(f=>`<span>${esc(f)}</span>`).join('')}</details>
+    ${ajudaBarra(a.title)}
     <a class="chip" href="#area-${ar.id}" style="align-self:flex-start">← Voltar para ${ar.nome}</a>
   </div>`;
-  ativarVideos(app);
+  ativarVideos(app); ativarTrilha(app); ativarAjuda(app);
   app.querySelectorAll('[data-editar]').forEach(b=>b.addEventListener('click',()=>{ admEditId=b.dataset.editar; admVista='editor'; location.hash='admin'; }));
   app.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>{
     const ov=document.createElement('div'); ov.className='lightbox'; ov.innerHTML='<button type="button" aria-label="Fechar">✕</button>';
@@ -4092,7 +4551,8 @@ function buscaPage(){
     const r=buscar(v);
     out.innerHTML = r.length
       ? `<p class="src">${r.length} resultado${r.length>1?'s':''}</p>` + r.map(a=>`<a class="card" data-a="${a.area}" href="#art-${a.id}"><b><span class="pt"></span>${esc(a.title)}</b><span class="bd">${STATUS[a.status]} <span class="badge tipo">${a.tipo}</span></span><p>${esc(a.summary)}<br><span style="font-size:12px;font-weight:700;color:var(--ac)">${area(a.area).nome}</span></p></a>`).join('')
-      : `<div class="vazio">Nenhum conteúdo encontrado para "${esc(v)}". Tente outra palavra (ex.: troca, caixa, estoque) ou procure a gestão da sua loja.</div>`;
+      : `<div class="vazio">Nenhum conteúdo encontrado para "${esc(v)}". Tente outra palavra (ex.: troca, caixa, estoque) ou avise a gestão para incluirmos.<div class="acoes" style="margin-top:12px;justify-content:center"><button type="button" class="adm-btn pri" data-ajuda="duvida" data-ctx="Busca: ${esc(v)}">🔎 Não encontrei: enviar minha dúvida</button></div></div>`;
+    ativarAjuda(out);
   };
   document.getElementById('fBusca2').addEventListener('submit',e=>{e.preventDefault();run()});
   q2.addEventListener('input',run);
@@ -4106,11 +4566,11 @@ function admLogado(){ try{ return sessionStorage.getItem('mAnjosAdm')==='1'; }ca
 function admEntrar(){ try{ sessionStorage.setItem('mAnjosAdm','1'); }catch(e){} window.__adm=true; }
 function admSair(){ try{ sessionStorage.removeItem('mAnjosAdm'); }catch(e){} window.__adm=false; }
 function salvarRascunho(){ try{ localStorage.setItem(ED_KEY,JSON.stringify(ED_RASC)); return true; }catch(e){ return false; } }
-function nRascunhos(){ return Object.keys(ED_RASC.paginas||{}).length+Object.keys(ED_RASC.areas||{}).length+(ED_RASC.novidades?1:0)+(ED_RASC.senha?1:0); }
+function nRascunhos(){ return Object.keys(ED_RASC.paginas||{}).length+Object.keys(ED_RASC.areas||{}).length+(ED_RASC.novidades?1:0)+(ED_RASC.senha?1:0)+(ED_RASC.contato?1:0); }
 function toast(msg){ const t=document.createElement('div'); t.className='adm-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
 let admVista='lista', admEditId=null, admFiltro={q:'',area:''};
-const TIPOS=['Procedimento','Tutorial','Checklist','Política','Artigo','Treinamento','Sistema','Registro'];
-const STATUS_ADM={ok:'Publicado',pend:'Pendente',div:'Em validação'};
+const TIPOS=['Procedimento','Fluxo','Tutorial','Checklist','Política','Artigo','Treinamento','Sistema','Registro','Campanha'];
+const STATUS_ADM={ok:'Aprovado (publicado)',div:'Em validação',pend:'Pendente',rasc:'Rascunho (só a gestão vê)',obs:'Obsoleto (vai para o arquivo)'};
 function admRecarregar(msg,vista){ try{ sessionStorage.setItem('mAnjosAdmMsg',msg||''); sessionStorage.setItem('mAnjosAdmVista',vista||'lista'); }catch(e){} location.reload(); }
 
 function admPage(){
@@ -4126,9 +4586,9 @@ function admPage(){
   let msg=''; try{ msg=sessionStorage.getItem('mAnjosAdmMsg')||''; const v=sessionStorage.getItem('mAnjosAdmVista'); if(v) admVista=v; sessionStorage.removeItem('mAnjosAdmMsg'); sessionStorage.removeItem('mAnjosAdmVista'); }catch(e){}
   if(msg) setTimeout(()=>toast(msg),50);
   const n=nRascunhos();
-  const abas=[['lista','Páginas'],['home','Página inicial'],['areas','Áreas'],['novidades','Novidades'],['publicar','Publicar'+(n?` (${n})`:'')],['senha','Senha']];
+  const abas=[['lista','Páginas'],['home','Página inicial'],['areas','Áreas'],['novidades','Novidades'],['contato','Contato'],['publicar','Publicar'+(n?` (${n})`:'')],['senha','Senha']];
   app.innerHTML=`<div class="col adm" style="max-width:1000px">
-    <div class="topo-area" data-a="politicas"><span class="tag-a">Área da gestão</span><h1>Editar a Central</h1><p class="lede">Crie, edite, oculte ou exclua conteúdos. O visual do site é aplicado automaticamente.</p>
+    <div class="topo-area" data-a="politicas"><span class="tag-a">Área da gestão</span><h1>Editar a Central</h1><p class="lede">Crie, edite, oculte ou exclua conteúdos. O visual do site é aplicado automaticamente. ${byId('projeto-01')?'<a href="#art-projeto-01" style="color:inherit;font-weight:700">📋 Plano do Projeto 01</a>':''}</p>
       <div class="adm-abas">${abas.map(([k,t])=>`<button type="button" class="adm-aba ${admVista===k||(k==='lista'&&admVista==='editor')?'on':''}" data-v="${k}">${t}</button>`).join('')}<button type="button" class="adm-aba sair" id="admSair">Sair</button></div></div>
     ${n?`<div class="box warn"><b class="t">${n} alteração(ões) ainda não publicadas</b>Só você está vendo. Para a equipe ver, clique em <b>Publicar</b>. <button type="button" class="adm-btn pri" style="margin-left:8px" id="irPub">Publicar agora</button></div>`:''}
     <div id="admCorpo"></div></div>`;
@@ -4142,12 +4602,14 @@ function admPage(){
   else if(admVista==='novidades') admNovidades(c);
   else if(admVista==='publicar') admPublicar(c);
   else if(admVista==='senha') admSenha(c);
+  else if(admVista==='contato') admContato(c);
   else admLista(c);
 }
 
 function statusDe(a){
   const t=[]; if(a._excluido) t.push('<span class="badge div">Excluída</span>'); else if(a.oculto) t.push('<span class="badge tipo">Oculta</span>');
-  else t.push(a.status==='ok'?'<span class="badge ok">Publicada</span>':`<span class="badge ${a.status==='pend'?'pend':'div'}">${STATUS_ADM[a.status]||a.status}</span>`);
+  else t.push(a.status==='ok'?'<span class="badge ok">Publicada</span>':`<span class="badge ${a.status==='pend'?'pend':a.status==='obs'?'obs':a.status==='rasc'?'tipo':'div'}">${(STATUS_ADM[a.status]||a.status).replace(/ \(.*/,'')}</span>`);
+  if(a.codigo) t.push(`<span class="badge tipo">${esc(a.codigo)}</span>`); { const rv=dataBR(a.revisao); if(rv&&rv<new Date()) t.push('<span class="badge pend">Revisão vencida</span>'); }
   if(a.interno) t.push('<span class="badge tipo">Só gestão</span>'); if(a.parte) t.push('<span class="badge tipo">Capítulo MonAris</span>');
   if((ED_RASC.paginas||{})[a.id]) t.push('<span class="badge pend">Não publicada</span>'); else if((ED_ARQ.paginas||{})[a.id]) t.push('<span class="badge tipo">Editada</span>');
   return t.join(' ');
@@ -4198,10 +4660,15 @@ function inserirBloco(el,html){
 function reduzirImagem(file,cb){
   const fr=new FileReader(); fr.onload=()=>{ const im=new Image(); im.onload=()=>{ const m=1200,k=Math.min(1,m/Math.max(im.width,im.height)); const cv=document.createElement('canvas'); cv.width=Math.round(im.width*k); cv.height=Math.round(im.height*k); cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height); cb(cv.toDataURL('image/jpeg',.82)); }; im.src=fr.result; }; fr.readAsDataURL(file);
 }
+const MODELOS={
+ mpop:`<h3>Objetivo</h3><p>Por que esta atividade existe e como saber que foi concluída.</p><h3>Antes de começar</h3><ul><li>Sistema, documentos, materiais e acessos necessários.</li></ul><h3>Passo a passo</h3><ol class="passos"><li><div>Primeiro passo.</div></li><li><div>Segundo passo.</div></li></ol><h3>Confira antes de concluir</h3><ul><li>Item de conferência.</li></ul><h3>Se acontecer…</h3><div class="tbl"><table><tr><th>Situação</th><th>O que fazer</th></tr><tr><td>Situação A</td><td>Caminho A</td></tr><tr><td>Situação B</td><td>Caminho B</td></tr></table></div><div class="box warn"><b class="t">Exceções e limites</b>O que a loja não decide sozinha e a quem escalar.</div><h3>Onde registrar</h3><p>Sistema oficial, evidência necessária e prazo.</p>`,
+ mfluxo:`<div class="fluxo"><div class="fx-no"><span class="fx-n">1</span><div><b>Primeiro passo</b>Descreva o que fazer.</div></div><div class="fx-dec"><b class="fx-q">Pergunta de decisão?</b><div class="fx-ramos"><div class="fx-r sim"><span>Sim</span>O que fazer se sim.</div><div class="fx-r nao"><span>Não</span>O que fazer se não.</div></div></div><div class="fx-no"><span class="fx-n">2</span><div><b>Segundo passo</b>Descreva o que fazer.</div></div><div class="fx-fim">✓ Como saber que terminou e onde registrar.</div></div>`,
+ mcamp:`<div class="tbl"><table><tr><th>Item</th><th>Campanha</th></tr><tr><td>Mecânica</td><td>Como funciona</td></tr><tr><td>Período</td><td>De dd/mm a dd/mm</td></tr><tr><td>Lojas participantes</td><td>Quais lojas</td></tr><tr><td>Quem pode participar</td><td>Regras de elegibilidade</td></tr><tr><td>Exceções</td><td>O que não vale</td></tr><tr><td>Como registrar no PDV</td><td>Passo no sistema</td></tr><tr><td>Dúvidas com</td><td>Responsável</td></tr></table></div><div class="box warn"><b class="t">Vigência</b>Ao terminar a campanha, marque esta página como Obsoleta para ela ir para o arquivo.</div>`
+};
 function admEditor(c){
   const a=admEditId?TODOS.find(x=>x.id===admEditId):null;
-  const d=a?{title:a.title,summary:a.summary,area:a.area,grupo:a.grupo,tipo:a.tipo,status:a.status||'ok',tags:a.tags||'',body:(a._bodyBase!==undefined?a._bodyBase:a.body)||'',fontes:(a.fontes||[]).join('\n'),rel:a.rel||[],oculto:!!a.oculto,destaque:!!a.destaque,destaqueOrdem:a.destaqueOrdem||'',faixa:!!a.faixa,faixaRotulo:a.faixaRotulo||'',faixaTexto:a.faixaTexto||'',faixaBotao:a.faixaBotao||'',atalho:!!a.atalho,atalhoTitulo:a.atalhoTitulo||'',atalhoTexto:a.atalhoTexto||'',atalhoOrdem:a.atalhoOrdem||''}
-          :{title:'',summary:'',area:'operacao',grupo:'',tipo:'Procedimento',status:'ok',tags:'',body:'<h3>Título da seção</h3><p>Escreva aqui.</p>',fontes:'',rel:[],oculto:false,destaque:false,destaqueOrdem:'',faixa:false,faixaRotulo:'',faixaTexto:'',faixaBotao:'',atalho:false,atalhoTitulo:'',atalhoTexto:'',atalhoOrdem:''};
+  const d=a?{title:a.title,summary:a.summary,area:a.area,grupo:a.grupo,tipo:a.tipo,status:a.status||'ok',tags:a.tags||'',body:(a._bodyBase!==undefined?a._bodyBase:a.body)||'',fontes:(a.fontes||[]).join('\n'),rel:a.rel||[],oculto:!!a.oculto,destaque:!!a.destaque,destaqueOrdem:a.destaqueOrdem||'',faixa:!!a.faixa,faixaRotulo:a.faixaRotulo||'',faixaTexto:a.faixaTexto||'',faixaBotao:a.faixaBotao||'',atalho:!!a.atalho,atalhoTitulo:a.atalhoTitulo||'',atalhoTexto:a.atalhoTexto||'',atalhoOrdem:a.atalhoOrdem||'',codigo:a.codigo||'',versao:a.versao||'',vigencia:a.vigencia||'',revisao:a.revisao||'',executor:a.executor||'',aprovador:a.aprovador||'',dono:a.dono||'',registro:a.registro||'',pergunta:a.pergunta||''}
+          :{title:'',summary:'',area:'operacao',grupo:'',tipo:'Procedimento',status:'ok',tags:'',body:'<h3>Título da seção</h3><p>Escreva aqui.</p>',fontes:'',rel:[],oculto:false,destaque:false,destaqueOrdem:'',faixa:false,faixaRotulo:'',faixaTexto:'',faixaBotao:'',atalho:false,atalhoTitulo:'',atalhoTexto:'',atalhoOrdem:'',codigo:'',versao:'',vigencia:'',revisao:'',executor:'',aprovador:'',dono:'',registro:'',pergunta:''};
   const grupos=[...new Set(TODOS.map(x=>x.grupo).filter(Boolean))].sort();
   c.innerHTML=`<form id="admForm" class="adm-card adm-form" data-a="${d.area}">
     <h2>${a?'Editar página':'Nova página'}</h2>
@@ -4222,12 +4689,27 @@ function admEditor(c){
       <div class="adm-grade adm-sub" id="subAtal"><div><label for="fATit">Nome do atalho</label><input id="fATit" value="${esc(d.atalhoTitulo)}" placeholder="Ex.: Pedir tester"></div><div><label for="fATxt">Frase curta</label><input id="fATxt" value="${esc(d.atalhoTexto)}"></div></div>
       <p class="src">A ordem dos destaques e atalhos você muda na aba <b>Página inicial</b>.</p>
     </fieldset>
+    <details class="adm-home adm-ficha" ${d.codigo||d.dono||d.registro?'open':''}><summary><b>Ficha do procedimento</b> (código, versão, revisão, responsáveis) · opcional</summary>
+      <div class="adm-grade">
+        <div><label for="fCod">Código</label><input id="fCod" value="${esc(d.codigo)}" placeholder="Ex.: ROT-01"></div>
+        <div><label for="fVer">Versão</label><input id="fVer" value="${esc(d.versao)}" placeholder="Ex.: 2"></div>
+        <div><label for="fVig">Vigente desde</label><input id="fVig" value="${esc(d.vigencia)}" placeholder="dd/mm/aaaa"></div>
+        <div><label for="fRev">Próxima revisão</label><input id="fRev" value="${esc(d.revisao)}" placeholder="dd/mm/aaaa"><button type="button" class="adm-link" id="fRev6">+6 meses</button></div>
+        <div><label for="fExe">Quem executa</label><input id="fExe" value="${esc(d.executor)}"></div>
+        <div><label for="fApr">Quem aprova</label><input id="fApr" value="${esc(d.aprovador)}"></div>
+        <div><label for="fDono">Dono do processo</label><input id="fDono" value="${esc(d.dono)}"></div>
+        <div><label for="fReg">Onde registrar (sistema oficial)</label><input id="fReg" value="${esc(d.registro)}"></div>
+        <div style="grid-column:1/-1"><label for="fPerg">Frase do fluxo na página inicial (só para o grupo "Fluxos rápidos")</label><input id="fPerg" value="${esc(d.pergunta)}" placeholder="Ex.: Cliente reclamou"></div>
+        <div style="grid-column:1/-1"><label for="fNota">O que mudou nesta versão? (vai para o histórico de alterações)</label><input id="fNota" placeholder="Ex.: Incluído o prazo de 48 horas"></div>
+      </div>${(a&&a.historico||[]).length?`<p class="src">Histórico: ${a.historico.map(h=>esc(h.data+' '+(h.nota||''))).join(' · ')}</p>`:''}
+    </details>
     <label>Conteúdo</label>
     <div class="adm-tool" id="admTool">
       <button type="button" data-c="h3">Título</button><button type="button" data-c="p">Texto</button><button type="button" data-c="bold"><b>N</b></button>
       <button type="button" data-c="ul">• Lista</button><button type="button" data-c="passos">1·2·3 Passo a passo</button>
       <button type="button" data-c="alerta" class="t-alerta">Aviso vermelho</button><button type="button" data-c="warn" class="t-warn">Atenção amarelo</button><button type="button" data-c="info" class="t-info">Info azul</button><button type="button" data-c="ok" class="t-ok">Dica verde</button>
       <button type="button" data-c="tabela">Tabela</button><button type="button" data-c="link">Link</button><button type="button" data-c="video">Vídeo</button><button type="button" data-c="material">Material (PDF/Drive)</button><button type="button" data-c="pagina" class="t-pag">🌐 Página pronta (link)</button>
+      <button type="button" data-c="mpop" class="t-mod">📄 Modelo de POP</button><button type="button" data-c="mfluxo" class="t-mod">🔀 Fluxo com decisão</button><button type="button" data-c="mcamp" class="t-mod">📣 Ficha de campanha</button>
       <label class="adm-up">Imagem<input type="file" accept="image/*" id="fImg" hidden></label>
       <button type="button" data-c="html">&lt;/&gt; HTML</button>
     </div>
@@ -4244,6 +4726,7 @@ function admEditor(c){
   document.getElementById('fArea').addEventListener('change',e=>document.getElementById('admForm').dataset.a=e.target.value);
   const sub=()=>{ document.getElementById('subFaixa').hidden=!document.getElementById('fFaixa').checked; document.getElementById('subAtal').hidden=!document.getElementById('fAtal').checked; };
   ['fFaixa','fAtal'].forEach(i=>document.getElementById(i).addEventListener('change',sub)); sub();
+  document.getElementById('fRev6').addEventListener('click',()=>{ const b=dataBR(document.getElementById('fVig').value)||new Date(); b.setMonth(b.getMonth()+6); document.getElementById('fRev').value=String(b.getDate()).padStart(2,'0')+'/'+String(b.getMonth()+1).padStart(2,'0')+'/'+b.getFullYear(); });
   ['keyup','mouseup','focus'].forEach(ev=>corpo.addEventListener(ev,guardarSel));
   corpo.addEventListener('click',e=>{ if(e.target.closest('a')) e.preventDefault(); });
   corpo.addEventListener('paste',e=>{ const cd=e.clipboardData; if(!cd) return; e.preventDefault();
@@ -4269,6 +4752,7 @@ function admEditor(c){
     else if(k==='ul') inserirBloco(corpo,'<ul><li>Item</li><li>Item</li></ul>');
     else if(k==='passos') inserirBloco(corpo,'<ol class="passos"><li><div>Primeiro passo.</div></li><li><div>Segundo passo.</div></li></ol>');
     else if(BOX[k]) inserirBloco(corpo,`<div class="box ${k}"><b class="t">${BOX[k]}</b>Escreva o aviso aqui.</div>`);
+    else if(MODELOS[k]) inserirBloco(corpo,MODELOS[k]);
     else if(k==='tabela') inserirBloco(corpo,'<div class="tbl"><table><tr><th>Coluna 1</th><th>Coluna 2</th></tr><tr><td>Texto</td><td>Texto</td></tr><tr><td>Texto</td><td>Texto</td></tr></table></div>');
     else { modoMini=k; mini.hidden=false; document.getElementById('mUrl').value=''; document.getElementById('mTxt').value=''; document.getElementById('mTxt').placeholder=k==='link'?'Texto do link':k==='pagina'?'Nome da página (ex.: Lançamentos Natal de Ouro)':'Título (ex.: Vídeo 0401 Abertura)'; document.getElementById('mUrl').placeholder=k==='pagina'?'Cole o link da página pronta (https://…)':'Cole o link (https://…)'; document.getElementById('mUrl').focus(); }
   });
@@ -4296,7 +4780,7 @@ function admEditor(c){
   const orig=document.getElementById('fOriginal');
   if(orig) orig.addEventListener('click',()=>{ const o=ORIG[a.id]; ED_RASC.paginas=ED_RASC.paginas||{};
     ED_RASC.paginas[a.id]={title:o.title,summary:o.summary,area:o.area,grupo:o.grupo,tipo:o.tipo,status:o.status,tags:o.tags,body:o.body,fontes:o.fontes,rel:o.rel,oculto:!!o.oculto,_excluido:false};
-    ["destaque", "destaqueOrdem", "faixa", "faixaRotulo", "faixaTexto", "faixaBotao", "atalho", "atalhoTitulo", "atalhoTexto", "atalhoOrdem"].forEach(k=>{ ED_RASC.paginas[a.id][k]=o[k]===undefined?(k.endsWith('Ordem')||/Rotulo|Texto|Botao|Titulo/.test(k)?'':false):o[k]; });
+    ["destaque", "destaqueOrdem", "faixa", "faixaRotulo", "faixaTexto", "faixaBotao", "atalho", "atalhoTitulo", "atalhoTexto", "atalhoOrdem","codigo","versao","vigencia","revisao","executor","aprovador","dono","registro","pergunta"].forEach(k=>{ ED_RASC.paginas[a.id][k]=o[k]===undefined?(k.endsWith('Ordem')||/Rotulo|Texto|Botao|Titulo/.test(k)?'':false):o[k]; });
     salvarRascunho(); admRecarregar('Página voltou ao texto original.'); });
   document.getElementById('admForm').addEventListener('submit',e=>{ e.preventDefault();
     if(!html.hidden) corpo.innerHTML=html.value;
@@ -4305,7 +4789,9 @@ function admEditor(c){
       tags:v('fTags').trim(),body:corpo.innerHTML,fontes:v('fFontes').split('\n').map(x=>x.trim()).filter(Boolean),
       rel:[...document.getElementById('fRel').selectedOptions].map(o=>o.value),oculto:document.getElementById('fOculto').checked,
       destaque:document.getElementById('fDest').checked,faixa:document.getElementById('fFaixa').checked,faixaRotulo:v('fFRot').trim(),faixaTexto:v('fFTxt').trim(),faixaBotao:v('fFBot').trim(),
-      atalho:document.getElementById('fAtal').checked,atalhoTitulo:v('fATit').trim(),atalhoTexto:v('fATxt').trim()};
+      atalho:document.getElementById('fAtal').checked,atalhoTitulo:v('fATit').trim(),atalhoTexto:v('fATxt').trim(),
+      codigo:v('fCod').trim(),versao:v('fVer').trim(),vigencia:v('fVig').trim(),revisao:v('fRev').trim(),executor:v('fExe').trim(),aprovador:v('fApr').trim(),dono:v('fDono').trim(),registro:v('fReg').trim(),pergunta:v('fPerg').trim()};
+    const nota=v('fNota').trim(); if(nota) dados.historico=((a&&a.historico)||[]).concat([{data:hojeBR(),versao:dados.versao,nota}]);
     if(dados.destaque&&!(a&&a.destaque)) dados.destaqueOrdem=TODOS.filter(x=>x.destaque).length+1;
     if(dados.atalho&&!(a&&a.atalho)) dados.atalhoOrdem=TODOS.filter(x=>x.atalho).length+1;
     if(dados.atalho&&!dados.atalhoTitulo) dados.atalhoTitulo=dados.title;
@@ -4493,6 +4979,15 @@ function admPublicar(c){
     if(b.dataset.conf!=='1'){ b.dataset.conf='1'; b.textContent='Confirmar: descartar tudo que não foi publicado'; return; }
     ED_RASC={}; try{ localStorage.removeItem(ED_KEY); }catch(err){} admRecarregar('Alterações descartadas.','publicar'); });
 }
+function admContato(c){
+  c.innerHTML=`<form id="cForm" class="adm-card"><h2>Para onde vão as dúvidas e sugestões</h2>
+    <p class="src">Os botões <b>Não encontrei</b>, <b>Sugerir melhoria</b> e a confirmação da <b>Trilha de integração</b> enviam a mensagem pronta por WhatsApp ou e-mail. Sem número, o WhatsApp abre para a pessoa escolher o contato.</p>
+    <label for="cWpp">WhatsApp da gestão (com DDD, só números)</label><input id="cWpp" inputmode="tel" value="${esc(CONTATO.whats||'')}" placeholder="Ex.: 11999998888">
+    <label for="cMail">E-mail (opcional)</label><input id="cMail" type="email" value="${esc(CONTATO.email||'')}" placeholder="gestao@…">
+    <div class="adm-rodape"><button class="adm-btn pri" type="submit">Salvar</button></div></form>`;
+  document.getElementById('cForm').addEventListener('submit',e=>{ e.preventDefault(); let w=document.getElementById('cWpp').value.replace(/\D/g,''); if(w&&w.length<=11) w='55'+w;
+    ED_RASC.contato={whats:w,email:document.getElementById('cMail').value.trim()}; salvarRascunho(); admRecarregar('Contato salvo. Publique para valer para a equipe.','contato'); });
+}
 function admSenha(c){
   c.innerHTML=`<form id="sForm" class="adm-card"><h2>Trocar a senha</h2>
     <label for="sNova">Nova senha</label><input id="sNova" type="password" minlength="6" required autocomplete="new-password">
@@ -4504,6 +4999,7 @@ function admSenha(c){
 }
 
 function route(){
+  document.querySelectorAll('.modal-fundo,.lightbox').forEach(x=>x.remove());
   const h=decodeURIComponent(location.hash.replace(/^#/,''));
   if(h.startsWith('art-')) artPage(h.slice(4));
   else if(h.startsWith('area-')) areaPage(h.slice(5));
